@@ -1,0 +1,160 @@
+/* Ripristino Tipografia Ufficiale GS1 */
+.modern-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  font-family: 'Gotham', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.modern-hero {
+  text-align: center;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.hero-badge {
+  background: rgba(242, 99, 52, 0.1);
+  color: #F26334; /* GS1 Orange */
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.modern-hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  color: #002C6C; /* GS1 Blue */
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #002C6C 0%, #F26334 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.modern-hero p {
+  font-size: 1.15rem;
+  color: #454545; /* GS1 Dark Gray */
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.sectors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+/* Card in stile Bento con bordo morbido */
+.sector-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0,0,0,0.04);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.sector-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px -10px var(--sector-color, rgba(0, 44, 108, 0.15));
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+/* Nuova gestione dell'icona invece della foto */
+.icon-wrapper {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s ease;
+}
+
+.icon-wrapper img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain; /* Assicura che le PNG non perdano le proporzioni */
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); /* Aggiunge una leggera ombra per dare profondità alle icone PNG */
+}
+
+.sector-card:hover .icon-wrapper {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.sector-badge {
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.description {
+  color: #454545; /* GS1 Dark Gray */
+  line-height: 1.6;
+  font-size: 1rem;
+  margin-bottom: 32px;
+  flex-grow: 1;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #F4F4F4;
+  padding-top: 16px;
+}
+
+.explore-btn {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.arrow-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  transition: all 0.3s ease;
+}
+
+.sector-card:hover .arrow-icon {
+  transform: translateX(6px);
+}
+
+@media (max-width: 768px) {
+  .sectors-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "node generate-routes.js && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:gs1-catalog": "node dist/gs1-catalog/server/server.mjs"
@@ -20,6 +20,7 @@
     "@angular/platform-server": "^22.0.0",
     "@angular/router": "^22.0.0",
     "@angular/ssr": "^22.0.6",
+    "angularx-qrcode": "^21.0.5",
     "express": "^5.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"

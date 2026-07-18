@@ -1,0 +1,109 @@
+:host {
+  --gs1-blue: #002C6C;
+  --gs1-orange: #F26334;
+  --gs1-dark-gray: #454545;
+  --gs1-bg-soft: #F9FAFB; /* Sfondo ultra-chiaro e moderno */
+  
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--gs1-bg-soft);
+}
+
+/* Trend 2026: Glassmorphism Header */
+.gs1-header {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px); /* Effetto vetro sfocato */
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.logo:hover {
+  transform: scale(1.02);
+}
+
+.logo img {
+  height: 38px;
+  width: auto;
+}
+
+/* Tipografia impilata più moderna invece del separatore | */
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  border-left: 2px solid rgba(0, 44, 108, 0.1);
+  padding-left: 16px;
+}
+
+.app-title {
+  color: var(--gs1-blue);
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.app-subtitle {
+  color: var(--gs1-orange);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.main-content {
+  flex: 1;
+}
+
+/* Footer Minimalista Aggiornato */
+.gs1-footer {
+  background-color: #ffffff;
+  padding: 32px 0;
+  margin-top: 40px;
+  border-top: 1px solid rgba(0,0,0,0.04);
+  font-family: 'Gotham', 'Helvetica Neue', sans-serif; /* Mantenuto il font istituzionale */
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: center; /* Centra il testo orizzontalmente */
+  align-items: center;
+  text-align: center;
+}
+
+.footer-container p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--gs1-dark-gray);
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .logo-text { padding-left: 12px; }
+  .footer-container { flex-direction: column; gap: 16px; }
+}

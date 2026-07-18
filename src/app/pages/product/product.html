@@ -1,0 +1,210 @@
+@if (product(); as prod) {
+  <div class="product-page">
+    
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="breadcrumb">
+      <ol>
+        <li><a routerLink="/">Home</a></li>
+        <li class="separator">/</li>
+        <li><a [routerLink]="['/catalog', prod.sectorId]">{{ prod.sectorName }}</a></li>
+        <li class="separator">/</li>
+        <li class="current" aria-current="page">{{ prod.name }}</li>
+      </ol>
+    </nav>
+
+    <div class="product-layout">
+      
+      <!-- COLONNA SINISTRA: Immagine e Link GS1 -->
+      <div class="product-left-col">
+        <div class="image-wrapper">
+          <img [src]="prod.image" [alt]="prod.name">
+        </div>
+        
+        <!-- Pulsanti GS1 Link Types -->
+        @if (prod.links && prod.links.length > 0) {
+          <div class="gs1-links-container">
+            <h3>Servizi Collegati</h3>
+            @for (link of prod.links; track $index) {
+              <a [href]="link.url" target="_blank" rel="noopener noreferrer" class="gs1-link-btn">
+                <span class="link-type-badge">{{ link.linkType.replace('gs1:', '') }}</span>
+                {{ link.label }}
+              </a>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- COLONNA DESTRA: Dettagli, QR compatto e Dati Strutturati -->
+      <div class="product-details">
+
+        <!-- MINI QR CODE ULTRA-MINIMALISTA IN ALTO A DESTRA -->
+        @if (gs1DigitalLink()) {
+          <div class="gs1-qr-top-right">
+            <div class="qr-wrapper-mini">
+              @if (isBrowser()) {
+                <qrcode 
+                  [qrdata]="gs1DigitalLink()" 
+                  [width]="80" 
+                  [errorCorrectionLevel]="'Q'" 
+                  [elementType]="'svg'"
+                  [margin]="0">
+                </qrcode>
+              } @else {
+                <div style="width: 80px; height: 80px; background: #ffffff;"></div>
+              }
+            </div>
+          </div>
+        }
+
+        <span class="brand-name">{{ prod.brand }}</span>
+        <h1 class="product-title">{{ prod.name }}</h1>
+        <p class="product-description">{{ prod.description }}</p>
+
+        <!-- Box Identificazione e Digital Link -->
+        <div class="gs1-data-box">
+          <div class="gs1-box-header">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"></path><path d="M4 12h16"></path><path d="M12 4v16"></path></svg>
+            <h3>Digital Link Data</h3>
+          </div>
+          <ul class="gs1-data-list">
+            <li><span class="ai-badge">(01) GTIN</span><span class="data-value">{{ gtin() }}</span></li>
+            @if (lot()) {
+              <li><span class="ai-badge">(10) LOTTO</span><span class="data-value">{{ lot() }}</span></li>
+            }
+            @if (expiration()) {
+              <li><span class="ai-badge">(17) SCADENZA</span><span class="data-value">{{ expiration() }}</span></li>
+            }
+          </ul>
+        </div>
+
+        <!-- Accordion (Ontologia GS1) -->
+        <div class="product-accordions">
+          
+          <!-- 1. Logistica e Dimensioni -->
+          @if (prod.logistics) {
+            <details class="accordion">
+              <summary>Logistica e Conservazione</summary>
+              <div class="accordion-content">
+                <ul class="structured-data-list">
+                  @if (prod.logistics.netWeight) {
+                    <li><span class="data-label">Peso Netto</span><span class="data-value">{{ prod.logistics.netWeight }}</span></li>
+                  }
+                  @if (prod.logistics.grossWeight) {
+                    <li><span class="data-label">Peso Lordo</span><span class="data-value">{{ prod.logistics.grossWeight }}</span></li>
+                  }
+                  @if (prod.logistics.dimensions) {
+                    <li><span class="data-label">Dimensioni (LxPxA)</span><span class="data-value">{{ prod.logistics.dimensions }}</span></li>
+                  }
+                  @if (prod.logistics.storage) {
+                    <li class="full-width"><span class="data-label">Conservazione</span><p class="data-text">{{ prod.logistics.storage }}</p></li>
+                  }
+                </ul>
+              </div>
+            </details>
+          }
+
+          <!-- 2. Food & Beverage -->
+          @if (prod.food) {
+            <details class="accordion">
+              <summary>Ingredienti e Nutrizione</summary>
+              <div class="accordion-content">
+                @if (prod.food.ingredients) {
+                  <div class="food-section">
+                    <span class="data-label">Ingredienti</span>
+                    <p class="data-text">{{ prod.food.ingredients }}</p>
+                  </div>
+                }
+                @if (prod.food.allergens) {
+                  <div class="food-section">
+                    <span class="data-label">Allergeni</span>
+                    <p class="data-text text-warning">{{ prod.food.allergens }}</p>
+                  </div>
+                }
+                
+                @if (prod.food.nutrition) {
+                  <table class="nutrition-table">
+                    <thead><tr><th>Valori Medi</th><th>Per 100g</th></tr></thead>
+                    <tbody>
+                      @if (prod.food.nutrition.calories) {
+                        <tr><td>Energia</td><td>{{ prod.food.nutrition.calories }}</td></tr>
+                      }
+                      @if (prod.food.nutrition.fat) {
+                        <tr><td>Grassi</td><td>{{ prod.food.nutrition.fat }}</td></tr>
+                      }
+                      @if (prod.food.nutrition.carbohydrates) {
+                        <tr><td>Carboidrati</td><td>{{ prod.food.nutrition.carbohydrates }}</td></tr>
+                      }
+                      @if (prod.food.nutrition.sugars) {
+                        <tr><td class="sub-row">di cui zuccheri</td><td>{{ prod.food.nutrition.sugars }}</td></tr>
+                      }
+                      @if (prod.food.nutrition.protein) {
+                        <tr><td>Proteine</td><td>{{ prod.food.nutrition.protein }}</td></tr>
+                      }
+                      @if (prod.food.nutrition.salt) {
+                        <tr><td>Sale</td><td>{{ prod.food.nutrition.salt }}</td></tr>
+                      }
+                    </tbody>
+                  </table>
+                }
+              </div>
+            </details>
+          }
+
+          <!-- 3. Abbigliamento e Tessile -->
+          @if (prod.apparel) {
+            <details class="accordion">
+              <summary>Materiali e Manutenzione</summary>
+              <div class="accordion-content">
+                <ul class="structured-data-list">
+                  @if (prod.apparel.material) {
+                    <li><span class="data-label">Composizione</span><span class="data-value">{{ prod.apparel.material }}</span></li>
+                  }
+                  @if (prod.apparel.color) {
+                    <li><span class="data-label">Colore</span><span class="data-value">{{ prod.apparel.color }}</span></li>
+                  }
+                  @if (prod.apparel.size) {
+                    <li><span class="data-label">Taglia</span><span class="data-value">{{ prod.apparel.size }}</span></li>
+                  }
+                  @if (prod.apparel.careInstructions) {
+                    <li class="full-width"><span class="data-label">Cura del capo</span><p class="data-text">{{ prod.apparel.careInstructions }}</p></li>
+                  }
+                </ul>
+              </div>
+            </details>
+          }
+
+          <!-- 4. Certificazioni -->
+          @if (prod.certifications && prod.certifications.length > 0) {
+            <details class="accordion">
+              <summary>Certificazioni e Sostenibilità</summary>
+              <div class="accordion-content">
+                @for (cert of prod.certifications; track $index) {
+                  <div class="certification-card">
+                    <h4 class="cert-agency">{{ cert.agency }}</h4>
+                    @if (cert.standard) {
+                      <p class="cert-standard">{{ cert.standard }}</p>
+                    }
+                    <div class="cert-meta">
+                      @if (cert.value) {
+                        <span class="cert-badge">{{ cert.value }}</span>
+                      }
+                      @if (cert.id) {
+                        <span class="cert-id">ID: {{ cert.id }}</span>
+                      }
+                    </div>
+                  </div>
+                }
+              </div>
+            </details>
+          }
+
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
+<!-- SEO: INIEZIONE JSON-LD NEL BODY -->
+@if (jsonLdHtml()) {
+  <div style="display: none;" [innerHTML]="jsonLdHtml()"></div>
+}

@@ -1,0 +1,35 @@
+<div class="modern-container">
+  <section class="modern-hero">
+    <div class="hero-badge">Standard GS1</div>
+    <h1>Settori <span class="gradient-text">e Soluzioni</span></h1>
+    <p>Il GS1 Digital Link supporta ogni settore merceologico. Seleziona un'area per esplorare i casi d'uso e la struttura dei dati.</p>
+  </section>
+
+  <section class="sectors-grid">
+    <article 
+      *ngFor="let sector of sectors" 
+      class="sector-card" 
+      [routerLink]="['/catalog', sector.id]"
+      [style.--sector-color]="sector.brandColor"
+    >
+      <div class="card-header">
+        <!-- Wrapper per l'icona vettoriale -->
+        <div class="icon-wrapper" [style.backgroundColor]="sector.brandColor + '1A'"> <!-- Aggiunge trasparenza HEX -->
+          <img [src]="sector.icon" [alt]="sector.name" loading="lazy" />
+        </div>
+        <span class="sector-badge" [style.backgroundColor]="sector.brandColor">{{ sector.name }}</span>
+      </div>
+      
+      <div class="card-content">
+        <p class="description">{{ sector.description }}</p>
+        
+        <div class="card-footer">
+          <span class="explore-btn" [style.color]="sector.brandColor">Scopri i prodotti</span>
+          <div class="arrow-icon" [style.color]="sector.brandColor">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+</div>

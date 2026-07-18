@@ -1,0 +1,457 @@
+/* --- Contenitore Principale --- */
+.product-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+  font-family: 'Gotham', 'Helvetica Neue', sans-serif;
+  box-sizing: border-box;
+}
+
+.product-page *, .product-page *::before, .product-page *::after {
+  box-sizing: border-box;
+}
+
+/* --- Breadcrumbs --- */
+.breadcrumbs {
+  font-size: 0.9rem;
+  margin-bottom: 32px;
+}
+.breadcrumbs ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.breadcrumbs a {
+  color: #002C6C;
+  text-decoration: none;
+  font-weight: 500;
+}
+.breadcrumbs a:hover { 
+  text-decoration: underline; 
+}
+.separator { 
+  margin: 0 8px; 
+  color: #B1B3B3; 
+}
+.current { 
+  color: #454545; 
+  font-weight: 600; 
+}
+
+/* --- Layout Principale Grid --- */
+.product-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* --- COLONNA SINISTRA: Media & Links --- */
+.product-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.image-wrapper {
+  background: #ffffff;
+  border: 1px solid #E5E7EB;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.image-wrapper img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+}
+
+/* Servizi Collegati (Pulsanti GS1 Link Types) */
+.gs1-links-container { 
+  background: #ffffff; 
+  border: 1px solid #E5E7EB; 
+  border-radius: 12px; 
+  padding: 24px; 
+}
+.gs1-links-container h3 { 
+  margin: 0 0 16px 0; 
+  font-size: 1.1rem; 
+  color: #002C6C; 
+  font-weight: 700;
+}
+.gs1-link-btn {
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  background: #F9FAFB;
+  border: 1px solid #E5E7EB; 
+  padding: 12px 16px; 
+  border-radius: 8px;
+  color: #111827; 
+  text-decoration: none; 
+  font-weight: 600; 
+  margin-bottom: 12px; 
+  transition: all 0.2s ease;
+}
+.gs1-link-btn:last-child { 
+  margin-bottom: 0; 
+}
+.gs1-link-btn:hover { 
+  background: #ffffff; 
+  border-color: #002C6C; 
+  box-shadow: 0 4px 12px rgba(0,44,108,0.08); 
+}
+.link-type-badge { 
+  background: #002C6C; 
+  color: #ffffff; 
+  font-size: 0.75rem; 
+  padding: 4px 8px; 
+  border-radius: 4px; 
+  text-transform: uppercase; 
+}
+
+/* --- COLONNA DESTRA: Testi & Tassonomia --- */
+.product-details {
+  display: flex;
+  flex-direction: column;
+  position: relative; /* Ancoraggio essenziale per il QR assoluto */
+  padding-top: 10px;
+}
+
+.brand-name {
+  font-size: 0.95rem;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.product-title {
+  font-size: 2.5rem;
+  color: #002C6C;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+  line-height: 1.2;
+  padding-right: 120px; /* Evita che il testo finisca sotto al QR Code */
+}
+
+.product-description {
+  font-size: 1.1rem;
+  color: #454545;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+/* --- Box QR Code compatto e centrato geometricamente --- */
+.gs1-qr-top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  background: #ffffff; 
+  padding: 8px;        /* Cornice bianca protettiva (Quiet Zone) */
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  
+  /* Centratura del wrapper */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-wrapper-mini {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;  
+  height: 80px;
+}
+
+/* Centratura forzata per l'SVG generato nello shadow DOM */
+.qr-wrapper-mini ::ng-deep svg {
+  display: block;
+  margin: 0 auto;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Box Identificazione Dati (01, 10, 17) */
+.gs1-data-box {
+  background: #F4F4F4;
+  border-left: 4px solid #F26334;
+  border-radius: 0 8px 8px 0;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+.gs1-data-box .gs1-box-header { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  margin-bottom: 20px; 
+  color: #002C6C; 
+}
+.gs1-data-box .gs1-box-header h3 { 
+  margin: 0; 
+  font-size: 1.2rem; 
+  font-weight: 700; 
+}
+.gs1-data-list { 
+  list-style: none; 
+  padding: 0; 
+  margin: 0; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 12px; 
+}
+.gs1-data-list li { 
+  display: flex; 
+  align-items: center; 
+  gap: 16px; 
+  background: #ffffff; 
+  padding: 12px 16px; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02); 
+}
+.ai-badge { 
+  background: #002C6C; 
+  color: #ffffff; 
+  padding: 4px 12px; 
+  border-radius: 100px; 
+  font-size: 0.85rem; 
+  font-weight: 700; 
+  min-width: 120px; 
+  text-align: center; 
+}
+.data-value { 
+  font-size: 1.1rem; 
+  color: #111827; 
+  font-weight: 600; 
+  font-family: monospace; 
+}
+
+/* --- Accordions (Dati Tecnici GS1) --- */
+.product-accordions { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 16px; 
+  margin-bottom: 40px;
+}
+.accordion { 
+  border: 1px solid #E5E7EB; 
+  border-radius: 8px; 
+  background: #ffffff; 
+  overflow: hidden; 
+}
+.accordion summary {
+  padding: 18px 24px; 
+  font-weight: 700; 
+  font-size: 1.05rem; 
+  color: #002C6C;
+  cursor: pointer; 
+  list-style: none; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  background: #F9FAFB;
+}
+.accordion summary::-webkit-details-marker { 
+  display: none; 
+}
+.accordion summary::after { 
+  content: '+'; 
+  font-size: 1.5rem; 
+  font-weight: 400; 
+  color: #F26334; 
+  transition: transform 0.3s ease; 
+}
+.accordion[open] summary::after { 
+  content: '−'; 
+}
+.accordion-content { 
+  padding: 24px; 
+  border-top: 1px solid #E5E7EB; 
+  animation: fadeIn 0.4s ease-in-out; 
+}
+
+/* Liste Dati Strutturati dentro gli Accordion */
+.structured-data-list { 
+  list-style: none; 
+  padding: 0; 
+  margin: 0; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 12px; 
+}
+.structured-data-list li { 
+  display: flex; 
+  justify-content: space-between; 
+  border-bottom: 1px dashed #E5E7EB; 
+  padding-bottom: 8px; 
+}
+.structured-data-list li:last-child { 
+  border-bottom: none; 
+  padding-bottom: 0; 
+}
+.structured-data-list .data-label { 
+  color: #6B7280; 
+  font-weight: 500; 
+}
+.structured-data-list .data-value { 
+  color: #111827; 
+  font-weight: 600; 
+  text-align: right; 
+}
+.full-width { 
+  flex-direction: column; 
+  align-items: flex-start !important; 
+  gap: 8px; 
+}
+.data-text { 
+  margin: 0; 
+  color: #454545; 
+  line-height: 1.5; 
+  font-size: 0.95rem; 
+}
+.text-warning { 
+  color: #B45309; 
+  font-weight: 600; 
+}
+
+/* Sezioni Interne Cibo (Allergeni / Ingredienti) */
+.food-section { 
+  margin-bottom: 16px; 
+  padding-bottom: 16px; 
+  border-bottom: 1px dashed #E5E7EB; 
+}
+.food-section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Tabella Valori Nutrizionali */
+.nutrition-table { 
+  width: 100%; 
+  border-collapse: collapse; 
+  margin-top: 16px; 
+}
+.nutrition-table th, .nutrition-table td { 
+  padding: 10px 0; 
+  border-bottom: 1px solid #E5E7EB; 
+  text-align: right; 
+}
+.nutrition-table th:first-child, .nutrition-table td:first-child { 
+  text-align: left; 
+}
+.nutrition-table th { 
+  color: #6B7280; 
+  font-weight: 600; 
+  font-size: 0.9rem; 
+}
+.nutrition-table td { 
+  color: #111827; 
+  font-weight: 600; 
+}
+.nutrition-table .sub-row { 
+  padding-left: 16px; 
+  font-weight: 400; 
+  color: #454545; 
+}
+
+/* Cards Certificazioni Tessili / Sostenibilità */
+.certification-card { 
+  background: #F9FAFB; 
+  border: 1px solid #E5E7EB; 
+  border-radius: 8px; 
+  padding: 16px; 
+  margin-bottom: 12px; 
+}
+.certification-card:last-child {
+  margin-bottom: 0;
+}
+.cert-agency { 
+  margin: 0 0 4px 0; 
+  color: #002C6C; 
+  font-size: 1rem; 
+}
+.cert-standard { 
+  margin: 0 0 12px 0; 
+  color: #454545; 
+  font-size: 0.9rem; 
+}
+.cert-meta { 
+  display: flex; 
+  gap: 12px; 
+  flex-wrap: wrap; 
+}
+.cert-badge { 
+  background: #E0F2F1; 
+  color: #00796B; 
+  padding: 4px 10px; 
+  border-radius: 4px; 
+  font-size: 0.8rem; 
+  font-weight: 600; 
+}
+.cert-id { 
+  font-family: monospace; 
+  font-size: 0.85rem; 
+  color: #6B7280; 
+}
+
+/* --- Animazioni --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Mobile Responsive Grid (Breakpoints) --- */
+@media (max-width: 1024px) {
+  .product-layout { 
+    gap: 32px; 
+  }
+  .product-title { 
+    font-size: 2.2rem; 
+  }
+}
+
+@media (max-width: 900px) {
+  .product-layout { 
+    grid-template-columns: 1fr; 
+    gap: 40px; 
+  }
+  .gs1-qr-top-right {
+    position: relative;
+    top: auto;
+    right: auto;
+    float: right;
+    margin-left: 16px;
+    margin-bottom: 16px;
+  }
+  .product-title {
+    font-size: 2rem; 
+    padding-right: 0;
+  }
+  .image-wrapper {
+    min-height: auto;
+  }
+  .gs1-data-list li { 
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 8px; 
+  }
+  .ai-badge {
+    width: 100%;
+    text-align: left;
+    padding-left: 16px;
+  }
+}

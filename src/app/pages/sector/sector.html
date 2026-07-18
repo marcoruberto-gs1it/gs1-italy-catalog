@@ -1,0 +1,34 @@
+<div class="catalog-page">
+  <!-- Breadcrumbs aggiornate -->
+  <nav class="breadcrumbs" aria-label="breadcrumb">
+    <ol>
+      <li><a routerLink="/">Home</a></li>
+      <li class="separator">/</li>
+      <li class="current" aria-current="page">{{ sectorName }}</li>
+    </ol>
+  </nav>
+
+  <div class="catalog-header">
+    <h1>Prodotti: {{ sectorName }}</h1>
+    <p class="results-count">{{ filteredProducts.length }} risultati trovati</p>
+  </div>
+
+  <!-- Griglia Prodotti a tutta larghezza -->
+  <main class="catalog-grid">
+    <article *ngFor="let product of filteredProducts" class="product-card">
+      <div class="card-image-wrapper">
+        <img [src]="product.image" [alt]="product.name" loading="lazy">
+      </div>
+      <div class="card-body">
+        <span class="product-brand">{{ product.brand }}</span>
+        <h2 class="product-name">{{ product.name }}</h2>
+        <p class="product-gtin">GTIN: <span>{{ product.gtin }}</span></p>
+      </div>
+      <div class="card-action">
+        <a [routerLink]="['/01', product.gtin]" class="btn-digital-link">
+          Leggi Digital Link
+        </a>
+      </div>
+    </article>
+  </main>
+</div>
