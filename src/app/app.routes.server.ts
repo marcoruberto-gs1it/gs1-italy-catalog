@@ -1,33 +1,38 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
+import productsData from './data/products.json';
+
+const products = productsData as { gtin: string; sectorId: string }[];
+const sectorIds = [...new Set(products.map((p) => p.sectorId))];
 
 export const serverRoutes: ServerRoute[] = [
   {
     path: 'catalog/:sector',
     renderMode: RenderMode.Prerender,
     async getPrerenderParams() {
-      // Array statico dei settori estratti dal tuo products.json
-      return [
-        { sector: 'fmcg' },
-        { sector: 'apparel' }
-      ];
+      return sectorIds.map((sector) => ({ sector }));
     }
   },
   {
     path: '01/:gtin',
     renderMode: RenderMode.Prerender,
     async getPrerenderParams() {
-      // Elenco statico dei tuoi GTIN reali: qui puoi aggiungere a mano i nuovi codici
-      return [
-        { gtin: '08032089000147' }, // Confettura extra di fragole
-        { gtin: '09506000164908' }, // The White T-Shirt
-        { gtin: '08076809545471' }  // Barilla Pasta Tortiglioni Senza Glutine
-      ];
+      return products.map((p) => ({ gtin: p.gtin }));
     }
   },
   {
+    // Qualsiasi combinazione di lotto (AI 10) e/o seriale (AI 21) dopo il GTIN — riconosciuta
+    // lato client dallo stesso gs1-digital-link.matcher.ts usato in app.routes.ts. Spostata su
+    // Client: sono identificativi di istanza (potenzialmente infiniti) e non ha senso prerenderli,
+    // oltre a evitare crash di build per parametri non enumerabili staticamente.
     path: '01/:gtin/10/:lot',
-    // Spostiamo questa rotta su Client: evita crash di build legati alla mancanza di parametri
-    // e permette al browser di decodificare lotti e scadenze al volo sull'HTML di base
+    renderMode: RenderMode.Client
+  },
+  {
+    path: '01/:gtin/21/:serial',
+    renderMode: RenderMode.Client
+  },
+  {
+    path: '01/:gtin/10/:lot/21/:serial',
     renderMode: RenderMode.Client
   },
   {

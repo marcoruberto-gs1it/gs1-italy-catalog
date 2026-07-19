@@ -7,13 +7,16 @@ export const routes: Routes = [
   { path: '', component: Home },
   // Rotta per il catalogo settori (es. /catalog/fashion)
   { path: 'catalog/:sector', component: Sector },
-  
-  // Rotte GS1 Digital Link
-  // 1. Solo GTIN (es. /01/08001111111114)
+
+  // Rotte GS1 Digital Link: un prodotto è raggiungibile a livello di prodotto (solo GTIN) o di
+  // istanza specifica (GTIN + lotto e/o numero seriale, AI 10/21). Tutte le combinazioni portano
+  // allo stesso ProductComponent, che legge gtin/lot/serial dai parametri di rotta in modo
+  // uniforme: è lì che vive l'unificazione, non nella struttura delle rotte (l'SSR di Angular
+  // richiede rotte esplicite basate su "path" per poter fare il prerendering).
   { path: '01/:gtin', component: ProductComponent },
-  
-  // 2. GTIN + LOTTO (es. /01/08001111111114/10/ABC)
   { path: '01/:gtin/10/:lot', component: ProductComponent },
+  { path: '01/:gtin/21/:serial', component: ProductComponent },
+  { path: '01/:gtin/10/:lot/21/:serial', component: ProductComponent },
 
   // Rotta di fallback
   { path: '**', redirectTo: '' }

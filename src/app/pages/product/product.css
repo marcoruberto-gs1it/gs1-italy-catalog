@@ -1,20 +1,21 @@
 /* --- Contenitore Principale --- */
 .product-page {
-  max-width: 1400px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 24px;
-  font-family: 'Gotham', 'Helvetica Neue', sans-serif;
+  padding: 24px 24px 80px;
   box-sizing: border-box;
 }
 
-.product-page *, .product-page *::before, .product-page *::after {
+.product-page *,
+.product-page *::before,
+.product-page *::after {
   box-sizing: border-box;
 }
 
 /* --- Breadcrumbs --- */
 .breadcrumbs {
-  font-size: 0.9rem;
-  margin-bottom: 32px;
+  font-size: 0.88rem;
+  margin-bottom: 28px;
 }
 .breadcrumbs ol {
   list-style: none;
@@ -25,433 +26,1017 @@
   flex-wrap: wrap;
 }
 .breadcrumbs a {
-  color: #002C6C;
+  color: var(--text-tertiary);
   text-decoration: none;
   font-weight: 500;
 }
-.breadcrumbs a:hover { 
-  text-decoration: underline; 
+.breadcrumbs a:hover {
+  color: var(--gs1-blue);
 }
-.separator { 
-  margin: 0 8px; 
-  color: #B1B3B3; 
+.separator {
+  margin: 0 8px;
+  color: var(--text-muted);
 }
-.current { 
-  color: #454545; 
-  font-weight: 600; 
+.current {
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
-/* --- Layout Principale Grid --- */
+/* --- Layout --- */
 .product-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  gap: 52px;
   align-items: start;
 }
 
-/* --- COLONNA SINISTRA: Media & Links --- */
 .product-left-col {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
+  position: sticky;
+  top: 96px;
 }
 
-.image-wrapper {
-  background: #ffffff;
-  border: 1px solid #E5E7EB;
-  border-radius: 16px;
-  padding: 24px;
+.badges-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.badges-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- Gallery --- */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gallery-main {
+  position: relative;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 400px;
+  min-height: 380px;
+  cursor: zoom-in;
+  box-shadow: var(--shadow-xs);
+  transition: box-shadow var(--dur-base) var(--ease-out);
 }
 
-.image-wrapper img {
+.gallery-main:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.gallery-main img {
   width: 100%;
-  max-height: 500px;
+  max-height: 440px;
+  object-fit: contain;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.gallery-main:hover img {
+  transform: scale(1.03);
+}
+
+.gallery-zoom-hint {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-glass-strong);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: all var(--dur-fast) var(--ease-out);
+}
+
+.gallery-main:hover .gallery-zoom-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gallery-thumbs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--border-subtle);
+  background: var(--bg-surface);
+  padding: 6px;
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
-/* Servizi Collegati (Pulsanti GS1 Link Types) */
-.gs1-links-container { 
-  background: #ffffff; 
-  border: 1px solid #E5E7EB; 
-  border-radius: 12px; 
-  padding: 24px; 
+.thumb.active {
+  border-color: var(--gs1-blue);
 }
-.gs1-links-container h3 { 
-  margin: 0 0 16px 0; 
-  font-size: 1.1rem; 
-  color: #002C6C; 
+
+/* --- Lightbox --- */
+.lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2500;
+  background: rgba(4, 8, 18, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  animation: gs-fade-in var(--dur-fast) var(--ease-out);
+  cursor: zoom-out;
+}
+
+.lightbox-backdrop img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  animation: gs-scale-in var(--dur-base) var(--ease-out);
+  cursor: default;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* --- Servizi Collegati --- */
+.gs1-links-container {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+}
+.gs1-links-container h3 {
+  margin: 0 0 14px 0;
+  font-size: 1rem;
+  color: var(--text-primary);
   font-weight: 700;
 }
 .gs1-link-btn {
-  display: flex; 
-  align-items: center; 
-  gap: 12px; 
-  background: #F9FAFB;
-  border: 1px solid #E5E7EB; 
-  padding: 12px 16px; 
-  border-radius: 8px;
-  color: #111827; 
-  text-decoration: none; 
-  font-weight: 600; 
-  margin-bottom: 12px; 
-  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-surface-sunken);
+  border: 1px solid var(--border-subtle);
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  transition: all var(--dur-fast) var(--ease-out);
 }
-.gs1-link-btn:last-child { 
-  margin-bottom: 0; 
+.gs1-link-btn:last-child {
+  margin-bottom: 0;
 }
-.gs1-link-btn:hover { 
-  background: #ffffff; 
-  border-color: #002C6C; 
-  box-shadow: 0 4px 12px rgba(0,44,108,0.08); 
+.gs1-link-btn:hover {
+  background: var(--bg-surface);
+  border-color: var(--gs1-blue);
+  box-shadow: var(--shadow-sm);
 }
-.link-type-badge { 
-  background: #002C6C; 
-  color: #ffffff; 
-  font-size: 0.75rem; 
-  padding: 4px 8px; 
-  border-radius: 4px; 
-  text-transform: uppercase; 
+.link-type-badge {
+  background: var(--gs1-blue);
+  color: #ffffff;
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  flex-shrink: 0;
 }
 
-/* --- COLONNA DESTRA: Testi & Tassonomia --- */
+/* --- COLONNA DESTRA --- */
 .product-details {
   display: flex;
   flex-direction: column;
-  position: relative; /* Ancoraggio essenziale per il QR assoluto */
-  padding-top: 10px;
+  gap: 6px;
+  min-width: 0;
 }
 
 .brand-name {
-  font-size: 0.95rem;
-  color: #6B7280;
+  font-size: 0.9rem;
+  color: var(--text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-weight: 700;
-  display: block;
-  margin-bottom: 8px;
 }
 
 .product-title {
-  font-size: 2.5rem;
-  color: #002C6C;
-  font-weight: 700;
-  margin: 0 0 16px 0;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  color: var(--text-primary);
+  font-weight: 800;
+  margin: 4px 0 10px 0;
   line-height: 1.2;
-  padding-right: 120px; /* Evita che il testo finisca sotto al QR Code */
+  letter-spacing: -0.02em;
 }
 
 .product-description {
-  font-size: 1.1rem;
-  color: #454545;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 14px 0 28px;
+}
+
+/* --- Prezzo --- */
+.price-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.price-main {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.price-current {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.price-unit {
+  font-size: 0.95rem;
+  color: var(--text-tertiary);
+  font-weight: 600;
+}
+
+.price-original {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  text-decoration: line-through;
+  font-weight: 600;
+}
+
+.price-discount-badge {
+  background: var(--success-soft);
+  color: var(--success);
+  font-weight: 800;
+  font-size: 0.82rem;
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+}
+
+.price-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.price-vat {
+  font-size: 0.82rem;
+  color: var(--text-tertiary);
+}
+
+.price-discount-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--gs1-orange);
+}
+
+/* --- Identity card --- */
+.gs1-identity-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  margin-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-shadow: var(--shadow-xs);
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.identity-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.identity-gtin {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.identity-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.identity-value {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.identity-udi-note {
+  font-size: 0.78rem;
+  color: var(--text-tertiary);
+  max-width: 360px;
+  line-height: 1.5;
+}
+
+.identity-carriers {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.carrier-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.carrier-code {
+  background: #ffffff;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 76px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.carrier-code .dm-wrap {
+  width: 100%;
+  height: 100%;
+}
+
+.carrier-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.carrier-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.carrier-actions button {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  background: var(--bg-surface-sunken);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 2px 7px;
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.carrier-actions button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.udi-callout {
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
   line-height: 1.6;
-  margin-bottom: 32px;
+  margin: 0 0 16px;
 }
 
-/* --- Box QR Code compatto e centrato geometricamente --- */
-.gs1-qr-top-right {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 10;
-  background: #ffffff; 
-  padding: 8px;        /* Cornice bianca protettiva (Quiet Zone) */
-  border: 1px solid #E5E7EB;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  
-  /* Centratura del wrapper */
+.udi-callout code {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.readiness-checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.readiness-checklist li {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
 }
 
-.qr-wrapper-mini {
+.readiness-checklist li.ok {
+  color: var(--success);
+}
+
+.readiness-checklist li.ok svg {
+  color: var(--success);
+}
+
+.readiness-checklist li.pending {
+  color: var(--text-muted);
+}
+
+.readiness-checklist li svg {
+  flex-shrink: 0;
+}
+
+.identity-actions {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 80px;  
-  height: 80px;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
-/* Centratura forzata per l'SVG generato nello shadow DOM */
-.qr-wrapper-mini ::ng-deep svg {
-  display: block;
-  margin: 0 auto;
-  width: 100% !important;
-  height: 100% !important;
+.identity-actions .gs-btn {
+  flex: 1;
+  min-width: 140px;
 }
 
-/* Box Identificazione Dati (01, 10, 17) */
-.gs1-data-box {
-  background: #F4F4F4;
-  border-left: 4px solid #F26334;
-  border-radius: 0 8px 8px 0;
-  padding: 24px;
-  margin-bottom: 32px;
-}
-.gs1-data-box .gs1-box-header { 
-  display: flex; 
-  align-items: center; 
-  gap: 12px; 
-  margin-bottom: 20px; 
-  color: #002C6C; 
-}
-.gs1-data-box .gs1-box-header h3 { 
-  margin: 0; 
-  font-size: 1.2rem; 
-  font-weight: 700; 
-}
-.gs1-data-list { 
-  list-style: none; 
-  padding: 0; 
-  margin: 0; 
-  display: flex; 
-  flex-direction: column; 
-  gap: 12px; 
-}
-.gs1-data-list li { 
-  display: flex; 
-  align-items: center; 
-  gap: 16px; 
-  background: #ffffff; 
-  padding: 12px 16px; 
-  border-radius: 8px; 
-  box-shadow: 0 2px 4px rgba(0,0,0,0.02); 
-}
-.ai-badge { 
-  background: #002C6C; 
-  color: #ffffff; 
-  padding: 4px 12px; 
-  border-radius: 100px; 
-  font-size: 0.85rem; 
-  font-weight: 700; 
-  min-width: 120px; 
-  text-align: center; 
-}
-.data-value { 
-  font-size: 1.1rem; 
-  color: #111827; 
-  font-weight: 600; 
-  font-family: monospace; 
-}
-
-/* --- Accordions (Dati Tecnici GS1) --- */
-.product-accordions { 
-  display: flex; 
-  flex-direction: column; 
-  gap: 16px; 
+/* --- Tabs --- */
+.product-tabs {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface);
+  overflow: hidden;
   margin-bottom: 40px;
 }
-.accordion { 
-  border: 1px solid #E5E7EB; 
-  border-radius: 8px; 
-  background: #ffffff; 
-  overflow: hidden; 
-}
-.accordion summary {
-  padding: 18px 24px; 
-  font-weight: 700; 
-  font-size: 1.05rem; 
-  color: #002C6C;
-  cursor: pointer; 
-  list-style: none; 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  background: #F9FAFB;
-}
-.accordion summary::-webkit-details-marker { 
-  display: none; 
-}
-.accordion summary::after { 
-  content: '+'; 
-  font-size: 1.5rem; 
-  font-weight: 400; 
-  color: #F26334; 
-  transition: transform 0.3s ease; 
-}
-.accordion[open] summary::after { 
-  content: '−'; 
-}
-.accordion-content { 
-  padding: 24px; 
-  border-top: 1px solid #E5E7EB; 
-  animation: fadeIn 0.4s ease-in-out; 
+
+.tabs-nav {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  padding: 6px 10px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-surface-sunken);
 }
 
-/* Liste Dati Strutturati dentro gli Accordion */
-.structured-data-list { 
-  list-style: none; 
-  padding: 0; 
-  margin: 0; 
-  display: flex; 
-  flex-direction: column; 
-  gap: 12px; 
-}
-.structured-data-list li { 
-  display: flex; 
-  justify-content: space-between; 
-  border-bottom: 1px dashed #E5E7EB; 
-  padding-bottom: 8px; 
-}
-.structured-data-list li:last-child { 
-  border-bottom: none; 
-  padding-bottom: 0; 
-}
-.structured-data-list .data-label { 
-  color: #6B7280; 
-  font-weight: 500; 
-}
-.structured-data-list .data-value { 
-  color: #111827; 
-  font-weight: 600; 
-  text-align: right; 
-}
-.full-width { 
-  flex-direction: column; 
-  align-items: flex-start !important; 
-  gap: 8px; 
-}
-.data-text { 
-  margin: 0; 
-  color: #454545; 
-  line-height: 1.5; 
-  font-size: 0.95rem; 
-}
-.text-warning { 
-  color: #B45309; 
-  font-weight: 600; 
+.tabs-nav button {
+  border: none;
+  background: transparent;
+  color: var(--text-tertiary);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 12px 16px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color var(--dur-fast) var(--ease-out);
 }
 
-/* Sezioni Interne Cibo (Allergeni / Ingredienti) */
-.food-section { 
-  margin-bottom: 16px; 
-  padding-bottom: 16px; 
-  border-bottom: 1px dashed #E5E7EB; 
+.tabs-nav button.active {
+  color: var(--gs1-blue);
+  border-bottom-color: var(--gs1-orange);
 }
-.food-section:last-of-type {
+
+:root[data-theme='dark'] .tabs-nav button.active {
+  color: var(--accent-strong);
+}
+
+.tab-panel {
+  padding: 26px 26px 30px;
+  animation: gs-fade-in var(--dur-base) var(--ease-out);
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.panel-section h4 {
+  font-size: 0.98rem;
+  color: var(--text-primary);
+  font-weight: 700;
+  margin: 24px 0 14px;
+}
+
+.panel-section h4:first-child {
+  margin-top: 0;
+}
+
+.panel-section .muted {
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.82rem;
+}
+
+/* Liste dati strutturati */
+.structured-data-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.structured-data-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px dashed var(--border-subtle);
+  padding-bottom: 8px;
+}
+.structured-data-list li:last-child {
   border-bottom: none;
-  margin-bottom: 0;
   padding-bottom: 0;
 }
+.structured-data-list .data-label {
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+.icon-list .data-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+}
+.icon-list .data-label app-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.structured-data-list .data-value {
+  color: var(--text-primary);
+  font-weight: 600;
+  text-align: right;
+}
+.full-width {
+  flex-direction: column;
+  align-items: flex-start !important;
+  gap: 8px;
+}
+.data-text {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 0.94rem;
+}
+.data-text code {
+  font-family: var(--font-mono);
+  background: var(--bg-surface-sunken);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+.text-warning {
+  color: var(--warning);
+  font-weight: 600;
+}
 
-/* Tabella Valori Nutrizionali */
-.nutrition-table { 
-  width: 100%; 
-  border-collapse: collapse; 
-  margin-top: 16px; 
+/* Tabella nutrizionale */
+.nutrition-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 4px;
 }
-.nutrition-table th, .nutrition-table td { 
-  padding: 10px 0; 
-  border-bottom: 1px solid #E5E7EB; 
-  text-align: right; 
+.nutrition-table td {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  text-align: right;
+  color: var(--text-primary);
+  font-weight: 600;
 }
-.nutrition-table th:first-child, .nutrition-table td:first-child { 
-  text-align: left; 
+.nutrition-table td:first-child {
+  text-align: left;
+  color: var(--text-secondary);
+  font-weight: 500;
 }
-.nutrition-table th { 
-  color: #6B7280; 
-  font-weight: 600; 
-  font-size: 0.9rem; 
-}
-.nutrition-table td { 
-  color: #111827; 
-  font-weight: 600; 
-}
-.nutrition-table .sub-row { 
-  padding-left: 16px; 
-  font-weight: 400; 
-  color: #454545; 
+.nutrition-table .sub-row {
+  padding-left: 16px;
+  font-weight: 400;
+  color: var(--text-tertiary);
 }
 
-/* Cards Certificazioni Tessili / Sostenibilità */
-.certification-card { 
-  background: #F9FAFB; 
-  border: 1px solid #E5E7EB; 
-  border-radius: 8px; 
-  padding: 16px; 
-  margin-bottom: 12px; 
+/* Infografica a card (Impatto Ambientale e simili) */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 14px;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--bg-surface-sunken);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-card .stat-value {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.stat-card .stat-label {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  font-weight: 600;
+}
+
+/* Card certificazioni / packaging */
+.certification-card {
+  background: var(--bg-surface-sunken);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  margin-bottom: 12px;
 }
 .certification-card:last-child {
   margin-bottom: 0;
 }
-.cert-agency { 
-  margin: 0 0 4px 0; 
-  color: #002C6C; 
-  font-size: 1rem; 
+.cert-agency {
+  margin: 0 0 4px 0;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 700;
 }
-.cert-standard { 
-  margin: 0 0 12px 0; 
-  color: #454545; 
-  font-size: 0.9rem; 
+.cert-standard {
+  margin: 0 0 12px 0;
+  color: var(--text-tertiary);
+  font-size: 0.88rem;
 }
-.cert-meta { 
-  display: flex; 
-  gap: 12px; 
-  flex-wrap: wrap; 
+.cert-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
-.cert-badge { 
-  background: #E0F2F1; 
-  color: #00796B; 
-  padding: 4px 10px; 
-  border-radius: 4px; 
-  font-size: 0.8rem; 
-  font-weight: 600; 
+.cert-badge {
+  background: var(--success-soft);
+  color: var(--success);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 600;
 }
-.cert-id { 
-  font-family: monospace; 
-  font-size: 0.85rem; 
-  color: #6B7280; 
-}
-
-/* --- Animazioni --- */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+.cert-id {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-muted);
 }
 
-/* --- Mobile Responsive Grid (Breakpoints) --- */
+.structured-cta-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+/* --- Timeline di tracciabilità (eventi EPCIS) --- */
+.trace-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.trace-event {
+  display: flex;
+  gap: 14px;
+  padding-bottom: 22px;
+  position: relative;
+}
+
+.trace-event::before {
+  content: '';
+  position: absolute;
+  left: 14px;
+  top: 34px;
+  bottom: 0;
+  width: 2px;
+  background: var(--border-default);
+}
+
+.trace-event:last-child::before {
+  display: none;
+}
+
+.trace-event:last-child {
+  padding-bottom: 0;
+}
+
+.trace-icon {
+  --icon-badge-bg: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  box-shadow: 0 0 0 3px var(--bg-surface);
+  z-index: 1;
+}
+
+.trace-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.trace-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.trace-step {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 0.94rem;
+}
+
+.trace-date {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.trace-company {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+}
+
+.trace-gln {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.trace-toggle {
+  align-self: flex-start;
+  margin-top: 6px;
+  border: 1px solid var(--border-default);
+  background: var(--bg-surface-sunken);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.76rem;
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.trace-toggle:hover {
+  border-color: var(--gs1-blue);
+  color: var(--gs1-blue);
+}
+
+.trace-json {
+  margin-top: 10px;
+  max-width: 100%;
+}
+
+/* --- Esempio Lotto/Seriale (sezione nascosta) --- */
+.lot-serial-example {
+  margin-top: 16px;
+  padding: 20px;
+  background: var(--bg-surface-sunken);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  animation: gs-fade-in var(--dur-base) var(--ease-out);
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.example-qr {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.example-qr-code {
+  background: #ffffff;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+  display: flex;
+}
+
+.example-qr-hint {
+  font-size: 0.82rem;
+  color: var(--text-tertiary);
+  max-width: 320px;
+  line-height: 1.5;
+}
+
+.identity-chips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.id-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.id-chip-label {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.trace-subheading {
+  margin: 20px 0 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* --- GDSN: gerarchia unità logistiche --- */
+.gdsn-meta {
+  margin: 16px 0 20px;
+}
+
+.gdsn-hierarchy {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.gdsn-level {
+  background: var(--bg-surface-sunken);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.gdsn-level-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.gdsn-level-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.gdsn-level-title {
+  font-weight: 700;
+  font-size: 0.96rem;
+  color: var(--text-primary);
+}
+
+.gdsn-level-sub {
+  font-size: 0.78rem;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+}
+
+.gdsn-qty {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 4px 9px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.gdsn-flags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.gdsn-level .structured-data-list {
+  border-top: 1px dashed var(--border-subtle);
+  padding-top: 10px;
+}
+
+.sscc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sscc-item + .sscc-item {
+  padding-top: 20px;
+  border-top: 1px dashed var(--border-subtle);
+}
+
+/* --- Responsive --- */
 @media (max-width: 1024px) {
-  .product-layout { 
-    gap: 32px; 
-  }
-  .product-title { 
-    font-size: 2.2rem; 
+  .product-layout {
+    gap: 32px;
   }
 }
 
 @media (max-width: 900px) {
-  .product-layout { 
-    grid-template-columns: 1fr; 
-    gap: 40px; 
+  .product-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
-  .gs1-qr-top-right {
-    position: relative;
-    top: auto;
-    right: auto;
-    float: right;
-    margin-left: 16px;
-    margin-bottom: 16px;
+  .product-left-col {
+    position: static;
   }
-  .product-title {
-    font-size: 2rem; 
-    padding-right: 0;
+}
+
+@media (max-width: 560px) {
+  .identity-top {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  .image-wrapper {
-    min-height: auto;
-  }
-  .gs1-data-list li { 
-    flex-direction: column; 
-    align-items: flex-start; 
-    gap: 8px; 
-  }
-  .ai-badge {
-    width: 100%;
-    text-align: left;
-    padding-left: 16px;
+  .tab-panel {
+    padding: 20px 16px 24px;
   }
 }
