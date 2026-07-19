@@ -2,11 +2,13 @@ import { Routes } from '@angular/router';
 import { Home } from './pages/home/home';
 import { Sector } from './pages/sector/sector';
 import { ProductComponent } from './pages/product/product';
+import { ValidatorComponent } from './pages/validator/validator';
 
 export const routes: Routes = [
   { path: '', component: Home },
   // Rotta per il catalogo settori (es. /catalog/fashion)
   { path: 'catalog/:sector', component: Sector },
+  { path: 'validatore', component: ValidatorComponent },
 
   // Rotte GS1 Digital Link: un prodotto è raggiungibile a livello di prodotto (solo GTIN) o di
   // istanza specifica (GTIN + lotto e/o numero seriale, AI 10/21). Tutte le combinazioni portano

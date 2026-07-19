@@ -355,7 +355,8 @@
                       @if (isHealthcare()) {
                         <p class="udi-callout">
                           <strong>UDI completo</strong> (Unique Device Identification): <code>UDI-DI</code> = GTIN,
-                          <code>UDI-PI</code> = lotto + scadenza/seriale. Insieme formano il Digital Link codificato qui sotto.
+                          <code>UDI-PI</code> = lotto + scadenza/seriale. Qui sotto i due data carrier che li rendono
+                          leggibili: QR (Digital Link) e GS1 DataMatrix (identificativi GS1).
                         </p>
                       }
                       <div class="example-qr">
@@ -391,8 +392,9 @@
                         }
                         <p class="example-qr-hint">
                           @if (isHealthcare()) {
-                            Data carrier che codifica il Digital Link con UDI-DI e UDI-PI di questa istanza. Il GS1
-                            DataMatrix è lo standard raccomandato per le etichette di piccole dimensioni tipiche dei dispositivi medici.
+                            A differenza del retail, in sanità il GS1 DataMatrix codifica tipicamente gli identificativi
+                            GS1 (non l'URI): è il software di scansione, o un resolver conforme GS1, a convertirli nel
+                            Digital Link mostrato qui — coerente col QR, ma leggibile anche su etichette molto piccole.
                           } @else {
                             QR code GS1 standard che codifica il Digital Link completo di questa istanza.
                             Scansionandolo si arriva esattamente a questa pagina, con lotto e seriale riconosciuti.

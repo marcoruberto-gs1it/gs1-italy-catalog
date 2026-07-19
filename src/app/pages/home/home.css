@@ -4,31 +4,36 @@
   padding: 0 24px 40px;
 }
 
-/* --- Hero --- */
+/* --- Hero ---
+   Pannello sempre blu GS1 (indipendente dal tema chiaro/scuro): un momento di brand netto,
+   coerente con l'identità istituzionale GS1, con l'arancione riservato all'accento. */
 .modern-hero {
   position: relative;
   text-align: center;
-  padding: 96px 24px 72px;
+  padding: 96px 24px 84px;
   margin: 0 -24px 32px;
   overflow: hidden;
   border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+  background: linear-gradient(160deg, #003a86 0%, var(--gs1-blue) 55%, #001c40 100%);
 }
 
 .hero-mesh {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background:
-    radial-gradient(48% 60% at 18% 12%, var(--mesh-1), transparent 60%),
-    radial-gradient(45% 55% at 85% 18%, var(--mesh-2), transparent 60%),
-    radial-gradient(55% 65% at 50% 100%, var(--mesh-3), transparent 65%),
-    var(--bg-canvas-alt);
-  animation: mesh-drift 18s ease-in-out infinite alternate;
+  background-image:
+    repeating-radial-gradient(circle at 88% 20%, transparent 0, transparent 34px, rgba(255, 255, 255, 0.05) 35px, transparent 36px, transparent 70px, rgba(242, 99, 52, 0.1) 71px, transparent 72px),
+    radial-gradient(60% 70% at 10% 105%, rgba(242, 99, 52, 0.22), transparent 65%);
 }
 
-@keyframes mesh-drift {
-  from { transform: scale(1) translate(0, 0); }
-  to { transform: scale(1.08) translate(-1%, 1%); }
+.modern-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.5) 40%, transparent 85%);
 }
 
 .hero-content {
@@ -42,45 +47,17 @@
   margin: 0 auto;
 }
 
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--bg-glass-strong);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border-glass);
-  color: var(--gs1-blue);
-  padding: 7px 16px;
-  border-radius: var(--radius-full);
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  box-shadow: var(--shadow-sm);
-}
-
-:root[data-theme='dark'] .hero-badge {
-  color: var(--accent-strong);
-}
-
-.hero-badge .dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--gs1-orange);
-  box-shadow: 0 0 0 3px var(--accent-2-soft);
-}
-
 .modern-hero h1 {
   font-size: clamp(2.4rem, 5.2vw, 4.2rem);
   font-weight: 800;
-  color: var(--text-primary);
+  color: #ffffff;
   line-height: 1.05;
   letter-spacing: -0.04em;
   margin: 0;
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--gs1-blue) 0%, var(--gs1-orange) 100%);
+  background: linear-gradient(135deg, var(--gs1-orange) 0%, #ffb27a 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -88,7 +65,7 @@
 
 .modern-hero p {
   font-size: 1.1rem;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.78);
   max-width: 620px;
   line-height: 1.65;
   margin: 0;
@@ -103,42 +80,31 @@
   margin-top: 4px;
 }
 
+.modern-hero .hero-search-btn.gs-btn--primary {
+  background: var(--gs1-orange);
+  color: #ffffff;
+  box-shadow: 0 10px 28px -8px rgba(242, 99, 52, 0.55);
+}
+
+.modern-hero .hero-search-btn.gs-btn--primary:hover {
+  background: #ff8f5c;
+}
+
 .hero-search-btn .gs-kbd {
   background: rgba(255, 255, 255, 0.18);
   border-color: rgba(255, 255, 255, 0.3);
   color: #fff;
 }
 
-.hero-stats {
-  display: flex;
-  gap: 40px;
-  margin-top: 24px;
-  flex-wrap: wrap;
-  justify-content: center;
+.modern-hero .gs-btn--ghost {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
-.stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-}
-
-.stat .icon-badge {
-  margin-bottom: 2px;
-}
-
-.stat-value {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-}
-
-.stat-label {
-  font-size: 0.8rem;
-  color: var(--text-tertiary);
-  font-weight: 600;
+.modern-hero .gs-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.55);
 }
 
 /* --- Sectors --- */
@@ -278,8 +244,5 @@
   .sectors-cards {
     grid-template-columns: 1fr;
     gap: 20px;
-  }
-  .hero-stats {
-    gap: 28px;
   }
 }

@@ -29,6 +29,9 @@
             ],
             "server": "src/main.server.ts",
             "outputMode": "server",
+            "externalDependencies": [
+              "module"
+            ],
             "security": {
               "allowedHosts": []
             },
@@ -66,6 +69,13 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "prebundle": {
+              "exclude": [
+                "gs1encoder"
+              ]
+            }
+          },
           "configurations": {
             "production": {
               "buildTarget": "gs1-catalog:build:production"

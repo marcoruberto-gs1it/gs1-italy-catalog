@@ -23,6 +23,7 @@
     "angularx-qrcode": "^21.0.5",
     "bwip-js": "^4.11.2",
     "express": "^5.1.0",
+    "gs1encoder": "^1.4.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },

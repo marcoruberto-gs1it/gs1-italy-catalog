@@ -11,6 +11,7 @@
 
       <nav class="header-nav">
         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+        <a routerLink="/validatore" routerLinkActive="active">Validatore</a>
         <button type="button" class="nav-search-trigger" (click)="uiState.openSearch()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
           <span>Cerca prodotti…</span>
@@ -41,6 +42,7 @@
         </button>
       </div>
       <a routerLink="/" class="mobile-nav-link" (click)="closeMobileNav()">Home</a>
+      <a routerLink="/validatore" class="mobile-nav-link" (click)="closeMobileNav()">Validatore</a>
       @for (sector of sectors; track sector.id) {
         <a [routerLink]="['/catalog', sector.id]" class="mobile-nav-link sector" (click)="closeMobileNav()">
           <span class="dot" [style.background]="sector.brandColor"></span>

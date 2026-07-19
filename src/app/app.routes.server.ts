@@ -6,6 +6,10 @@ const sectorIds = [...new Set(products.map((p) => p.sectorId))];
 
 export const serverRoutes: ServerRoute[] = [
   {
+    path: 'validatore',
+    renderMode: RenderMode.Prerender
+  },
+  {
     path: 'catalog/:sector',
     renderMode: RenderMode.Prerender,
     async getPrerenderParams() {
