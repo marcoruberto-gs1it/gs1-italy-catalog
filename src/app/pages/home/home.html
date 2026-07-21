@@ -3,32 +3,28 @@
     <div class="hero-mesh" aria-hidden="true"></div>
 
     <div class="hero-content">
-      <h1>Un solo codice.<br><span class="gradient-text">Una porta sui tuoi dati.</span></h1>
-      <p>
-        GS1 Digital Link trasforma GTIN, GLN e SSCC nella porta d'accesso alle informazioni di prodotto:
-        lo stesso codice che si legge in cassa apre anche a certificazioni, istruzioni d'uso e tracciabilità
-        di filiera — aggiornabili in ogni momento, senza mai ristampare l'etichetta.
-      </p>
+      <h1>{{ t('hero.titleLine1') }}<br><span class="gradient-text">{{ t('hero.titleHighlight') }}</span></h1>
+      <p>{{ t('hero.subtitle') }}</p>
 
       <div class="hero-actions">
         <button type="button" class="gs-btn gs-btn--primary hero-search-btn" (click)="uiState.openSearch()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          Cerca un prodotto
+          {{ t('hero.searchCta') }}
           <span class="gs-kbd">/</span>
         </button>
-        <a href="#settori" class="gs-btn gs-btn--ghost">Esplora i settori</a>
+        <a href="#settori" class="gs-btn gs-btn--ghost">{{ t('hero.exploreCta') }}</a>
       </div>
     </div>
   </section>
 
   <section class="sectors-grid" id="settori">
     <div class="sectors-heading">
-      <h2>Settori <span class="gradient-text">e Soluzioni</span></h2>
-      <p>Il GS1 Digital Link supporta ogni settore merceologico. Seleziona un'area per esplorare i casi d'uso e la struttura dei dati.</p>
+      <h2>{{ t('hero.sectionHeading') }} <span class="gradient-text">{{ t('hero.sectionHeadingHighlight') }}</span></h2>
+      <p>{{ t('hero.sectionSubtitle') }}</p>
     </div>
 
     <div class="sectors-cards">
-      @for (sector of sectors; track sector.id; let i = $index) {
+      @for (sector of sectors(); track sector.id; let i = $index) {
         <article
           class="sector-card"
           [routerLink]="['/catalog', sector.id]"
@@ -46,7 +42,7 @@
             <p class="description">{{ sector.description }}</p>
 
             <div class="card-footer">
-              <span class="explore-btn" [style.color]="sector.brandColor">Scopri i prodotti</span>
+              <span class="explore-btn" [style.color]="sector.brandColor">{{ t('hero.exploreProducts') }}</span>
               <div class="arrow-icon" [style.color]="sector.brandColor">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>

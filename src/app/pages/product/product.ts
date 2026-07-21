@@ -12,6 +12,8 @@ import { IconComponent, IconName } from '../../components/icon/icon';
 import { onImageError } from '../../utils/image-fallback';
 import { highlightJson } from '../../utils/json-highlight';
 import { downloadBarcodePng, downloadBarcodeSvg } from '../../utils/barcode-download';
+import { LanguageService } from '../../services/language.service';
+import { I18nService } from '../../services/i18n.service';
 
 type ProductTab = 'details' | 'sustainability' | 'supply-chain' | 'gdsn' | 'structured-data';
 
@@ -38,6 +40,8 @@ export class ProductComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private productService = inject(ProductService);
   protected uiState = inject(UiStateService);
+  protected languageService = inject(LanguageService);
+  protected t = inject(I18nService).t;
 
   private sanitizer = inject(DomSanitizer);
   private metaService = inject(Meta);
@@ -82,6 +86,13 @@ export class ProductComponent implements OnInit {
   toggleSsccExample(): void {
     this.showSsccExample.update((v) => !v);
   }
+
+  vocabLabel = computed(() => {
+    const vocabs = this.vocabularies();
+    const hasGs1 = vocabs.includes('gs1');
+    const hasSchema = vocabs.includes('schema');
+    return `${hasGs1 ? 'GS1 Web Vocabulary' : ''}${hasGs1 && hasSchema ? ' + ' : ''}${hasSchema ? 'schema.org' : ''}`;
+  });
 
   vocabularies = computed(() => {
     const prod = this.product();
@@ -226,6 +237,8 @@ export class ProductComponent implements OnInit {
     const prod = this.product();
     if (!prod) return null;
 
+    const lang = this.languageService.lang();
+
     // Se l'oggetto rawGs1Data esiste già strutturato nel DB lo usiamo (clonato, per non mutare
     // l'originale condiviso), altrimenti lo creiamo da zero
     let jsonLdData: any = prod.rawGs1Data ? JSON.parse(JSON.stringify(prod.rawGs1Data)) : {
@@ -239,16 +252,23 @@ export class ProductComponent implements OnInit {
         "@type": "gs1:FoodBeverageTobaccoProduct",
         "gtin": this.gtin(),
         "productName": [
-          { "@value": prod.name, "@language": "it" }
+          { "@value": prod.name, "@language": lang }
         ],
         "brand": {
           "@type": "gs1:Brand",
           "brandName": [
-            { "@value": prod.brand, "@language": "it" }
+            { "@value": prod.brand, "@language": lang }
           ]
         }
       }
     };
+
+    // I campi schema.org semplici (non language-tagged array come le proprietà gs1:) seguono
+    // la lingua attiva della UI — a differenza degli array `{ "@value", "@language" }` di
+    // gs1:productName/ingredientStatement/ecc., già strutturati in origine con entrambe le
+    // lingue e quindi lasciati intatti qui.
+    if (jsonLdData.name) jsonLdData.name = prod.name;
+    if (jsonLdData.description) jsonLdData.description = prod.description;
 
     // Le iniezioni seguenti riguardano solo il payload nello "shape" GS1 (gs1:Offer > itemOffered).
     // I prodotti demo che pubblicano solo schema.org (o un mix) hanno una struttura diversa e

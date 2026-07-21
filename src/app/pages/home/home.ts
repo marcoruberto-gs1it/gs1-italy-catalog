@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { SECTORS, Sector } from '../../data/sectors';
+import { SECTORS, Sector, localizeSector } from '../../data/sectors';
 import { UiStateService } from '../../services/ui-state.service';
+import { LanguageService } from '../../services/language.service';
+import { I18nService } from '../../services/i18n.service';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +14,8 @@ import { UiStateService } from '../../services/ui-state.service';
 })
 export class Home {
   protected uiState = inject(UiStateService);
+  private languageService = inject(LanguageService);
+  protected t = inject(I18nService).t;
 
-  sectors: Sector[] = SECTORS;
+  sectors = computed<Sector[]>(() => SECTORS.map((s) => localizeSector(s, this.languageService.lang())));
 }

@@ -1,3 +1,5 @@
+import { AppLang } from '../services/language.service';
+
 export interface Sector {
   id: string;
   name: string;
@@ -50,3 +52,48 @@ export const SECTORS: Sector[] = [
     brandColor: '#B78B20', // GS1 Honey
   },
 ];
+
+interface SectorTranslationEn {
+  name: string;
+  description: string;
+}
+
+const SECTOR_TRANSLATIONS_EN: Record<string, SectorTranslationEn> = {
+  fmcg: {
+    name: 'Consumer Goods',
+    description:
+      'A single barcode, scanned at checkout, also opens up price, ingredients, certifications and product origin — updatable at any time, without ever reprinting the label.',
+  },
+  foodservice: {
+    name: 'Foodservice',
+    description:
+      "The same identifier that manages a professional purchase follows the product from supplier to kitchen, with formats, quantities and logistics data built for foodservice.",
+  },
+  healthcare: {
+    name: 'Healthcare',
+    description:
+      'The code already on devices and medicines becomes, through UDI and GS1 DataMatrix, a gateway to patient safety information and supply chain traceability.',
+  },
+  apparel: {
+    name: 'Apparel',
+    description:
+      "A single identifier tells the garment's story — materials, origin and care — from shelf to wardrobe, transparently and verifiably.",
+  },
+  'fresh-foods': {
+    name: 'Fresh Foods',
+    description:
+      'Batch and expiry date are tied to the same identifier as always, guaranteeing freshness, quality and traceability from field to table.',
+  },
+  costruzioni: {
+    name: 'Construction',
+    description:
+      "The same identifier that organises site logistics — from single item to pallet — also opens up safety and compliance certifications for the product.",
+  },
+};
+
+/** Restituisce il settore con nome e descrizione nella lingua richiesta (IT è quella di base). */
+export function localizeSector(sector: Sector, lang: AppLang): Sector {
+  if (lang === 'it') return sector;
+  const t = SECTOR_TRANSLATIONS_EN[sector.id];
+  return t ? { ...sector, name: t.name, description: t.description } : sector;
+}

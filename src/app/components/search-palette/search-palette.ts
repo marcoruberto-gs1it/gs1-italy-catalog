@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { Product, ProductService } from '../../services/product.service';
 import { UiStateService } from '../../services/ui-state.service';
 import { onImageError } from '../../utils/image-fallback';
+import { I18nService } from '../../services/i18n.service';
 
 @Component({
   selector: 'app-search-palette',
@@ -24,6 +25,7 @@ export class SearchPaletteComponent {
   protected uiState = inject(UiStateService);
   private productService = inject(ProductService);
   private router = inject(Router);
+  protected t = inject(I18nService).t;
 
   private inputRef = viewChild<ElementRef<HTMLInputElement>>('searchInput');
 

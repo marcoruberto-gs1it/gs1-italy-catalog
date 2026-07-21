@@ -1,5 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import productsData from '../data/products.json';
+import { PRODUCT_TRANSLATIONS_EN, STRING_TRANSLATIONS_EN } from '../data/products.en';
+import { SECTORS, localizeSector } from '../data/sectors';
+import { AppLang, LanguageService } from './language.service';
 
 // --- Interfacce Modulari ---
 export interface Gs1Link {
@@ -163,6 +166,91 @@ export function isAiReady(product: Product): boolean {
   return !!product.rawGs1Data;
 }
 
+/**
+ * Applica la traduzione inglese al prodotto se `lang` è 'en' (l'italiano, lingua base dei
+ * dati, viene restituito invariato). Solo i campi di testo libero vengono sostituiti — codici,
+ * nomi propri e indirizzi restano identici in entrambe le lingue. Il payload JSON-LD
+ * (`rawGs1Data`) non viene toccato qui: le sue proprietà `gs1:` multilingua sono già
+ * strutturate con voci `{ "@value", "@language" }` sia "it" sia "en" direttamente nei dati.
+ */
+export function localizeProduct(product: Product, lang: AppLang): Product {
+  if (lang === 'it') return product;
+
+  const overlay = PRODUCT_TRANSLATIONS_EN[product.gtin];
+  const sector = SECTORS.find((s) => s.id === product.sectorId);
+
+  const localized: Product = {
+    ...product,
+    name: overlay?.name ?? product.name,
+    description: overlay?.description ?? product.description,
+    sectorName: sector ? localizeSector(sector, 'en').name : product.sectorName,
+  };
+
+  if (product.food && overlay?.food) {
+    localized.food = {
+      ...product.food,
+      ingredients: overlay.food.ingredients ?? product.food.ingredients,
+      allergens: overlay.food.allergens ?? product.food.allergens,
+    };
+  }
+
+  if (product.apparel && overlay?.apparel) {
+    localized.apparel = {
+      ...product.apparel,
+      material: overlay.apparel.material ?? product.apparel.material,
+      color: overlay.apparel.color ?? product.apparel.color,
+      careInstructions: overlay.apparel.careInstructions ?? product.apparel.careInstructions,
+    };
+  }
+
+  if (product.logistics && overlay?.logistics?.storage) {
+    localized.logistics = { ...product.logistics, storage: overlay.logistics.storage };
+  }
+
+  if (product.environmentalImpact && overlay?.environmentalImpact) {
+    localized.environmentalImpact = { ...product.environmentalImpact, ...overlay.environmentalImpact };
+  }
+
+  if (product.links?.length) {
+    localized.links = product.links.map((l) => ({ ...l, label: translateString(l.label) }));
+  }
+
+  if (product.price?.discountLabel) {
+    localized.price = { ...product.price, discountLabel: translateString(product.price.discountLabel) };
+  }
+
+  if (product.certifications?.length) {
+    localized.certifications = product.certifications.map((c) => ({
+      ...c,
+      agency: translateString(c.agency),
+      standard: c.standard ? translateString(c.standard) : c.standard,
+      value: c.value ? translateString(c.value) : c.value,
+    }));
+  }
+
+  if (product.traceability?.length) {
+    localized.traceability = product.traceability.map((ev) => ({ ...ev, label: translateString(ev.label) }));
+  }
+
+  if (product.gdsn) {
+    localized.gdsn = {
+      ...product.gdsn,
+      hierarchy: product.gdsn.hierarchy.map((item) => ({
+        ...item,
+        level: translateString(item.level),
+        packagingTypeLabel: translateString(item.packagingTypeLabel),
+        containedLevel: item.containedLevel ? translateString(item.containedLevel) : item.containedLevel,
+      })),
+    };
+  }
+
+  return localized;
+}
+
+function translateString(value: string): string {
+  return STRING_TRANSLATIONS_EN[value] ?? value;
+}
+
 /** Il prodotto ha almeno una certificazione/ente terzo che ne convalida i dati. */
 export function isVerified(product: Product): boolean {
   return !!product.certifications && product.certifications.length > 0;
@@ -226,27 +314,33 @@ export function buildEpcisEvent(product: Product, event: TraceEvent, index: numb
   providedIn: 'root'
 })
 export class ProductService {
+  private languageService = inject(LanguageService);
   private products: Product[] = productsData as Product[];
 
   constructor() {}
 
+  private localize(product: Product): Product {
+    return localizeProduct(product, this.languageService.lang());
+  }
+
   getProductsBySector(sectorId: string): Product[] {
-    return this.products.filter(p => p.sectorId === sectorId);
+    return this.products.filter(p => p.sectorId === sectorId).map((p) => this.localize(p));
   }
 
   getProductByGtin(gtin: string): Product | undefined {
-    return this.products.find(p => p.gtin === gtin);
+    const product = this.products.find(p => p.gtin === gtin);
+    return product ? this.localize(product) : undefined;
   }
 
   getAllProducts(): Product[] {
-    return this.products;
+    return this.products.map((p) => this.localize(p));
   }
 
-  /** Ricerca istantanea su nome, marchio e GTIN. */
+  /** Ricerca istantanea su nome, marchio e GTIN (sui dati nella lingua corrente). */
   search(query: string): Product[] {
     const q = query.trim().toLowerCase();
     if (!q) return [];
-    return this.products.filter(p =>
+    return this.getAllProducts().filter(p =>
       p.name.toLowerCase().includes(q) ||
       p.brand.toLowerCase().includes(q) ||
       p.gtin.includes(q) ||

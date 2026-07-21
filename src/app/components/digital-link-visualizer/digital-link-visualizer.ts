@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, input, signal } from '@angular/core';
+import { Component, computed, inject, input, signal } from '@angular/core';
 import { IconComponent, IconName } from '../icon/icon';
+import { I18nService } from '../../services/i18n.service';
 
 interface LinkSegment {
   label: string;
@@ -26,6 +27,8 @@ export class DigitalLinkVisualizerComponent {
   expiration = input<string | null>(null);
   sscc = input<string | null>(null);
 
+  protected t = inject(I18nService).t;
+
   copied = signal(false);
 
   domain = computed(() => {
@@ -39,10 +42,10 @@ export class DigitalLinkVisualizerComponent {
   segments = computed<LinkSegment[]>(() => {
     const segs: LinkSegment[] = [
       {
-        label: 'Dominio Resolver',
+        label: this.t('dlv.resolverDomain'),
         value: this.domain(),
         ai: 'host',
-        description: 'Il resolver GS1 che instrada la richiesta verso i dati del prodotto.',
+        description: this.t('dlv.resolverDesc'),
         color: 'var(--text-tertiary)',
         icon: 'globe',
       },
@@ -50,10 +53,10 @@ export class DigitalLinkVisualizerComponent {
 
     if (this.sscc()) {
       segs.push({
-        label: 'SSCC',
+        label: this.t('dlv.sscc'),
         value: this.sscc()!,
         ai: '(00)',
-        description: 'Serial Shipping Container Code: identifica la singola unità logistica fisica e seriale (collo o pallet), distinta dalla classe di imballo.',
+        description: this.t('dlv.ssccDesc'),
         color: 'var(--gs1-forest)',
         icon: 'truck',
       });
@@ -61,10 +64,10 @@ export class DigitalLinkVisualizerComponent {
 
     if (this.gtin()) {
       segs.push({
-        label: 'GTIN',
+        label: this.t('dlv.gtin'),
         value: this.gtin()!,
         ai: '(01)',
-        description: 'Global Trade Item Number: identifica in modo univoco il prodotto a livello mondiale.',
+        description: this.t('dlv.gtinDesc'),
         color: 'var(--accent)',
         icon: 'hash',
       });
@@ -72,10 +75,10 @@ export class DigitalLinkVisualizerComponent {
 
     if (this.lot()) {
       segs.push({
-        label: 'Lotto',
+        label: this.t('dlv.lot'),
         value: this.lot()!,
         ai: '(10)',
-        description: 'Numero di lotto di produzione, utile per tracciabilità e richiami.',
+        description: this.t('dlv.lotDesc'),
         color: 'var(--gs1-teal)',
         icon: 'box',
       });
@@ -83,10 +86,10 @@ export class DigitalLinkVisualizerComponent {
 
     if (this.serial()) {
       segs.push({
-        label: 'Numero Seriale',
+        label: this.t('dlv.serial'),
         value: this.serial()!,
         ai: '(21)',
-        description: "Identifica un singolo articolo serializzato: insieme al GTIN forma l'identificativo univoco dell'istanza.",
+        description: this.t('dlv.serialDesc'),
         color: 'var(--gs1-purple)',
         icon: 'tag',
       });
@@ -94,10 +97,10 @@ export class DigitalLinkVisualizerComponent {
 
     if (this.expiration()) {
       segs.push({
-        label: 'Scadenza',
+        label: this.t('dlv.expiration'),
         value: this.expiration()!,
         ai: '(17)',
-        description: 'Data di scadenza nel formato AAMMGG, tipica dei prodotti deperibili.',
+        description: this.t('dlv.expirationDesc'),
         color: 'var(--gs1-orange)',
         icon: 'calendar',
       });

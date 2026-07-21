@@ -1,25 +1,23 @@
 <div class="validator-page">
   <nav class="breadcrumbs" aria-label="breadcrumb">
     <ol>
-      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/">{{ t('nav.home') }}</a></li>
       <li class="separator">/</li>
-      <li class="current" aria-current="page">Validatore</li>
+      <li class="current" aria-current="page">{{ t('validator.breadcrumb') }}</li>
     </ol>
   </nav>
 
   <header class="validator-header">
-    <h1>Validatore GS1 Digital Link</h1>
+    <h1>{{ t('validator.title') }}</h1>
     <p>
-      Incolla un GS1 Digital Link (o una stringa AI tra parentesi, es. <code>(01)08005360007746(10)LOT1</code>):
-      l'analisi estrae ogni identificativo tramite il vero
-      <a href="https://github.com/gs1/gs1-syntax-engine" target="_blank" rel="noopener">GS1 Barcode Syntax Engine</a>
-      di GS1 — la stessa libreria usata dagli strumenti ufficiali, non una reimplementazione — e verifica la
-      correttezza sintattica secondo lo standard.
+      {{ t('validator.introBefore') }} <code>(01)08032089000024(10)LOT1</code>{{ t('validator.introAfter') }}
+      <a href="https://github.com/gs1/gs1-syntax-engine" target="_blank" rel="noopener">{{ t('validator.introLinkText') }}</a>
+      {{ t('validator.introAfter2') }}
     </p>
   </header>
 
   <div class="validator-card">
-    <label class="input-label" for="dl-input">Digital Link o stringa AI</label>
+    <label class="input-label" for="dl-input">{{ t('validator.inputLabel') }}</label>
     <textarea
       id="dl-input"
       class="dl-input"
@@ -28,34 +26,34 @@
       [value]="input()"
       (input)="setInput($any($event.target).value)"
       (keydown.enter)="$event.preventDefault(); analyze()"
-      placeholder="https://id.gs1.org/01/09506000164908/10/LOT1/21/12345"
+      placeholder="https://id.gs1.org/01/08032089000024/10/LOT1/21/12345"
     ></textarea>
 
     <div class="validator-actions">
       <button type="button" class="gs-btn gs-btn--primary" [disabled]="loading()" (click)="analyze()">
-        @if (loading()) { Analisi in corso… } @else { Analizza }
+        @if (loading()) { {{ t('validator.analyzing') }} } @else { {{ t('validator.analyze') }} }
       </button>
-      <button type="button" class="gs-btn gs-btn--ghost" (click)="loadExample(exampleSimple)">Esempio: solo GTIN</button>
-      <button type="button" class="gs-btn gs-btn--ghost" (click)="loadExample(exampleInstance)">Esempio: GTIN + lotto + seriale</button>
+      <button type="button" class="gs-btn gs-btn--ghost" (click)="loadExample(exampleSimple)">{{ t('validator.exampleSimple') }}</button>
+      <button type="button" class="gs-btn gs-btn--ghost" (click)="loadExample(exampleInstance)">{{ t('validator.exampleInstance') }}</button>
     </div>
   </div>
 
   @if (error()) {
     <div class="result-card error-card">
-      <h3>Digital Link non valido</h3>
+      <h3>{{ t('validator.invalidTitle') }}</h3>
       <p>{{ error() }}</p>
     </div>
   }
 
   @if (hasResult()) {
     <div class="result-card">
-      <h3>Identificativi estratti</h3>
+      <h3>{{ t('validator.resultsTitle') }}</h3>
       <ul class="ai-list">
         @for (entry of aiEntries(); track entry.ai + entry.value) {
           <li class="ai-row">
             <span class="ai-code">{{ entry.ai }}</span>
             <span class="ai-body">
-              <span class="ai-label">{{ entry.label || 'Identificativo' }}</span>
+              <span class="ai-label">{{ entry.label || t('validator.genericIdentifier') }}</span>
               <span class="ai-value">{{ entry.value }}</span>
             </span>
           </li>
@@ -64,17 +62,17 @@
 
       @if (ignoredParams().length > 0) {
         <p class="ignored-warning">
-          Parametri non numerici ignorati (non fanno parte della sintassi GS1): {{ ignoredParams().join(', ') }}
+          {{ t('validator.ignoredParams', { params: ignoredParams().join(', ') }) }}
         </p>
       }
 
       @if (canonicalUri(); as uri) {
         <div class="canonical-block">
-          <span class="canonical-label">Digital Link canonico (resolver GS1 ufficiale)</span>
+          <span class="canonical-label">{{ t('validator.canonicalLabel') }}</span>
           <div class="canonical-row">
             <code class="canonical-uri">{{ uri }}</code>
             <button type="button" class="gs-btn gs-btn--ghost" (click)="copyCanonicalUri()">
-              @if (copied()) { Copiato ✓ } @else { Copia }
+              @if (copied()) { {{ t('validator.copied') }} } @else { {{ t('validator.copy') }} }
             </button>
           </div>
         </div>
@@ -82,16 +80,16 @@
 
       <div class="schema-cta">
         <p>
-          Vuoi verificare anche i dati strutturati (JSON-LD / schema.org) pubblicati su questa pagina?
+          {{ t('validator.schemaCtaText') }}
         </p>
         <button type="button" class="gs-btn gs-btn--primary" (click)="openSchemaValidator()">
-          Valida su validator.schema.org ↗
+          {{ t('validator.schemaCtaButton') }}
         </button>
       </div>
 
       @if (engineVersion(); as version) {
         <p class="engine-credit">
-          Motore: GS1 Barcode Syntax Engine {{ version }} — <a href="https://github.com/gs1/gs1-syntax-engine" target="_blank" rel="noopener">gs1/gs1-syntax-engine</a>
+          {{ t('validator.engineCredit', { version: version }) }} <a href="https://github.com/gs1/gs1-syntax-engine" target="_blank" rel="noopener">gs1/gs1-syntax-engine</a>
         </p>
       }
     </div>

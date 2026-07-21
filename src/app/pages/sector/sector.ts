@@ -4,9 +4,11 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Product, ProductService, isAiReady, isVerified, getVocabularies, discountPercent, formatEuro } from '../../services/product.service';
 import { UiStateService } from '../../services/ui-state.service';
-import { SECTORS } from '../../data/sectors';
+import { SECTORS, localizeSector } from '../../data/sectors';
 import { onImageError } from '../../utils/image-fallback';
 import { IconComponent } from '../../components/icon/icon';
+import { LanguageService } from '../../services/language.service';
+import { I18nService } from '../../services/i18n.service';
 
 type FilterMode = 'all' | 'ai-ready' | 'verified';
 type SortMode = 'name' | 'gtin';
@@ -21,6 +23,8 @@ export class Sector {
   private route = inject(ActivatedRoute);
   private productService = inject(ProductService);
   protected uiState = inject(UiStateService);
+  private languageService = inject(LanguageService);
+  protected t = inject(I18nService).t;
 
   protected isAiReady = isAiReady;
   protected isVerified = isVerified;
@@ -33,11 +37,14 @@ export class Sector {
 
   sectorId = computed(() => this.params()?.get('sector') || '');
 
-  sectorInfo = computed(() => SECTORS.find((s) => s.id === this.sectorId()));
+  sectorInfo = computed(() => {
+    const sector = SECTORS.find((s) => s.id === this.sectorId());
+    return sector ? localizeSector(sector, this.languageService.lang()) : undefined;
+  });
 
   allProducts = computed<Product[]>(() => this.productService.getProductsBySector(this.sectorId()));
 
-  sectorName = computed(() => this.allProducts()[0]?.sectorName ?? this.sectorInfo()?.name ?? 'Settore non trovato');
+  sectorName = computed(() => this.allProducts()[0]?.sectorName ?? this.sectorInfo()?.name ?? this.t('sector.notFound'));
 
   filter = signal<FilterMode>('all');
   sort = signal<SortMode>('name');

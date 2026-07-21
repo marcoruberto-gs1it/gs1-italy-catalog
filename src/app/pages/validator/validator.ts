@@ -2,6 +2,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Component, OnInit, PLATFORM_ID, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { I18nService } from '../../services/i18n.service';
 
 interface AiEntry {
   ai: string;
@@ -9,8 +10,8 @@ interface AiEntry {
   value: string;
 }
 
-const EXAMPLE_SIMPLE = 'https://gs1.italy.example/01/08005360007746';
-const EXAMPLE_INSTANCE = 'https://gs1.italy.example/01/08005360007746/10/LOT240614/21/007757';
+const EXAMPLE_SIMPLE = 'https://gs1.italy.example/01/08032089000024';
+const EXAMPLE_INSTANCE = 'https://gs1.italy.example/01/08032089000024/10/LOT231102/21/545519';
 
 /**
  * Analizza un GS1 Digital Link (o una stringa AI tra parentesi) usando il vero GS1 Barcode
@@ -28,6 +29,7 @@ const EXAMPLE_INSTANCE = 'https://gs1.italy.example/01/08005360007746/10/LOT2406
 export class ValidatorComponent implements OnInit {
   private platformId = inject(PLATFORM_ID);
   private titleService = inject(Title);
+  protected t = inject(I18nService).t;
 
   protected readonly exampleSimple = EXAMPLE_SIMPLE;
   protected readonly exampleInstance = EXAMPLE_INSTANCE;
@@ -57,7 +59,7 @@ export class ValidatorComponent implements OnInit {
 
   ngOnInit(): void {
     this.isBrowser.set(isPlatformBrowser(this.platformId));
-    this.titleService.setTitle('Validatore GS1 Digital Link | Digital Link Catalog');
+    this.titleService.setTitle(this.t('validator.pageTitle'));
   }
 
   setInput(value: string): void {
@@ -101,7 +103,7 @@ export class ValidatorComponent implements OnInit {
         gs.free();
       }
     } catch (err) {
-      this.error.set(err instanceof Error ? err.message : 'Errore di analisi sconosciuto.');
+      this.error.set(err instanceof Error ? err.message : this.t('validator.unknownError'));
     } finally {
       this.loading.set(false);
     }

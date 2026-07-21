@@ -1,7 +1,7 @@
 <div class="catalog-page">
   <nav class="breadcrumbs" aria-label="breadcrumb">
     <ol>
-      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/">{{ t('nav.home') }}</a></li>
       <li class="separator">/</li>
       <li class="current" aria-current="page">{{ sectorName() }}</li>
     </ol>
@@ -10,7 +10,7 @@
   <div class="catalog-header" [style.--sector-color]="sectorInfo()?.brandColor">
     <div>
       <h1>{{ sectorName() }}</h1>
-      <p class="results-count">{{ filteredProducts().length }} di {{ allProducts().length }} prodotti</p>
+      <p class="results-count">{{ t('sector.resultsCount', { shown: filteredProducts().length, total: allProducts().length }) }}</p>
     </div>
     @if (sectorInfo(); as info) {
       <p class="sector-desc">{{ info.description }}</p>
@@ -20,33 +20,33 @@
   <div class="catalog-layout">
     <aside class="catalog-sidebar">
       <div class="sidebar-card">
-        <h3>Filtra</h3>
+        <h3>{{ t('sector.filter') }}</h3>
         <button type="button" class="filter-item" [class.active]="filter() === 'all'" (click)="setFilter('all')">
-          <span>Tutti i prodotti</span>
+          <span>{{ t('sector.allProducts') }}</span>
           <span class="count">{{ allProducts().length }}</span>
         </button>
         <button type="button" class="filter-item" [class.active]="filter() === 'ai-ready'" (click)="setFilter('ai-ready')">
-          <span class="gs-badge gs-badge--ai filter-badge">AI Ready</span>
+          <span class="gs-badge gs-badge--ai filter-badge">{{ t('sector.aiReady') }}</span>
           <span class="count">{{ aiReadyCount() }}</span>
         </button>
         <button type="button" class="filter-item" [class.active]="filter() === 'verified'" (click)="setFilter('verified')">
-          <span class="gs-badge gs-badge--verified filter-badge">Verified</span>
+          <span class="gs-badge gs-badge--verified filter-badge">{{ t('sector.verified') }}</span>
           <span class="count">{{ verifiedCount() }}</span>
         </button>
       </div>
 
       <div class="sidebar-card">
-        <h3>Ordina per</h3>
-        <button type="button" class="filter-item" [class.active]="sort() === 'name'" (click)="setSort('name')">Nome (A-Z)</button>
+        <h3>{{ t('sector.sortBy') }}</h3>
+        <button type="button" class="filter-item" [class.active]="sort() === 'name'" (click)="setSort('name')">{{ t('sector.sortName') }}</button>
         <button type="button" class="filter-item" [class.active]="sort() === 'gtin'" (click)="setSort('gtin')">GTIN</button>
       </div>
 
       <div class="sidebar-card sidebar-info">
-        <h3>Dati strutturati</h3>
-        <p>I prodotti "AI Ready" pubblicano JSON-LD leggibile da motori di ricerca e agenti AI, secondo una o più ontologie:</p>
+        <h3>{{ t('sector.structuredData') }}</h3>
+        <p>{{ t('sector.structuredDataIntro') }}</p>
         <ul class="vocab-legend">
-          <li><span class="gs-badge gs-badge--vocab">GS1 Web Vocabulary</span><span class="count">{{ gs1VocabCount() }}</span></li>
-          <li><span class="gs-badge gs-badge--schema">schema.org</span><span class="count">{{ schemaVocabCount() }}</span></li>
+          <li><span class="gs-badge gs-badge--vocab">{{ t('sector.gs1Vocabulary') }}</span><span class="count">{{ gs1VocabCount() }}</span></li>
+          <li><span class="gs-badge gs-badge--schema">{{ t('sector.schemaOrg') }}</span><span class="count">{{ schemaVocabCount() }}</span></li>
         </ul>
       </div>
     </aside>
@@ -61,16 +61,16 @@
           <div class="card-body">
             <div class="card-badges">
               @if (isAiReady(product)) {
-                <span class="gs-badge gs-badge--ai">AI Ready</span>
+                <span class="gs-badge gs-badge--ai">{{ t('sector.aiReady') }}</span>
               }
               @if (isVerified(product)) {
-                <span class="gs-badge gs-badge--verified">Verified</span>
+                <span class="gs-badge gs-badge--verified">{{ t('sector.verified') }}</span>
               }
               @if (getVocabularies(product).includes('gs1')) {
-                <span class="gs-badge gs-badge--vocab" title="Dati pubblicati secondo lo standard GS1 Web Vocabulary">GS1 Vocabulary</span>
+                <span class="gs-badge gs-badge--vocab" [title]="t('sector.gs1VocabularyTitle')">{{ t('sector.gs1VocabularyBadge') }}</span>
               }
               @if (getVocabularies(product).includes('schema')) {
-                <span class="gs-badge gs-badge--schema" title="Dati pubblicati secondo il vocabolario schema.org">schema.org</span>
+                <span class="gs-badge gs-badge--schema" [title]="t('sector.schemaOrgTitle')">{{ t('sector.schemaOrg') }}</span>
               }
             </div>
             <span class="product-brand">{{ product.brand }}</span>
@@ -92,12 +92,12 @@
                 }
               }
             </div>
-            <p class="product-gtin">GTIN <span>{{ product.gtin }}</span></p>
+            <p class="product-gtin">{{ t('sector.gtinLabel') }} <span>{{ product.gtin }}</span></p>
           </div>
           <div class="card-action">
-            <a [routerLink]="['/01', product.gtin]" class="btn-digital-link">Visualizza</a>
+            <a [routerLink]="['/01', product.gtin]" class="btn-digital-link">{{ t('sector.view') }}</a>
             @if (isAiReady(product)) {
-              <button type="button" class="btn-jsonld" (click)="viewJsonLd(product, $event)" title="Visualizza dati strutturati (JSON-LD)">
+              <button type="button" class="btn-jsonld" (click)="viewJsonLd(product, $event)" [title]="t('sector.viewStructuredDataTitle')">
                 <app-icon name="braces" [size]="16"></app-icon>
               </button>
             }
@@ -105,8 +105,8 @@
         </article>
       } @empty {
         <div class="empty-state">
-          <p>Nessun prodotto corrisponde ai filtri selezionati.</p>
-          <button type="button" class="gs-btn gs-btn--ghost" (click)="setFilter('all')">Rimuovi filtri</button>
+          <p>{{ t('sector.noProductsFound') }}</p>
+          <button type="button" class="gs-btn gs-btn--ghost" (click)="setFilter('all')">{{ t('sector.clearFilters') }}</button>
         </div>
       }
     </main>

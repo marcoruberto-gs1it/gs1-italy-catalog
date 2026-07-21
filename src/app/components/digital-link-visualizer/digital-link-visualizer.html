@@ -12,9 +12,9 @@
     </div>
     <button type="button" class="dl-copy" (click)="copyLink()">
       @if (copied()) {
-        <span>Copiato ✓</span>
+        <span>{{ t('dlv.copied') }}</span>
       } @else {
-        <span>Copia URL</span>
+        <span>{{ t('dlv.copyUrl') }}</span>
       }
     </button>
   </div>

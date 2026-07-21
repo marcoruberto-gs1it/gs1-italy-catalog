@@ -5,6 +5,7 @@ import { UiStateService } from '../../services/ui-state.service';
 import { getVocabularies } from '../../services/product.service';
 import { onImageError } from '../../utils/image-fallback';
 import { highlightJson } from '../../utils/json-highlight';
+import { I18nService } from '../../services/i18n.service';
 
 type DrawerTab = 'jsonld' | 'compare';
 
@@ -18,6 +19,7 @@ type DrawerTab = 'jsonld' | 'compare';
 export class JsonLdDrawerComponent {
   protected uiState = inject(UiStateService);
   private sanitizer = inject(DomSanitizer);
+  protected t = inject(I18nService).t;
 
   tab = signal<DrawerTab>('jsonld');
   copied = signal(false);
