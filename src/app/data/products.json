@@ -143,18 +143,18 @@
       "gs1:packaging": [
         {
           "@type": "gs1:PackagingDetails",
-          "packagingType": "JR",
-          "packagingMaterial": [
+          "gs1:packagingType": "JR",
+          "gs1:packagingMaterial": [
             {
               "@type": "gs1:PackagingMaterialDetails",
-              "packagingMaterialType": {
+              "gs1:packagingMaterialType": {
                 "@id": "gs1:PackagingMaterialTypeCode-GLASS",
                 "rdfs:label": "Vetro"
               }
             },
             {
               "@type": "gs1:PackagingMaterialDetails",
-              "packagingMaterialType": {
+              "gs1:packagingMaterialType": {
                 "@id": "gs1:PackagingMaterialTypeCode-COMPOSITE",
                 "rdfs:label": "Composito plastica/banda stagnata"
               }
@@ -165,7 +165,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "IT"
+          "gs1:countryCode": "IT"
         }
       ],
       "name": "GS1 Italy Sapori Confettura Fragola light 235g",
@@ -617,11 +617,11 @@
       "gs1:packaging": [
         {
           "@type": "gs1:PackagingDetails",
-          "packagingType": "BX",
-          "packagingMaterial": [
+          "gs1:packagingType": "BX",
+          "gs1:packagingMaterial": [
             {
               "@type": "gs1:PackagingMaterialDetails",
-              "packagingMaterialType": {
+              "gs1:packagingMaterialType": {
                 "@id": "gs1:PackagingMaterialTypeCode-PAPER_PAPERBOARD",
                 "rdfs:label": "Cartoncino"
               }
@@ -632,7 +632,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "IT"
+          "gs1:countryCode": "IT"
         }
       ],
       "name": "TORTIGLIONI 400G GLUTEN FREE",
@@ -1054,7 +1054,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "LK"
+          "gs1:countryCode": "LK"
         }
       ]
     },
@@ -1419,7 +1419,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "IT"
+          "gs1:countryCode": "IT"
         }
       ],
       "gs1:regulatedProductName": [
@@ -1586,7 +1586,7 @@
           "postalCode": "20125",
           "addressCountry": "IT"
         },
-        "globalLocationNumber": "8032089000062"
+        "gs1:globalLocationNumber": "8032089000062"
       },
       "additionalProperty": [
         {
@@ -1698,7 +1698,7 @@
       "gs1:certification": [
         {
           "@type": "gs1:CertificationDetails",
-          "certificationAgency": [
+          "gs1:certificationAgency": [
             {
               "@value": "Organismo Notificato 0123",
               "@language": "it"
@@ -1708,7 +1708,7 @@
               "@language": "en"
             }
           ],
-          "certificationStandard": [
+          "gs1:certificationStandard": [
             {
               "@value": "EN 14683 Tipo IIR",
               "@language": "it"
@@ -1718,7 +1718,7 @@
               "@language": "en"
             }
           ],
-          "certificationValue": [
+          "gs1:certificationValue": [
             {
               "@value": "Marcatura CE",
               "@language": "it"
@@ -1728,7 +1728,7 @@
               "@language": "en"
             }
           ],
-          "certificationIdentification": "MD-2024-8871"
+          "gs1:certificationIdentification": "MD-2024-8871"
         }
       ],
       "name": "Mascherine Chirurgiche Tipo IIR (50 pz)",
@@ -1792,7 +1792,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "IT"
+          "gs1:countryCode": "IT"
         }
       ],
       "gs1:regulatedProductName": [
@@ -2113,7 +2113,7 @@
       "brand": {
         "@type": "Brand",
         "name": "GS1 Italy Fresh",
-        "globalLocationNumber": "8032089000093"
+        "gs1:globalLocationNumber": "8032089000093"
       },
       "image": "images/08032089000093.jpg",
       "offers": {
@@ -2303,11 +2303,11 @@
       "gs1:packaging": [
         {
           "@type": "gs1:PackagingDetails",
-          "packagingType": "PX",
-          "packagingMaterial": [
+          "gs1:packagingType": "PX",
+          "gs1:packagingMaterial": [
             {
               "@type": "gs1:PackagingMaterialDetails",
-              "packagingMaterialType": {
+              "gs1:packagingMaterialType": {
                 "@id": "gs1:PackagingMaterialTypeCode-WOOD_OTHER",
                 "rdfs:label": "Legno"
               }
@@ -2318,7 +2318,7 @@
       "gs1:certification": [
         {
           "@type": "gs1:CertificationDetails",
-          "certificationAgency": [
+          "gs1:certificationAgency": [
             {
               "@value": "Ente di Certificazione Edile",
               "@language": "it"
@@ -2328,7 +2328,7 @@
               "@language": "en"
             }
           ],
-          "certificationStandard": [
+          "gs1:certificationStandard": [
             {
               "@value": "EN 14411",
               "@language": "it"
@@ -2338,7 +2338,7 @@
               "@language": "en"
             }
           ],
-          "certificationValue": [
+          "gs1:certificationValue": [
             {
               "@value": "Marcatura CE",
               "@language": "it"
@@ -2348,7 +2348,7 @@
               "@language": "en"
             }
           ],
-          "certificationIdentification": "CE-GRES-4471"
+          "gs1:certificationIdentification": "CE-GRES-4471"
         }
       ],
       "name": "Piastrella Gres Porcellanato 60x60 cm",
@@ -2407,7 +2407,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "IT"
+          "gs1:countryCode": "IT"
         }
       ],
       "gs1:regulatedProductName": [
@@ -2599,7 +2599,7 @@
       "brand": {
         "@type": "Brand",
         "name": "GS1 Italy Sapori",
-        "globalLocationNumber": "8032089000123"
+        "gs1:globalLocationNumber": "8032089000123"
       },
       "image": "images/08032089000123.jpg",
       "offers": {
@@ -2940,7 +2940,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "IT"
+          "gs1:countryCode": "IT"
         }
       ],
       "nutrition": {
@@ -3201,7 +3201,7 @@
           "postalCode": "37100",
           "addressCountry": "IT"
         },
-        "globalLocationNumber": "8032089000154"
+        "gs1:globalLocationNumber": "8032089000154"
       }
     }
   },
@@ -3311,7 +3311,7 @@
       "gs1:certification": [
         {
           "@type": "gs1:CertificationDetails",
-          "certificationAgency": [
+          "gs1:certificationAgency": [
             {
               "@value": "Ente Certificazione Ecologica UE",
               "@language": "it"
@@ -3321,7 +3321,7 @@
               "@language": "en"
             }
           ],
-          "certificationStandard": [
+          "gs1:certificationStandard": [
             {
               "@value": "Ecolabel UE",
               "@language": "it"
@@ -3331,7 +3331,7 @@
               "@language": "en"
             }
           ],
-          "certificationValue": [
+          "gs1:certificationValue": [
             {
               "@value": "Conforme",
               "@language": "it"
@@ -3341,7 +3341,7 @@
               "@language": "en"
             }
           ],
-          "certificationIdentification": "IT/041/025"
+          "gs1:certificationIdentification": "IT/041/025"
         }
       ],
       "name": "Detersivo Lavatrice Concentrato Ecologico 40 lavaggi",
@@ -3410,7 +3410,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "IT"
+          "gs1:countryCode": "IT"
         }
       ],
       "gs1:regulatedProductName": [
@@ -3534,7 +3534,7 @@
           "postalCode": "50100",
           "addressCountry": "IT"
         },
-        "globalLocationNumber": "8032089000178"
+        "gs1:globalLocationNumber": "8032089000178"
       }
     }
   },
@@ -3809,7 +3809,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "IT"
+          "gs1:countryCode": "IT"
         }
       ],
       "nutrition": {
@@ -4058,7 +4058,7 @@
           "postalCode": "26100",
           "addressCountry": "IT"
         },
-        "globalLocationNumber": "8032089000208"
+        "gs1:globalLocationNumber": "8032089000208"
       }
     }
   },
@@ -4234,7 +4234,7 @@
           "postalCode": "34100",
           "addressCountry": "IT"
         },
-        "globalLocationNumber": "8032089000222"
+        "gs1:globalLocationNumber": "8032089000222"
       }
     }
   },
@@ -4439,7 +4439,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "IT"
+          "gs1:countryCode": "IT"
         }
       ],
       "nutrition": {
@@ -4741,7 +4741,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "IT"
+          "gs1:countryCode": "IT"
         }
       ],
       "nutrition": {
@@ -4949,7 +4949,7 @@
           "postalCode": "34100",
           "addressCountry": "IT"
         },
-        "globalLocationNumber": "8032089000253"
+        "gs1:globalLocationNumber": "8032089000253"
       }
     }
   },
@@ -5067,7 +5067,7 @@
           "postalCode": "39100",
           "addressCountry": "IT"
         },
-        "globalLocationNumber": "8032089000260"
+        "gs1:globalLocationNumber": "8032089000260"
       }
     }
   },
@@ -5343,7 +5343,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "IT"
+          "gs1:countryCode": "IT"
         }
       ],
       "nutrition": {
@@ -5358,7 +5358,7 @@
       "gs1:certification": [
         {
           "@type": "gs1:CertificationDetails",
-          "certificationAgency": [
+          "gs1:certificationAgency": [
             {
               "@value": "Consorzio Tutela Aceto Balsamico di Modena",
               "@language": "it"
@@ -5368,7 +5368,7 @@
               "@language": "en"
             }
           ],
-          "certificationStandard": [
+          "gs1:certificationStandard": [
             {
               "@value": "IGP",
               "@language": "it"
@@ -5378,7 +5378,7 @@
               "@language": "en"
             }
           ],
-          "certificationValue": [
+          "gs1:certificationValue": [
             {
               "@value": "Certificato",
               "@language": "it"
@@ -5388,7 +5388,7 @@
               "@language": "en"
             }
           ],
-          "certificationIdentification": "IGP-ABM-2024-118"
+          "gs1:certificationIdentification": "IGP-ABM-2024-118"
         }
       ],
       "name": "Aceto Balsamico di Modena IGP 5L Tanica",
@@ -5610,7 +5610,7 @@
           "postalCode": "37100",
           "addressCountry": "IT"
         },
-        "globalLocationNumber": "8032089000307"
+        "gs1:globalLocationNumber": "8032089000307"
       }
     }
   },
@@ -5770,7 +5770,7 @@
       "gs1:certification": [
         {
           "@type": "gs1:CertificationDetails",
-          "certificationAgency": [
+          "gs1:certificationAgency": [
             {
               "@value": "Organismo Notificato 0123",
               "@language": "it"
@@ -5780,7 +5780,7 @@
               "@language": "en"
             }
           ],
-          "certificationStandard": [
+          "gs1:certificationStandard": [
             {
               "@value": "Regolamento UE 2017/745 (MDR)",
               "@language": "it"
@@ -5790,7 +5790,7 @@
               "@language": "en"
             }
           ],
-          "certificationValue": [
+          "gs1:certificationValue": [
             {
               "@value": "Marcatura CE",
               "@language": "it"
@@ -5800,7 +5800,7 @@
               "@language": "en"
             }
           ],
-          "certificationIdentification": "MD-2024-3312"
+          "gs1:certificationIdentification": "MD-2024-3312"
         }
       ],
       "name": "Cerotti Impermeabili Assortiti 40pz",
@@ -5883,7 +5883,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "IT"
+          "gs1:countryCode": "IT"
         }
       ],
       "gs1:consumerUsageInstructions": [
@@ -5997,7 +5997,7 @@
           "postalCode": "20125",
           "addressCountry": "IT"
         },
-        "globalLocationNumber": "8032089000321"
+        "gs1:globalLocationNumber": "8032089000321"
       },
       "additionalProperty": [
         {
@@ -6171,7 +6171,7 @@
       "gs1:certification": [
         {
           "@type": "gs1:CertificationDetails",
-          "certificationAgency": [
+          "gs1:certificationAgency": [
             {
               "@value": "Organismo Notificato 0123",
               "@language": "it"
@@ -6181,7 +6181,7 @@
               "@language": "en"
             }
           ],
-          "certificationStandard": [
+          "gs1:certificationStandard": [
             {
               "@value": "Regolamento UE 2017/745 (MDR)",
               "@language": "it"
@@ -6191,7 +6191,7 @@
               "@language": "en"
             }
           ],
-          "certificationValue": [
+          "gs1:certificationValue": [
             {
               "@value": "Marcatura CE, validazione clinica ESH",
               "@language": "it"
@@ -6201,7 +6201,7 @@
               "@language": "en"
             }
           ],
-          "certificationIdentification": "MD-2024-5581"
+          "gs1:certificationIdentification": "MD-2024-5581"
         }
       ],
       "name": "Misuratore di Pressione Digitale da Braccio",
@@ -6284,7 +6284,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "IT"
+          "gs1:countryCode": "IT"
         }
       ],
       "gs1:consumerUsageInstructions": [
@@ -6398,7 +6398,7 @@
       "gs1:certification": [
         {
           "@type": "gs1:CertificationDetails",
-          "certificationAgency": [
+          "gs1:certificationAgency": [
             {
               "@value": "Organismo Notificato 0123",
               "@language": "it"
@@ -6408,7 +6408,7 @@
               "@language": "en"
             }
           ],
-          "certificationStandard": [
+          "gs1:certificationStandard": [
             {
               "@value": "Regolamento UE 2017/745 (MDR)",
               "@language": "it"
@@ -6418,7 +6418,7 @@
               "@language": "en"
             }
           ],
-          "certificationValue": [
+          "gs1:certificationValue": [
             {
               "@value": "Marcatura CE",
               "@language": "it"
@@ -6428,7 +6428,7 @@
               "@language": "en"
             }
           ],
-          "certificationIdentification": "MD-2024-6120"
+          "gs1:certificationIdentification": "MD-2024-6120"
         }
       ],
       "name": "Guanti in Nitrile Monouso Taglia M 100pz",
@@ -6498,7 +6498,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "MY"
+          "gs1:countryCode": "MY"
         }
       ],
       "gs1:regulatedProductName": [
@@ -6638,7 +6638,7 @@
           "postalCode": "20125",
           "addressCountry": "IT"
         },
-        "globalLocationNumber": "8032089000352"
+        "gs1:globalLocationNumber": "8032089000352"
       },
       "additionalProperty": [
         {
@@ -6873,7 +6873,7 @@
           "postalCode": "20125",
           "addressCountry": "IT"
         },
-        "globalLocationNumber": "8032089000383"
+        "gs1:globalLocationNumber": "8032089000383"
       },
       "additionalProperty": [
         {
@@ -7005,7 +7005,7 @@
           "postalCode": "20125",
           "addressCountry": "IT"
         },
-        "globalLocationNumber": "8032089000390"
+        "gs1:globalLocationNumber": "8032089000390"
       },
       "additionalProperty": [
         {
@@ -7275,7 +7275,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "IT"
+          "gs1:countryCode": "IT"
         }
       ]
     }
@@ -7477,7 +7477,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "IT"
+          "gs1:countryCode": "IT"
         }
       ]
     }
@@ -7583,7 +7583,7 @@
           "postalCode": "36100",
           "addressCountry": "IT"
         },
-        "globalLocationNumber": "8032089000420"
+        "gs1:globalLocationNumber": "8032089000420"
       }
     }
   },
@@ -7688,7 +7688,7 @@
           "postalCode": "39100",
           "addressCountry": "IT"
         },
-        "globalLocationNumber": "8032089000437"
+        "gs1:globalLocationNumber": "8032089000437"
       }
     }
   },
@@ -8005,7 +8005,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "IT"
+          "gs1:countryCode": "IT"
         }
       ]
     }
@@ -8111,7 +8111,7 @@
           "postalCode": "56100",
           "addressCountry": "IT"
         },
-        "globalLocationNumber": "8032089000468"
+        "gs1:globalLocationNumber": "8032089000468"
       }
     }
   },
@@ -8375,7 +8375,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "IT"
+          "gs1:countryCode": "IT"
         }
       ],
       "nutrition": {
@@ -8608,7 +8608,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "IT"
+          "gs1:countryCode": "IT"
         }
       ],
       "nutrition": {
@@ -8923,7 +8923,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "IT"
+          "gs1:countryCode": "IT"
         }
       ],
       "nutrition": {
@@ -8938,7 +8938,7 @@
       "gs1:certification": [
         {
           "@type": "gs1:CertificationDetails",
-          "certificationAgency": [
+          "gs1:certificationAgency": [
             {
               "@value": "Consorzio di Tutela Mozzarella di Bufala Campana",
               "@language": "it"
@@ -8948,7 +8948,7 @@
               "@language": "en"
             }
           ],
-          "certificationStandard": [
+          "gs1:certificationStandard": [
             {
               "@value": "DOP",
               "@language": "it"
@@ -8958,7 +8958,7 @@
               "@language": "en"
             }
           ],
-          "certificationValue": [
+          "gs1:certificationValue": [
             {
               "@value": "Certificato",
               "@language": "it"
@@ -8968,7 +8968,7 @@
               "@language": "en"
             }
           ],
-          "certificationIdentification": "DOP-MBC-2024-772"
+          "gs1:certificationIdentification": "DOP-MBC-2024-772"
         }
       ],
       "name": "Mozzarella di Bufala Campana DOP 250g",
@@ -9230,7 +9230,7 @@
           "postalCode": "46100",
           "addressCountry": "IT"
         },
-        "globalLocationNumber": "8032089000512"
+        "gs1:globalLocationNumber": "8032089000512"
       }
     }
   },
@@ -9347,7 +9347,7 @@
           "postalCode": "43100",
           "addressCountry": "IT"
         },
-        "globalLocationNumber": "8032089000529"
+        "gs1:globalLocationNumber": "8032089000529"
       }
     }
   },
@@ -9643,7 +9643,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "IT"
+          "gs1:countryCode": "IT"
         }
       ],
       "nutrition": {
@@ -9927,11 +9927,11 @@
       "gs1:packaging": [
         {
           "@type": "gs1:PackagingDetails",
-          "packagingType": "PL",
-          "packagingMaterial": [
+          "gs1:packagingType": "PL",
+          "gs1:packagingMaterial": [
             {
               "@type": "gs1:PackagingMaterialDetails",
-              "packagingMaterialType": {
+              "gs1:packagingMaterialType": {
                 "@id": "gs1:PackagingMaterialTypeCode-PLASTIC_OTHER",
                 "rdfs:label": "Secchio in plastica"
               }
@@ -9950,7 +9950,7 @@
       "gs1:certification": [
         {
           "@type": "gs1:CertificationDetails",
-          "certificationAgency": [
+          "gs1:certificationAgency": [
             {
               "@value": "Ente Certificazione Ambientale UE",
               "@language": "it"
@@ -9960,7 +9960,7 @@
               "@language": "en"
             }
           ],
-          "certificationStandard": [
+          "gs1:certificationStandard": [
             {
               "@value": "Ecolabel UE - Basso COV",
               "@language": "it"
@@ -9970,7 +9970,7 @@
               "@language": "en"
             }
           ],
-          "certificationValue": [
+          "gs1:certificationValue": [
             {
               "@value": "Conforme",
               "@language": "it"
@@ -9980,7 +9980,7 @@
               "@language": "en"
             }
           ],
-          "certificationIdentification": "IT/033/091"
+          "gs1:certificationIdentification": "IT/033/091"
         }
       ],
       "name": "Vernice Lavabile per Interni Bianca 14L",
@@ -10049,7 +10049,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "IT"
+          "gs1:countryCode": "IT"
         }
       ],
       "gs1:regulatedProductName": [
@@ -10174,7 +10174,7 @@
           "postalCode": "24100",
           "addressCountry": "IT"
         },
-        "globalLocationNumber": "8032089000574"
+        "gs1:globalLocationNumber": "8032089000574"
       }
     }
   },
@@ -10272,11 +10272,11 @@
       "gs1:packaging": [
         {
           "@type": "gs1:PackagingDetails",
-          "packagingType": "CS",
-          "packagingMaterial": [
+          "gs1:packagingType": "CS",
+          "gs1:packagingMaterial": [
             {
               "@type": "gs1:PackagingMaterialDetails",
-              "packagingMaterialType": {
+              "gs1:packagingMaterialType": {
                 "@id": "gs1:PackagingMaterialTypeCode-PAPER_PAPERBOARD",
                 "rdfs:label": "Cartone"
               }
@@ -10295,7 +10295,7 @@
       "gs1:certification": [
         {
           "@type": "gs1:CertificationDetails",
-          "certificationAgency": [
+          "gs1:certificationAgency": [
             {
               "@value": "Ente Certificazione Elettrico UE",
               "@language": "it"
@@ -10305,7 +10305,7 @@
               "@language": "en"
             }
           ],
-          "certificationStandard": [
+          "gs1:certificationStandard": [
             {
               "@value": "Direttiva Bassa Tensione 2014/35/UE",
               "@language": "it"
@@ -10315,7 +10315,7 @@
               "@language": "en"
             }
           ],
-          "certificationValue": [
+          "gs1:certificationValue": [
             {
               "@value": "Marcatura CE",
               "@language": "it"
@@ -10325,7 +10325,7 @@
               "@language": "en"
             }
           ],
-          "certificationIdentification": "CE-LVD-2024-556"
+          "gs1:certificationIdentification": "CE-LVD-2024-556"
         }
       ],
       "name": "Trapano Avvitatore a Batteria 18V",
@@ -10394,7 +10394,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "IT"
+          "gs1:countryCode": "IT"
         }
       ],
       "gs1:consumerUsageInstructions": [
@@ -10509,7 +10509,7 @@
           "postalCode": "24100",
           "addressCountry": "IT"
         },
-        "globalLocationNumber": "8032089000598"
+        "gs1:globalLocationNumber": "8032089000598"
       }
     }
   },
@@ -10731,7 +10731,7 @@
           "postalCode": "25100",
           "addressCountry": "IT"
         },
-        "globalLocationNumber": "8032089000628"
+        "gs1:globalLocationNumber": "8032089000628"
       }
     }
   },
@@ -10882,11 +10882,11 @@
       "gs1:packaging": [
         {
           "@type": "gs1:PackagingDetails",
-          "packagingType": "BX",
-          "packagingMaterial": [
+          "gs1:packagingType": "BX",
+          "gs1:packagingMaterial": [
             {
               "@type": "gs1:PackagingMaterialDetails",
-              "packagingMaterialType": {
+              "gs1:packagingMaterialType": {
                 "@id": "gs1:PackagingMaterialTypeCode-PAPER_PAPERBOARD",
                 "rdfs:label": "Scatola in cartone"
               }
@@ -10905,7 +10905,7 @@
       "gs1:certification": [
         {
           "@type": "gs1:CertificationDetails",
-          "certificationAgency": [
+          "gs1:certificationAgency": [
             {
               "@value": "Ente Certificazione DPI UE",
               "@language": "it"
@@ -10915,7 +10915,7 @@
               "@language": "en"
             }
           ],
-          "certificationStandard": [
+          "gs1:certificationStandard": [
             {
               "@value": "EN 397",
               "@language": "it"
@@ -10925,7 +10925,7 @@
               "@language": "en"
             }
           ],
-          "certificationValue": [
+          "gs1:certificationValue": [
             {
               "@value": "Marcatura CE - DPI Categoria II",
               "@language": "it"
@@ -10935,7 +10935,7 @@
               "@language": "en"
             }
           ],
-          "certificationIdentification": "CE-DPI-2024-889"
+          "gs1:certificationIdentification": "CE-DPI-2024-889"
         }
       ],
       "name": "Casco di Protezione Cantiere EN397",
@@ -10991,7 +10991,7 @@
       "gs1:countryOfOrigin": [
         {
           "@type": "gs1:Country",
-          "countryCode": "IT"
+          "gs1:countryCode": "IT"
         }
       ],
       "gs1:regulatedProductName": [
