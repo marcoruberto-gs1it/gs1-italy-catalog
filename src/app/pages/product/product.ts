@@ -1,6 +1,7 @@
-import { Component, computed, inject, OnInit, signal, PLATFORM_ID } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, computed, effect, inject, OnDestroy, OnInit, signal, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser, DOCUMENT } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { DomSanitizer, Meta, SafeHtml, Title } from '@angular/platform-browser';
 import { QRCodeComponent } from 'angularx-qrcode';
 import { Product, ProductService, TraceEvent, isAiReady, isVerified, productImages, getVocabularies, buildEpcisEvent, discountPercent, formatEuro } from '../../services/product.service';
@@ -37,7 +38,7 @@ const BIZ_STEP_ICONS: Record<string, IconName> = {
   templateUrl: './product.html',
   styleUrl: './product.css',
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
   private productService = inject(ProductService);
   protected uiState = inject(UiStateService);
@@ -50,12 +51,22 @@ export class ProductComponent implements OnInit {
 
   private platformId = inject(PLATFORM_ID);
   private siteOrigin = inject(SiteOriginService);
+  private document = inject(DOCUMENT);
 
   isBrowser = signal<boolean>(false);
-  gtin = signal<string | null>(null);
-  lot = signal<string | null>(null);
-  serial = signal<string | null>(null);
-  expiration = signal<string | null>(null);
+
+  // toSignal (non uno snapshot letto una volta in ngOnInit): Angular riusa la stessa istanza di
+  // ProductComponent quando si naviga da un prodotto a un altro (stessa rotta, parametro
+  // diverso — es. da un link "prodotti correlati"), quindi ngOnInit non viene richiamato. Senza
+  // reattività sui parametri di rotta l'intera pagina (titolo, meta tag, JSON-LD, galleria...)
+  // resterebbe quella del prodotto precedente fino a un refresh completo.
+  private routeParams = toSignal(this.route.paramMap);
+  private routeQueryParams = toSignal(this.route.queryParamMap);
+
+  gtin = computed(() => this.routeParams()?.get('gtin') ?? null);
+  lot = computed(() => this.routeParams()?.get('lot') ?? null);
+  serial = computed(() => this.routeParams()?.get('serial') ?? null);
+  expiration = computed(() => this.routeQueryParams()?.get('17') ?? null);
 
   activeTab = signal<ProductTab>('details');
   activeImageIndex = signal(0);
@@ -225,8 +236,10 @@ export class ProductComponent implements OnInit {
     return url;
   });
 
-  // Generazione del JSON-LD iniettato conforme al GS1 Web Vocabulary
-  jsonLdHtml = computed<SafeHtml | null>(() => {
+  // Generazione del JSON-LD conforme al GS1 Web Vocabulary, pubblicato tramite applyJsonLd()
+  // (vedi il costruttore): restituisce solo la stringa JSON, non più il tag <script> completo —
+  // vedi il commento su applyJsonLd per il perché.
+  jsonLdJson = computed<string | null>(() => {
     const prod = this.product();
     if (!prod) return null;
 
@@ -307,30 +320,64 @@ export class ProductComponent implements OnInit {
       }
     }
 
-    const jsonString = JSON.stringify(jsonLdData);
-    const scriptHtml = `<script type="application/ld+json">\n${jsonString}\n</script>`;
-    return this.sanitizer.bypassSecurityTrustHtml(scriptHtml);
+    return JSON.stringify(jsonLdData);
   });
+
+  private static readonly JSON_LD_SCRIPT_ID = 'product-structured-data';
+
+  constructor() {
+    // Pubblica lo script application/ld+json in modo imperativo, aggiornando lo stesso elemento
+    // (per id) invece di legarlo al template con [innerHTML]: quest'ultimo, durante l'hydration,
+    // fa sì che Angular aggiunga un secondo <script> lato client accanto a quello già presente
+    // nell'HTML prerenderizzato invece di riutilizzarlo — il risultato è due blocchi JSON-LD
+    // identici nella pagina finale (visibile in validator.schema.org come "2 record"). Questo
+    // stesso pattern "trova per id, altrimenti crea" è quello che usano internamente i servizi
+    // Meta/Title di Angular, che infatti non soffrono di questo problema.
+    effect(() => this.applyJsonLd(this.jsonLdJson()));
+
+    // Title/meta tag in un effect reattivo su product() (non in ngOnInit, chiamato una sola
+    // volta): tra due prodotti la rotta è la stessa (/01/:gtin), quindi Angular riusa la stessa
+    // istanza del componente senza richiamare ngOnInit — senza questo, titolo e meta tag
+    // resterebbero quelli del prodotto precedente dopo una navigazione lato client.
+    effect(() => {
+      const prod = this.product();
+      if (!prod) return;
+      this.titleService.setTitle(`${prod.name} | Digital Link`);
+      this.metaService.updateTag({ name: 'description', content: prod.description });
+      this.metaService.updateTag({ property: 'og:title', content: prod.name });
+      this.metaService.updateTag({ property: 'og:image', content: prod.image });
+    });
+  }
+
+  private applyJsonLd(json: string | null): void {
+    let script = this.document.getElementById(ProductComponent.JSON_LD_SCRIPT_ID) as HTMLScriptElement | null;
+    if (!json) {
+      script?.remove();
+      return;
+    }
+    if (!script) {
+      script = this.document.createElement('script');
+      script.type = 'application/ld+json';
+      script.id = ProductComponent.JSON_LD_SCRIPT_ID;
+      this.document.body.appendChild(script);
+    }
+    script.textContent = json;
+  }
+
+  // Il componente viene distrutto (navigazione lato client verso un'altra rotta) prima che
+  // l'effect possa rieseguire con jsonLdJson() a null: senza questa pulizia esplicita lo
+  // script rimarrebbe orfano nel DOM, pubblicando dati strutturati del prodotto precedente
+  // anche su pagine che non lo riguardano più.
+  ngOnDestroy(): void {
+    this.applyJsonLd(null);
+  }
 
   ngOnInit(): void {
     // Risoluzione della piattaforma prima dell'esecuzione dei computed
     this.isBrowser.set(isPlatformBrowser(this.platformId));
 
-    this.gtin.set(this.route.snapshot.paramMap.get('gtin'));
-    this.lot.set(this.route.snapshot.paramMap.get('lot'));
-    this.serial.set(this.route.snapshot.paramMap.get('serial'));
-    this.expiration.set(this.route.snapshot.queryParamMap.get('17'));
-
     if (!this.hasDetailsTab()) {
       this.activeTab.set('structured-data');
-    }
-
-    const prod = this.product();
-    if (prod) {
-      this.titleService.setTitle(`${prod.name} | Digital Link`);
-      this.metaService.updateTag({ name: 'description', content: prod.description });
-      this.metaService.updateTag({ property: 'og:title', content: prod.name });
-      this.metaService.updateTag({ property: 'og:image', content: prod.image });
     }
   }
 
