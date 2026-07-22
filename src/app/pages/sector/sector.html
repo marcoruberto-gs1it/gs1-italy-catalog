@@ -55,7 +55,6 @@
       @for (product of filteredProducts(); track product.gtin) {
         <article class="product-card" [routerLink]="['/01', product.gtin]">
           <div class="card-image-wrapper">
-            <span class="card-category-badge" [style.backgroundColor]="sectorInfo()?.brandColor">{{ product.sectorName }}</span>
             <img [src]="product.image" [alt]="product.name" loading="lazy" (error)="onImageError($event)">
           </div>
           <div class="card-body">

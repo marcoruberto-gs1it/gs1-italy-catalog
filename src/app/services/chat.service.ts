@@ -92,6 +92,13 @@ export class ChatService {
    * rendere la sezione già utilizzabile in fase di sviluppo.
    */
   private localFallback(message: string): ChatMessage {
+    // Le domande su un allergene specifico ("senza glutine" vs "contiene glutine") non possono
+    // essere risolte da un match per parola chiave: "glutine" è presente nel testo in entrambi i
+    // casi. Qui interpretiamo la negazione e rispondiamo usando il livello di contenimento
+    // strutturato (gs1:AllergenDetails) invece del semplice matching testuale.
+    const allergenIntent = detectAllergenIntent(message);
+    if (allergenIntent) return this.allergenFallback(allergenIntent);
+
     const words = message
       .toLowerCase()
       .split(/[^\p{L}\p{N}]+/u)
@@ -126,6 +133,130 @@ export class ChatService {
       products: matches,
     };
   }
+
+  /** Filtra i soli prodotti alimentari per livello di contenimento dell'allergene richiesto. */
+  private allergenFallback(intent: AllergenIntent): ChatMessage {
+    const allergenLabel = this.t(`chat.allergenLabel.${intent.code}`);
+    const matches: ChatProductMatch[] = sortByVocabPriority(
+      this.productService
+        .getAllProducts()
+        .filter((product) => product.food)
+        .map((product) => ({ product, level: allergenLevel(product, intent.code) }))
+        .filter((m) => (intent.exclude ? m.level === 'FREE_FROM' : m.level === 'CONTAINS' || m.level === 'MAY_CONTAIN'))
+        .map((m) => ({ product: m.product, matchedFields: ['allergens'] as MatchedField[] })),
+    ).slice(0, 8);
+
+    const key = matches.length
+      ? intent.exclude ? 'chat.allergenFreeFoundIntro' : 'chat.allergenContainsFoundIntro'
+      : intent.exclude ? 'chat.allergenFreeEmptyIntro' : 'chat.allergenContainsEmptyIntro';
+
+    return {
+      id: crypto.randomUUID(),
+      role: 'assistant',
+      content: this.t(key, { count: matches.length, allergen: allergenLabel }),
+      products: matches,
+    };
+  }
+}
+
+// =========================================================================
+// Domande su un allergene specifico: "senza glutine" e "contiene glutine"
+// condividono la parola "glutine" ma richiedono risposte opposte — un match
+// per parola chiave non può distinguerle. Qui interpretiamo la negazione e
+// rispondiamo con il livello di contenimento (gs1:AllergenDetails) invece
+// che con un semplice "il termine compare nel testo".
+// =========================================================================
+
+type AllergenCode = 'GLUTEN' | 'MILK' | 'FISH' | 'MOLLUSCS' | 'CELERY' | 'SOY' | 'TREE_NUTS' | 'SULPHITES';
+type AllergenLevel = 'CONTAINS' | 'MAY_CONTAIN' | 'FREE_FROM';
+interface AllergenIntent {
+  code: AllergenCode;
+  exclude: boolean; // true = l'utente cerca prodotti SENZA questo allergene
+}
+
+const ALLERGEN_SEARCH_TERMS: { code: AllergenCode; terms: string[] }[] = [
+  { code: 'GLUTEN', terms: ['glutine', 'gluten'] },
+  { code: 'MILK', terms: ['latte', 'milk', 'lattosio', 'lactose', 'dairy'] },
+  { code: 'FISH', terms: ['pesce', 'fish'] },
+  { code: 'MOLLUSCS', terms: ['molluschi', 'molluscs', 'mollusks'] },
+  { code: 'CELERY', terms: ['sedano', 'celery'] },
+  { code: 'SOY', terms: ['soia', 'soy', 'soybean', 'soybeans'] },
+  { code: 'TREE_NUTS', terms: ['frutta a guscio', 'noci', 'nuts', 'nut'] },
+  { code: 'SULPHITES', terms: ['solfiti', 'solfito', 'sulphites', 'sulfites', 'sulphite', 'sulfite'] },
+];
+
+const NEGATION_WORDS = new Set([
+  'senza', 'non', 'privo', 'priva', 'esente', 'esenti', 'niente',
+  'without', 'no', 'free', 'not',
+]);
+
+function detectAllergenIntent(message: string): AllergenIntent | null {
+  const lower = message.toLowerCase();
+  const words = lower.split(/[^\p{L}\p{N}]+/u).filter(Boolean);
+
+  for (const entry of ALLERGEN_SEARCH_TERMS) {
+    if (!entry.terms.some((term) => lower.includes(term))) continue;
+    const exclude = words.some((w) => NEGATION_WORDS.has(w));
+    return { code: entry.code, exclude };
+  }
+  return null;
+}
+
+/** Etichette IT usate anche per il fallback testuale (i nomi effettivamente scritti nei dati). */
+const ALLERGEN_TEXT_LABELS: Record<AllergenCode, string> = {
+  GLUTEN: 'glutine',
+  MILK: 'latte',
+  FISH: 'pesce',
+  MOLLUSCS: 'molluschi',
+  CELERY: 'sedano',
+  SOY: 'soia',
+  TREE_NUTS: 'frutta a guscio',
+  SULPHITES: 'solfiti',
+};
+
+/**
+ * Livello di contenimento dell'allergene per un prodotto: usa il dato strutturato
+ * gs1:AllergenDetails quando disponibile (preciso), altrimenti applica un'euristica sul testo
+ * libero `food.allergens` — analizzando ogni frase separatamente, perché una singola dicitura
+ * può dichiarare più allergeni con livelli diversi (es. "Contiene glutine. Può contenere tracce
+ * di soia."). Nessun allergene dichiarato per il prodotto equivale a FREE_FROM.
+ */
+function allergenLevel(product: Product, code: AllergenCode): AllergenLevel {
+  const structured = product.rawGs1Data?.['gs1:allergen'] as
+    | { 'gs1:allergenType'?: { '@id'?: string }; 'gs1:allergenLevelOfContainmentCode'?: { '@id'?: string } }[]
+    | undefined;
+
+  if (structured?.length) {
+    const entry = structured.find((a) => a['gs1:allergenType']?.['@id'] === `gs1:AllergenTypeCode-${code}`);
+    if (entry) {
+      const levelId = entry['gs1:allergenLevelOfContainmentCode']?.['@id'] ?? '';
+      if (levelId.endsWith('CONTAINS')) return 'CONTAINS';
+      if (levelId.endsWith('MAY_CONTAIN')) return 'MAY_CONTAIN';
+      if (levelId.endsWith('FREE_FROM')) return 'FREE_FROM';
+    }
+    // Ha un elenco di allergeni strutturato ma non cita questo codice: non dichiarato = assente.
+    return 'FREE_FROM';
+  }
+
+  const text = product.food?.allergens;
+  if (!text) return 'FREE_FROM';
+  const lower = text.toLowerCase();
+  if (lower.includes('nessun allergene')) return 'FREE_FROM';
+
+  const label = ALLERGEN_TEXT_LABELS[code];
+  const sentences = lower.split(/[.;]/).map((s) => s.trim()).filter(Boolean);
+  let level: AllergenLevel | null = null;
+  for (const sentence of sentences) {
+    if (!sentence.includes(label)) continue;
+    if (sentence.includes('può contenere') || sentence.includes('tracce')) {
+      level = level ?? 'MAY_CONTAIN';
+    } else if (sentence.includes('senza') || sentence.includes('non contiene') || sentence.includes('idoneo')) {
+      return 'FREE_FROM';
+    } else {
+      return 'CONTAINS'; // dicitura diretta ("Contiene glutine", o frase secca "Pesce.")
+    }
+  }
+  return level ?? 'FREE_FROM';
 }
 
 /**

@@ -1,59 +1,68 @@
-# Gs1Catalog
+# GS1 Digital Link Catalog
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.6.
+Demo Angular 22 (SSR) di un catalogo prodotti che mostra come **GS1 Digital Link** trasformi un
+GTIN in una vera porta d'accesso ai dati di prodotto: lo stesso codice risolvibile via URL apre
+tracciabilità di filiera, certificazioni, istruzioni d'uso e dati strutturati leggibili da motori
+di ricerca e agenti AI — aggiornabili senza mai ristampare l'etichetta.
 
-## Development server
+63 prodotti fittizi (brand "GS1 Italy", prefisso aziendale `8032089`) distribuiti su 6 settori
+(largo consumo, foodservice, fresh food, sanità, abbigliamento, edilizia).
 
-To start a local development server, run:
+## Funzionalità principali
 
-```bash
-ng serve
-```
+- **Routing GS1 Digital Link** — `/01/:gtin`, con estensioni opzionali `/10/:lot` e `/21/:serial`
+  per lotto/seriale, risolte dallo stesso `ProductComponent`.
+- **Dati strutturati reali** — JSON-LD pubblicato secondo **GS1 Web Vocabulary** e/o
+  **schema.org** (ingredienti, allergeni con livello di contenimento, materiali tessili, GDSN,
+  certificazioni, tracciabilità stile EPCIS), visibile in-pagina tramite un visualizzatore
+  JSON-LD dedicato.
+- **Validatore GS1 Digital Link** (`/validatore`) — analizza un Digital Link o una stringa AI
+  usando il vero [GS1 Barcode Syntax Engine](https://github.com/gs1/gs1-syntax-engine) (WASM),
+  con CTA verso [validator.schema.org](https://validator.schema.org).
+- **Assistente AI** (`/assistente`) — chat che risponde a domande sul catalogo appoggiandosi ai
+  dati strutturati; distingue sempre ciò che è testo generato dall'assistente da ciò che è dato
+  verificato dal catalogo. In attesa di un backend LLM dedicato, include un motore di ricerca
+  locale che sfrutta anche i livelli di contenimento allergeni strutturati (es. "prodotti senza
+  glutine" vs "che contengono glutine").
+- **Multilingua IT/EN** — rilevamento automatico da `Accept-Language`/browser con selettore
+  manuale; dati prodotto e stringhe UI tradotte, JSON-LD con `langString` bilingue nativo.
+- **QR code e GS1 DataMatrix** generati a runtime (download PNG/SVG) per GTIN, istanze
+  lotto/seriale e SSCC logistici.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Stack
 
-## Code scaffolding
+Angular 22 (standalone components, signals, SSR/prerendering), TypeScript, `gs1encoder` (WASM),
+`bwip-js` per il DataMatrix, `angularx-qrcode`.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## Sviluppo
 
 ```bash
-ng test
+npm install
+npm start        # ng serve — http://localhost:4200
+npm run build    # genera le rotte da products.json, poi build SSR + prerendering
+npm test         # unit test (Vitest)
 ```
 
-## Running end-to-end tests
+## Deploy
 
-For end-to-end (e2e) testing, run:
+Pubblicato automaticamente su **GitHub Pages** a ogni push su `main`, tramite
+[`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml):
 
-```bash
-ng e2e
+**https://marcoruberto-gs1it.github.io/gs1-italy-catalog/**
+
+La build per Pages usa `--base-href /gs1-italy-catalog/` (il sito vive sotto un sottopercorso,
+non alla radice del dominio) e copia `index.html` in `404.html` per far gestire dal Router di
+Angular, lato client, le rotte non prerenderizzabili (lotto/seriale) — il trucco standard per le
+SPA su hosting statico. Solo il bundle browser viene pubblicato: il bundle SSR (Express) fa parte
+della build ma non serve su Pages, che è hosting puramente statico.
+
+## Struttura
+
 ```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+src/app/
+  pages/         home, sector (catalogo), product, validator, chat
+  components/    json-ld-drawer, digital-link-visualizer, search-palette, data-matrix, ...
+  services/      product, chat, language, i18n
+  data/          products.json (dataset), products.en.ts (overlay traduzioni), sectors.ts
+  i18n/          dizionario IT/EN
+```

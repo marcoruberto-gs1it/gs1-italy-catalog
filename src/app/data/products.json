@@ -3,7 +3,7 @@
     "gtin": "08032089000017",
     "name": "GS1 Italy Sapori Confettura Fragola light",
     "brand": "GS1 Italy Sapori",
-    "image": "https://assets.core.gs1it.org/images/7603330716851311642_md_fast.png",
+    "image": "images/08032089000017.jpg",
     "description": "Le nostre confetture Light nascono dalla frutta migliore e da ricette semplici, come fatte in casa. Zero edulcoranti and 50% di zuccheri in meno per esaltare il gusto autentico della frutta.",
     "sectorId": "fmcg",
     "sectorName": "Largo consumo",
@@ -196,7 +196,7 @@
         },
         "gs1:globalLocationNumber": "8032089000017"
       },
-      "image": "https://assets.core.gs1it.org/images/7603330716851311642_md_fast.png",
+      "image": "images/08032089000017.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -239,7 +239,133 @@
         "sugarContent": "20 g",
         "proteinContent": "0.5 g",
         "sodiumContent": "0 g"
-      }
+      },
+      "gs1:foodBeverageTobaccoIngredient": [
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 1,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Fragole",
+              "@language": "it"
+            },
+            {
+              "@value": "Strawberries",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 2,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Acqua",
+              "@language": "it"
+            },
+            {
+              "@value": "Water",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 3,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Zucchero",
+              "@language": "it"
+            },
+            {
+              "@value": "Sugar",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 4,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Gelificante: pectina da frutta",
+              "@language": "it"
+            },
+            {
+              "@value": "Gelling agent: fruit pectin",
+              "@language": "en"
+            }
+          ]
+        }
+      ],
+      "gs1:allergen": [
+        {
+          "@type": "gs1:AllergenDetails",
+          "gs1:allergenType": {
+            "@id": "gs1:AllergenTypeCode-CELERY",
+            "rdfs:label": "Sedano"
+          },
+          "gs1:allergenLevelOfContainmentCode": {
+            "@id": "gs1:LevelOfContainmentCode-MAY_CONTAIN",
+            "rdfs:label": "Può contenere"
+          }
+        },
+        {
+          "@type": "gs1:AllergenDetails",
+          "gs1:allergenType": {
+            "@id": "gs1:AllergenTypeCode-FISH",
+            "rdfs:label": "Pesce"
+          },
+          "gs1:allergenLevelOfContainmentCode": {
+            "@id": "gs1:LevelOfContainmentCode-MAY_CONTAIN",
+            "rdfs:label": "Può contenere"
+          }
+        },
+        {
+          "@type": "gs1:AllergenDetails",
+          "gs1:allergenType": {
+            "@id": "gs1:AllergenTypeCode-MILK",
+            "rdfs:label": "Latte"
+          },
+          "gs1:allergenLevelOfContainmentCode": {
+            "@id": "gs1:LevelOfContainmentCode-MAY_CONTAIN",
+            "rdfs:label": "Può contenere"
+          }
+        },
+        {
+          "@type": "gs1:AllergenDetails",
+          "gs1:allergenType": {
+            "@id": "gs1:AllergenTypeCode-MOLLUSCS",
+            "rdfs:label": "Molluschi"
+          },
+          "gs1:allergenLevelOfContainmentCode": {
+            "@id": "gs1:LevelOfContainmentCode-MAY_CONTAIN",
+            "rdfs:label": "Può contenere"
+          }
+        },
+        {
+          "@type": "gs1:AllergenDetails",
+          "gs1:allergenType": {
+            "@id": "gs1:AllergenTypeCode-SOY",
+            "rdfs:label": "Soia"
+          },
+          "gs1:allergenLevelOfContainmentCode": {
+            "@id": "gs1:LevelOfContainmentCode-MAY_CONTAIN",
+            "rdfs:label": "Può contenere"
+          }
+        },
+        {
+          "@type": "gs1:AllergenDetails",
+          "gs1:allergenType": {
+            "@id": "gs1:AllergenTypeCode-TREE_NUTS",
+            "rdfs:label": "Frutta a guscio"
+          },
+          "gs1:allergenLevelOfContainmentCode": {
+            "@id": "gs1:LevelOfContainmentCode-MAY_CONTAIN",
+            "rdfs:label": "Può contenere"
+          }
+        }
+      ]
     },
     "environmentalImpact": {
       "co2e": "0.8 kg CO₂e / kg prodotto",
@@ -351,7 +477,7 @@
     "gtin": "08032089000024",
     "name": "GS1 Italy Sapori Pasta Tortiglioni Senza Glutine",
     "brand": "GS1 Italy Sapori",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000024.jpg",
     "description": "Pasta senza glutine specificamente formulata per persone intolleranti al glutine con mais bianco, mais giallo e riso integrale. Al dente in 10 minuti.",
     "sectorId": "fmcg",
     "sectorName": "Largo consumo",
@@ -537,7 +663,7 @@
         },
         "gs1:globalLocationNumber": "8032089000024"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000024.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -566,7 +692,92 @@
         "sugarContent": "< 0.5 g",
         "proteinContent": "6.5 g",
         "sodiumContent": "< 0.01 g"
-      }
+      },
+      "gs1:foodBeverageTobaccoIngredient": [
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 1,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Farina di mais bianco (60%)",
+              "@language": "it"
+            },
+            {
+              "@value": "White maize flour (60%)",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 2,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Farina di mais giallo (29,5%)",
+              "@language": "it"
+            },
+            {
+              "@value": "Yellow maize flour (29.5%)",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 3,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Farina di riso integrale (10%)",
+              "@language": "it"
+            },
+            {
+              "@value": "Wholegrain rice flour (10%)",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 4,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Acqua",
+              "@language": "it"
+            },
+            {
+              "@value": "Water",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 5,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Emulsionante: mono- e digliceridi degli acidi grassi",
+              "@language": "it"
+            },
+            {
+              "@value": "Emulsifier: mono- and diglycerides of fatty acids",
+              "@language": "en"
+            }
+          ]
+        }
+      ],
+      "gs1:allergen": [
+        {
+          "@type": "gs1:AllergenDetails",
+          "gs1:allergenType": {
+            "@id": "gs1:AllergenTypeCode-GLUTEN",
+            "rdfs:label": "Glutine"
+          },
+          "gs1:allergenLevelOfContainmentCode": {
+            "@id": "gs1:LevelOfContainmentCode-FREE_FROM",
+            "rdfs:label": "Non contiene"
+          }
+        }
+      ]
     },
     "environmentalImpact": {
       "co2e": "1.1 kg CO₂e / kg prodotto",
@@ -676,7 +887,7 @@
     "gtin": "08032089000031",
     "name": "The White T-Shirt",
     "brand": "GS1 Italy Wear",
-    "image": "https://ref.gs1.org/tools/demo/2024retail/TheWhiteT-shirt%20image-front.jpg",
+    "image": "images/08032089000031.jpg",
     "description": "La t-shirt bianca è realizzata in morbido e leggero jersey di cotone, garantendo comfort e un appeal sportivo.",
     "sectorId": "apparel",
     "sectorName": "Abbigliamento",
@@ -803,7 +1014,7 @@
         },
         "gs1:globalLocationNumber": "8032089000031"
       },
-      "image": "https://ref.gs1.org/tools/demo/2024retail/TheWhiteT-shirt%20image-front.jpg",
+      "image": "images/08032089000031.jpg",
       "color": "Bianco (White)",
       "offers": {
         "@type": "Offer",
@@ -838,7 +1049,14 @@
         "@type": "AggregateRating",
         "ratingValue": 4.8,
         "reviewCount": 214
-      }
+      },
+      "gs1:gpcCategoryCode": "53190000",
+      "gs1:countryOfOrigin": [
+        {
+          "@type": "gs1:Country",
+          "countryCode": "LK"
+        }
+      ]
     },
     "environmentalImpact": {
       "co2e": "4.2 kg CO₂e / unità",
@@ -958,7 +1176,7 @@
     "gtin": "08032089000048",
     "name": "Caffè in Grani Arabica 100% Bar Selection 1kg",
     "brand": "GS1 Italy Professional",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000048.jpg",
     "description": "Miscela 100% Arabica torrefatta lentamente, pensata per l'uso professionale in bar e ristorazione. Corpo pieno e aroma intenso.",
     "sectorId": "foodservice",
     "sectorName": "Foodservice",
@@ -1036,7 +1254,7 @@
     "gtin": "08032089000055",
     "name": "Farina di Grano Tenero Tipo 00 Professionale 25kg",
     "brand": "GS1 Italy Professional",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000055.jpg",
     "description": "Farina tipo 00 macinata a pietra, forza W280, ideale per pizzerie e panifici professionali con lunghe lievitazioni.",
     "sectorId": "foodservice",
     "sectorName": "Foodservice",
@@ -1136,7 +1354,7 @@
         ],
         "gs1:globalLocationNumber": "8032089000055"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000055.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -1156,7 +1374,64 @@
         "@type": "AggregateRating",
         "ratingValue": 4.7,
         "reviewCount": 41
-      }
+      },
+      "gs1:foodBeverageTobaccoIngredient": [
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 1,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Farina di grano tenero tipo 00",
+              "@language": "it"
+            },
+            {
+              "@value": "Type 00 soft wheat flour",
+              "@language": "en"
+            }
+          ]
+        }
+      ],
+      "gs1:allergen": [
+        {
+          "@type": "gs1:AllergenDetails",
+          "gs1:allergenType": {
+            "@id": "gs1:AllergenTypeCode-GLUTEN",
+            "rdfs:label": "Glutine"
+          },
+          "gs1:allergenLevelOfContainmentCode": {
+            "@id": "gs1:LevelOfContainmentCode-CONTAINS",
+            "rdfs:label": "Contiene"
+          }
+        },
+        {
+          "@type": "gs1:AllergenDetails",
+          "gs1:allergenType": {
+            "@id": "gs1:AllergenTypeCode-SOY",
+            "rdfs:label": "Soia"
+          },
+          "gs1:allergenLevelOfContainmentCode": {
+            "@id": "gs1:LevelOfContainmentCode-MAY_CONTAIN",
+            "rdfs:label": "Può contenere"
+          }
+        }
+      ],
+      "gs1:gpcCategoryCode": "10000234",
+      "gs1:countryOfOrigin": [
+        {
+          "@type": "gs1:Country",
+          "countryCode": "IT"
+        }
+      ],
+      "gs1:regulatedProductName": [
+        {
+          "@value": "Farina di grano tenero tipo 00",
+          "@language": "it"
+        },
+        {
+          "@value": "Type 00 soft wheat flour",
+          "@language": "en"
+        }
+      ]
     },
     "environmentalImpact": {
       "co2e": "0.6 kg CO₂e / kg prodotto",
@@ -1249,7 +1524,7 @@
     "gtin": "08032089000062",
     "name": "Termometro Digitale a Infrarossi senza Contatto",
     "brand": "GS1 Italy MedCare",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000062.jpg",
     "description": "Termometro a infrarossi per la misurazione rapida e senza contatto della temperatura corporea, con memoria delle ultime 30 misurazioni.",
     "sectorId": "healthcare",
     "sectorName": "Sanità",
@@ -1273,7 +1548,7 @@
         "@type": "Brand",
         "name": "GS1 Italy MedCare"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000062.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -1382,7 +1657,7 @@
     "gtin": "08032089000079",
     "name": "Mascherine Chirurgiche Tipo IIR (50 pz)",
     "brand": "GS1 Italy MedCare",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000079.jpg",
     "description": "Mascherine chirurgiche monouso Tipo IIR a tre strati, resistenti agli schizzi, per uso medico e professionale.",
     "sectorId": "healthcare",
     "sectorName": "Sanità",
@@ -1472,7 +1747,7 @@
           }
         ]
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000079.jpg",
       "manufacturer": {
         "@type": "Organization",
         "name": "GS1 Italy MedCare S.r.l.",
@@ -1511,6 +1786,117 @@
           "propertyID": "UDI-Issuing-Agency",
           "name": "UDI Issuing Agency",
           "value": "GS1"
+        }
+      ],
+      "gs1:gpcCategoryCode": "53150000",
+      "gs1:countryOfOrigin": [
+        {
+          "@type": "gs1:Country",
+          "countryCode": "IT"
+        }
+      ],
+      "gs1:regulatedProductName": [
+        {
+          "@value": "Dispositivo medico di protezione delle vie respiratorie, mascherina chirurgica Tipo IIR",
+          "@language": "it"
+        },
+        {
+          "@value": "Medical device for respiratory protection, Type IIR surgical mask",
+          "@language": "en"
+        }
+      ],
+      "gs1:consumerUsageInstructions": [
+        {
+          "@value": "Dispositivo monouso: indossare coprendo naso, bocca e mento, sostituire dopo ogni utilizzo o quando umida. Non riutilizzare.",
+          "@language": "it"
+        },
+        {
+          "@value": "Single-use device: wear covering nose, mouth and chin, replace after each use or when damp. Do not reuse.",
+          "@language": "en"
+        }
+      ],
+      "gs1:netContent": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "50",
+          "@type": "xsd:float"
+        },
+        "unitCode": "C62"
+      },
+      "gs1:grossWeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "210",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:inPackageHeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "190",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageWidth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "90",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageDepth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "60",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:textileMaterial": [
+        {
+          "@type": "gs1:TextileMaterialDetails",
+          "gs1:textileMaterialDescription": [
+            {
+              "@value": "Strato esterno in tessuto-non-tessuto in polipropilene (idrorepellente)",
+              "@language": "it"
+            },
+            {
+              "@value": "Outer layer, polypropylene non-woven fabric (water-repellent)",
+              "@language": "en"
+            }
+          ],
+          "gs1:textileMaterialPercentage": 35
+        },
+        {
+          "@type": "gs1:TextileMaterialDetails",
+          "gs1:textileMaterialDescription": [
+            {
+              "@value": "Strato filtrante in polipropilene meltblown (BFE ≥ 98%)",
+              "@language": "it"
+            },
+            {
+              "@value": "Filter layer, meltblown polypropylene (BFE ≥ 98%)",
+              "@language": "en"
+            }
+          ],
+          "gs1:textileMaterialPercentage": 30
+        },
+        {
+          "@type": "gs1:TextileMaterialDetails",
+          "gs1:textileMaterialDescription": [
+            {
+              "@value": "Strato interno in tessuto-non-tessuto in polipropilene",
+              "@language": "it"
+            },
+            {
+              "@value": "Inner layer, polypropylene non-woven fabric",
+              "@language": "en"
+            }
+          ],
+          "gs1:textileMaterialPercentage": 35
         }
       ]
     },
@@ -1621,7 +2007,7 @@
     "gtin": "08032089000086",
     "name": "Filetto di Branzino Fresco Adriatico",
     "brand": "GS1 Italy Fresh",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000086.jpg",
     "description": "Filetti di branzino freschi, pescati nell'Adriatico e lavorati in giornata. Peso variabile.",
     "sectorId": "fresh-foods",
     "sectorName": "Alimenti freschi",
@@ -1698,7 +2084,7 @@
     "gtin": "08032089000093",
     "name": "Insalata Mista IV Gamma Pronta al Consumo",
     "brand": "GS1 Italy Fresh",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000093.jpg",
     "description": "Miscela di insalate baby leaf lavate e pronte al consumo, coltivate in Italia e confezionate in atmosfera protettiva.",
     "sectorId": "fresh-foods",
     "sectorName": "Alimenti freschi",
@@ -1729,7 +2115,7 @@
         "name": "GS1 Italy Fresh",
         "globalLocationNumber": "8032089000093"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000093.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -1804,7 +2190,7 @@
     "gtin": "08032089000109",
     "name": "Cemento Portland CEM II 42.5R Sacco 25kg",
     "brand": "GS1 Italy Build",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000109.jpg",
     "description": "Cemento Portland ad alta resistenza iniziale, adatto per calcestruzzi strutturali e opere di rapida esecuzione.",
     "sectorId": "costruzioni",
     "sectorName": "Costruzioni",
@@ -1870,7 +2256,7 @@
     "gtin": "08032089000116",
     "name": "Piastrella Gres Porcellanato 60x60 cm",
     "brand": "GS1 Italy Build",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000116.jpg",
     "description": "Gres porcellanato rettificato effetto pietra, per pavimenti e rivestimenti interni ed esterni ad alto traffico.",
     "sectorId": "costruzioni",
     "sectorName": "Costruzioni",
@@ -1982,7 +2368,7 @@
         ],
         "gs1:globalLocationNumber": "8032089000116"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000116.jpg",
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": 4.8,
@@ -2016,6 +2402,65 @@
             "valueAddedTaxIncluded": true
           }
         ]
+      },
+      "gs1:gpcCategoryCode": "11000000",
+      "gs1:countryOfOrigin": [
+        {
+          "@type": "gs1:Country",
+          "countryCode": "IT"
+        }
+      ],
+      "gs1:regulatedProductName": [
+        {
+          "@value": "Piastrella ceramica in gres porcellanato per pavimenti e rivestimenti",
+          "@language": "it"
+        },
+        {
+          "@value": "Porcelain stoneware ceramic tile for floors and walls",
+          "@language": "en"
+        }
+      ],
+      "gs1:consumerUsageInstructions": [
+        {
+          "@value": "Posare con adesivo cementizio idoneo a gres porcellanato, fuga minima consigliata 2 mm. Pulire con detergenti neutri, evitare acidi aggressivi.",
+          "@language": "it"
+        },
+        {
+          "@value": "Install with cementitious adhesive suitable for porcelain stoneware, minimum recommended grout joint 2 mm. Clean with neutral detergents, avoid aggressive acids.",
+          "@language": "en"
+        }
+      ],
+      "gs1:netWeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "7.9",
+          "@type": "xsd:float"
+        },
+        "unitCode": "KGM"
+      },
+      "gs1:inPackageHeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "600",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageWidth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "600",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageDepth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "9.5",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
       }
     },
     "environmentalImpact": {
@@ -2120,7 +2565,7 @@
     "gtin": "08032089000123",
     "name": "Acqua Minerale Naturale Oligominerale 1.5L",
     "brand": "GS1 Italy Sapori",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000123.jpg",
     "description": "Acqua minerale naturale oligominerale, imbottigliata alla fonte, leggermente frizzante.",
     "sectorId": "fmcg",
     "sectorName": "Largo consumo",
@@ -2156,7 +2601,7 @@
         "name": "GS1 Italy Sapori",
         "globalLocationNumber": "8032089000123"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000123.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -2227,7 +2672,7 @@
     "gtin": "08032089000130",
     "name": "Zaino Casual Impermeabile 20L",
     "brand": "GS1 Italy Wear",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000130.jpg",
     "description": "Zaino leggero e impermeabile con scomparto imbottito per laptop, ideale per uso quotidiano e viaggi brevi.",
     "sectorId": "apparel",
     "sectorName": "Abbigliamento",
@@ -2295,7 +2740,7 @@
     "gtin": "08032089000147",
     "name": "Patatine Croccanti al Rosmarino 150g",
     "brand": "GS1 Italy Sapori",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000147.jpg",
     "description": "Patatine croccanti cotte in olio di girasole alto oleico, aromatizzate con rosmarino italiano.",
     "sectorId": "fmcg",
     "sectorName": "Largo consumo",
@@ -2535,7 +2980,7 @@
         },
         "gs1:globalLocationNumber": "8032089000147"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000147.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -2568,14 +3013,86 @@
         "@type": "AggregateRating",
         "ratingValue": 4.4,
         "reviewCount": 156
-      }
+      },
+      "gs1:foodBeverageTobaccoIngredient": [
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 1,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Patate",
+              "@language": "it"
+            },
+            {
+              "@value": "Potatoes",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 2,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Olio di girasole alto oleico",
+              "@language": "it"
+            },
+            {
+              "@value": "High oleic sunflower oil",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 3,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Rosmarino",
+              "@language": "it"
+            },
+            {
+              "@value": "Rosemary",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 4,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Sale",
+              "@language": "it"
+            },
+            {
+              "@value": "Salt",
+              "@language": "en"
+            }
+          ]
+        }
+      ],
+      "gs1:allergen": [
+        {
+          "@type": "gs1:AllergenDetails",
+          "gs1:allergenType": {
+            "@id": "gs1:AllergenTypeCode-MILK",
+            "rdfs:label": "Latte"
+          },
+          "gs1:allergenLevelOfContainmentCode": {
+            "@id": "gs1:LevelOfContainmentCode-MAY_CONTAIN",
+            "rdfs:label": "Può contenere"
+          }
+        }
+      ],
+      "gs1:gpcCategoryCode": "10000355"
     }
   },
   {
     "gtin": "08032089000154",
     "name": "Tè Freddo al Limone 500ml",
     "brand": "GS1 Italy Sapori",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000154.jpg",
     "description": "Tè nero freddo con succo di limone, in bottiglia PET riciclabile.",
     "sectorId": "fmcg",
     "sectorName": "Largo consumo",
@@ -2653,7 +3170,7 @@
         "@type": "Brand",
         "name": "GS1 Italy Sapori"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000154.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -2692,7 +3209,7 @@
     "gtin": "08032089000161",
     "name": "Detersivo Lavatrice Concentrato Ecologico 40 lavaggi",
     "brand": "GS1 Italy Sapori",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000161.jpg",
     "description": "Detersivo liquido concentrato per lavatrice, formula ecologica certificata, efficace anche a basse temperature.",
     "sectorId": "fmcg",
     "sectorName": "Largo consumo",
@@ -2855,7 +3372,7 @@
         },
         "gs1:globalLocationNumber": "8032089000161"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000161.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -2888,14 +3405,41 @@
         "@type": "AggregateRating",
         "ratingValue": 4.5,
         "reviewCount": 203
-      }
+      },
+      "gs1:gpcCategoryCode": "47130000",
+      "gs1:countryOfOrigin": [
+        {
+          "@type": "gs1:Country",
+          "countryCode": "IT"
+        }
+      ],
+      "gs1:regulatedProductName": [
+        {
+          "@value": "Detersivo liquido concentrato per bucato",
+          "@language": "it"
+        },
+        {
+          "@value": "Concentrated liquid laundry detergent",
+          "@language": "en"
+        }
+      ],
+      "gs1:consumerUsageInstructions": [
+        {
+          "@value": "Dosare 25 ml per bucati normali, 40 ml per bucati molto sporchi, versare direttamente nel cestello o nella vaschetta detersivo.",
+          "@language": "it"
+        },
+        {
+          "@value": "Dose 25 ml for normal loads, 40 ml for heavily soiled loads; pour directly into the drum or the detergent drawer.",
+          "@language": "en"
+        }
+      ]
     }
   },
   {
     "gtin": "08032089000178",
     "name": "Shampoo Delicato all'Avena 250ml",
     "brand": "GS1 Italy Sapori",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000178.jpg",
     "description": "Shampoo delicato per uso frequente con estratto di avena biologica, senza siliconi.",
     "sectorId": "fmcg",
     "sectorName": "Largo consumo",
@@ -2959,7 +3503,7 @@
         "@type": "Brand",
         "name": "GS1 Italy Sapori"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000178.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -2998,7 +3542,7 @@
     "gtin": "08032089000185",
     "name": "Biscotti Frollini al Cacao 350g",
     "brand": "GS1 Italy Sapori",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000185.jpg",
     "description": "Biscotti frollini con cacao, ricetta tradizionale, ideali per la colazione.",
     "sectorId": "fmcg",
     "sectorName": "Largo consumo",
@@ -3071,7 +3615,7 @@
     "gtin": "08032089000192",
     "name": "Birra Artigianale IPA 33cl",
     "brand": "GS1 Italy Sapori",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000192.jpg",
     "description": "Birra artigianale non filtrata stile IPA, luppolatura intensa e note agrumate, rifermentata in bottiglia.",
     "sectorId": "fmcg",
     "sectorName": "Largo consumo",
@@ -3305,7 +3849,7 @@
         },
         "gs1:globalLocationNumber": "8032089000192"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000192.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -3325,14 +3869,86 @@
         "@type": "AggregateRating",
         "ratingValue": 4.7,
         "reviewCount": 92
-      }
+      },
+      "gs1:foodBeverageTobaccoIngredient": [
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 1,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Acqua",
+              "@language": "it"
+            },
+            {
+              "@value": "Water",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 2,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Malto d'orzo",
+              "@language": "it"
+            },
+            {
+              "@value": "Barley malt",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 3,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Luppolo",
+              "@language": "it"
+            },
+            {
+              "@value": "Hops",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 4,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Lievito",
+              "@language": "it"
+            },
+            {
+              "@value": "Yeast",
+              "@language": "en"
+            }
+          ]
+        }
+      ],
+      "gs1:allergen": [
+        {
+          "@type": "gs1:AllergenDetails",
+          "gs1:allergenType": {
+            "@id": "gs1:AllergenTypeCode-GLUTEN",
+            "rdfs:label": "Glutine"
+          },
+          "gs1:allergenLevelOfContainmentCode": {
+            "@id": "gs1:LevelOfContainmentCode-CONTAINS",
+            "rdfs:label": "Contiene"
+          }
+        }
+      ],
+      "gs1:gpcCategoryCode": "10000163"
     }
   },
   {
     "gtin": "08032089000208",
     "name": "Crocchette per Cani Adulti Pollo e Riso 3kg",
     "brand": "GS1 Italy Sapori",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000208.jpg",
     "description": "Alimento completo per cani adulti a base di pollo fresco e riso, senza cereali OGM.",
     "sectorId": "fmcg",
     "sectorName": "Largo consumo",
@@ -3398,7 +4014,7 @@
         "@type": "Brand",
         "name": "GS1 Italy Sapori"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000208.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -3450,7 +4066,7 @@
     "gtin": "08032089000215",
     "name": "Carta Igienica Super Soffice 12 rotoli",
     "brand": "GS1 Italy Sapori",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000215.jpg",
     "description": "Carta igienica a 3 veli, super soffice e resistente, confezione da 12 rotoli.",
     "sectorId": "fmcg",
     "sectorName": "Largo consumo",
@@ -3509,7 +4125,7 @@
     "gtin": "08032089000222",
     "name": "Caffè Solubile Liofilizzato 200g",
     "brand": "GS1 Italy Sapori",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000222.jpg",
     "description": "Caffè solubile liofilizzato 100% Arabica, gusto intenso, si scioglie istantaneamente.",
     "sectorId": "fmcg",
     "sectorName": "Largo consumo",
@@ -3587,7 +4203,7 @@
         "@type": "Brand",
         "name": "GS1 Italy Sapori"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000222.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -3626,7 +4242,7 @@
     "gtin": "08032089000239",
     "name": "Olio Extravergine di Oliva Professionale 5L",
     "brand": "GS1 Italy Professional",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000239.jpg",
     "description": "Olio extravergine di oliva 100% italiano, spremuto a freddo, tanica da 5 litri per uso professionale HORECA.",
     "sectorId": "foodservice",
     "sectorName": "Foodservice",
@@ -3863,7 +4479,7 @@
         },
         "gs1:globalLocationNumber": "8032089000239"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000239.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -3896,14 +4512,41 @@
         "@type": "AggregateRating",
         "ratingValue": 4.8,
         "reviewCount": 61
-      }
+      },
+      "gs1:foodBeverageTobaccoIngredient": [
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 1,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Olio extravergine di oliva 100% italiano",
+              "@language": "it"
+            },
+            {
+              "@value": "100% Italian extra virgin olive oil",
+              "@language": "en"
+            }
+          ]
+        }
+      ],
+      "gs1:gpcCategoryCode": "10000185",
+      "gs1:regulatedProductName": [
+        {
+          "@value": "Olio extravergine di oliva",
+          "@language": "it"
+        },
+        {
+          "@value": "Extra virgin olive oil",
+          "@language": "en"
+        }
+      ]
     }
   },
   {
     "gtin": "08032089000246",
     "name": "Passata di Pomodoro Bag-in-Box 10kg",
     "brand": "GS1 Italy Professional",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000246.jpg",
     "description": "Passata di pomodoro 100% italiano in confezione Bag-in-Box da 10kg, ideale per ristorazione e pizzerie.",
     "sectorId": "foodservice",
     "sectorName": "Foodservice",
@@ -4138,7 +4781,7 @@
         },
         "gs1:globalLocationNumber": "8032089000246"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000246.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -4158,14 +4801,45 @@
         "@type": "AggregateRating",
         "ratingValue": 4.6,
         "reviewCount": 47
-      }
+      },
+      "gs1:foodBeverageTobaccoIngredient": [
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 1,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Pomodoro 100% italiano",
+              "@language": "it"
+            },
+            {
+              "@value": "100% Italian tomato",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 2,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Sale",
+              "@language": "it"
+            },
+            {
+              "@value": "Salt",
+              "@language": "en"
+            }
+          ]
+        }
+      ],
+      "gs1:gpcCategoryCode": "10000209"
     }
   },
   {
     "gtin": "08032089000253",
     "name": "Cialde Caffè Espresso Bar 150pz",
     "brand": "GS1 Italy Professional",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000253.jpg",
     "description": "Cialde ESE monodose per macchine da bar, miscela 100% Arabica, confezione professionale da 150 pezzi.",
     "sectorId": "foodservice",
     "sectorName": "Foodservice",
@@ -4244,7 +4918,7 @@
         "@type": "Brand",
         "name": "GS1 Italy Professional"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000253.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -4283,7 +4957,7 @@
     "gtin": "08032089000260",
     "name": "Patate Fritte Surgelate Professionali 2.5kg",
     "brand": "GS1 Italy Professional",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000260.jpg",
     "description": "Patate fritte pretagliate surgelate, pronte per friggitrice, formato professionale per ristorazione.",
     "sectorId": "foodservice",
     "sectorName": "Foodservice",
@@ -4362,7 +5036,7 @@
         "@type": "Brand",
         "name": "GS1 Italy Professional"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000260.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -4401,7 +5075,7 @@
     "gtin": "08032089000277",
     "name": "Detergente Sgrassante Cucine Professionali 5L",
     "brand": "GS1 Italy Professional",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000277.jpg",
     "description": "Detergente sgrassante professionale per superfici e attrezzature di cucina, alta concentrazione.",
     "sectorId": "foodservice",
     "sectorName": "Foodservice",
@@ -4461,7 +5135,7 @@
     "gtin": "08032089000284",
     "name": "Sciroppo per Bibite Cola Professionale 5L",
     "brand": "GS1 Italy Professional",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000284.jpg",
     "description": "Sciroppo concentrato gusto cola per post-mix, formato professionale per bar e locali.",
     "sectorId": "foodservice",
     "sectorName": "Foodservice",
@@ -4521,7 +5195,7 @@
     "gtin": "08032089000291",
     "name": "Aceto Balsamico di Modena IGP 5L Tanica",
     "brand": "GS1 Italy Professional",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000291.jpg",
     "description": "Aceto Balsamico di Modena IGP in tanica da 5 litri, formato professionale per ristorazione.",
     "sectorId": "foodservice",
     "sectorName": "Foodservice",
@@ -4745,7 +5419,7 @@
         },
         "gs1:globalLocationNumber": "8032089000291"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000291.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -4765,14 +5439,68 @@
         "@type": "AggregateRating",
         "ratingValue": 4.7,
         "reviewCount": 33
-      }
+      },
+      "gs1:foodBeverageTobaccoIngredient": [
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 1,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Aceto di vino",
+              "@language": "it"
+            },
+            {
+              "@value": "Wine vinegar",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 2,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Mosto d'uva cotto e/o concentrato",
+              "@language": "it"
+            },
+            {
+              "@value": "Cooked and/or concentrated grape must",
+              "@language": "en"
+            }
+          ]
+        }
+      ],
+      "gs1:allergen": [
+        {
+          "@type": "gs1:AllergenDetails",
+          "gs1:allergenType": {
+            "@id": "gs1:AllergenTypeCode-SULPHITES",
+            "rdfs:label": "Anidride solforosa e solfiti"
+          },
+          "gs1:allergenLevelOfContainmentCode": {
+            "@id": "gs1:LevelOfContainmentCode-CONTAINS",
+            "rdfs:label": "Contiene"
+          }
+        }
+      ],
+      "gs1:gpcCategoryCode": "10000278",
+      "gs1:regulatedProductName": [
+        {
+          "@value": "Aceto Balsamico di Modena IGP",
+          "@language": "it"
+        },
+        {
+          "@value": "Balsamic Vinegar of Modena PGI",
+          "@language": "en"
+        }
+      ]
     }
   },
   {
     "gtin": "08032089000307",
     "name": "Farina per Pizza Tipo 0 Professionale 25kg",
     "brand": "GS1 Italy Professional",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000307.jpg",
     "description": "Farina tipo 0 macinata a pietra, forza W300, ideale per pizza napoletana a lunga lievitazione.",
     "sectorId": "foodservice",
     "sectorName": "Foodservice",
@@ -4851,7 +5579,7 @@
         "@type": "Brand",
         "name": "GS1 Italy Professional"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000307.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -4890,7 +5618,7 @@
     "gtin": "08032089000314",
     "name": "Cerotti Impermeabili Assortiti 40pz",
     "brand": "GS1 Italy MedCare",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000314.jpg",
     "description": "Cerotti impermeabili in tessuto anti-strappo, formati assortiti, resistenti all'acqua.",
     "sectorId": "healthcare",
     "sectorName": "Sanità",
@@ -5103,7 +5831,7 @@
         },
         "gs1:globalLocationNumber": "8032089000314"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000314.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -5150,6 +5878,23 @@
           "name": "UDI Issuing Agency",
           "value": "GS1"
         }
+      ],
+      "gs1:gpcCategoryCode": "53150500",
+      "gs1:countryOfOrigin": [
+        {
+          "@type": "gs1:Country",
+          "countryCode": "IT"
+        }
+      ],
+      "gs1:consumerUsageInstructions": [
+        {
+          "@value": "Applicare su cute pulita e asciutta, sostituire almeno ogni 24 ore o se bagnato/sporco. Non applicare su ferite infette.",
+          "@language": "it"
+        },
+        {
+          "@value": "Apply to clean, dry skin, replace at least every 24 hours or if wet/soiled. Do not apply to infected wounds.",
+          "@language": "en"
+        }
       ]
     }
   },
@@ -5157,7 +5902,7 @@
     "gtin": "08032089000321",
     "name": "Gel Igienizzante Mani 500ml",
     "brand": "GS1 Italy MedCare",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000321.jpg",
     "description": "Gel igienizzante mani a base alcolica (70%), azione battericida, senza risciacquo.",
     "sectorId": "healthcare",
     "sectorName": "Sanità",
@@ -5221,7 +5966,7 @@
         "@type": "Brand",
         "name": "GS1 Italy MedCare"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000321.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -5274,7 +6019,7 @@
     "gtin": "08032089000338",
     "name": "Misuratore di Pressione Digitale da Braccio",
     "brand": "GS1 Italy MedCare",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000338.jpg",
     "description": "Misuratore di pressione automatico da braccio con rilevamento aritmia, memoria per 2 utenti, validato clinicamente.",
     "sectorId": "healthcare",
     "sectorName": "Sanità",
@@ -5487,7 +6232,7 @@
         },
         "gs1:globalLocationNumber": "8032089000338"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000338.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -5534,6 +6279,23 @@
           "name": "UDI Issuing Agency",
           "value": "GS1"
         }
+      ],
+      "gs1:gpcCategoryCode": "47121700",
+      "gs1:countryOfOrigin": [
+        {
+          "@type": "gs1:Country",
+          "countryCode": "IT"
+        }
+      ],
+      "gs1:consumerUsageInstructions": [
+        {
+          "@value": "Applicare il bracciale 2 cm sopra il gomito, rimanere seduti e immobili durante la misurazione, ripetere a distanza di 1-2 minuti in caso di dubbio.",
+          "@language": "it"
+        },
+        {
+          "@value": "Fit the cuff 2 cm above the elbow, sit still during measurement, repeat after 1-2 minutes if the reading is uncertain.",
+          "@language": "en"
+        }
       ]
     }
   },
@@ -5541,7 +6303,7 @@
     "gtin": "08032089000345",
     "name": "Guanti in Nitrile Monouso Taglia M 100pz",
     "brand": "GS1 Italy MedCare",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000345.jpg",
     "description": "Guanti monouso in nitrile senza polvere, senza lattice, taglia M, per uso medico e professionale.",
     "sectorId": "healthcare",
     "sectorName": "Sanità",
@@ -5697,7 +6459,7 @@
         },
         "gs1:globalLocationNumber": "8032089000345"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000345.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -5731,6 +6493,49 @@
           "name": "UDI Issuing Agency",
           "value": "GS1"
         }
+      ],
+      "gs1:gpcCategoryCode": "53131600",
+      "gs1:countryOfOrigin": [
+        {
+          "@type": "gs1:Country",
+          "countryCode": "MY"
+        }
+      ],
+      "gs1:regulatedProductName": [
+        {
+          "@value": "Guanto medicale monouso in nitrile",
+          "@language": "it"
+        },
+        {
+          "@value": "Single-use medical examination glove, nitrile",
+          "@language": "en"
+        }
+      ],
+      "gs1:consumerUsageInstructions": [
+        {
+          "@value": "Dispositivo monouso: indossare su mani pulite e asciutte, smaltire dopo ogni utilizzo. Non idoneo a persone allergiche al nitrile.",
+          "@language": "it"
+        },
+        {
+          "@value": "Single-use device: put on clean, dry hands, dispose of after each use. Not suitable for people allergic to nitrile.",
+          "@language": "en"
+        }
+      ],
+      "gs1:textileMaterial": [
+        {
+          "@type": "gs1:TextileMaterialDetails",
+          "gs1:textileMaterialDescription": [
+            {
+              "@value": "Nitrile sintetico, senza lattice e senza polvere",
+              "@language": "it"
+            },
+            {
+              "@value": "Synthetic nitrile, latex-free and powder-free",
+              "@language": "en"
+            }
+          ],
+          "gs1:textileMaterialPercentage": 100
+        }
       ]
     }
   },
@@ -5738,7 +6543,7 @@
     "gtin": "08032089000352",
     "name": "Saturimetro da Dito Pulsossimetro",
     "brand": "GS1 Italy MedCare",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000352.jpg",
     "description": "Pulsossimetro da dito per la misurazione di saturazione di ossigeno e frequenza cardiaca, display OLED.",
     "sectorId": "healthcare",
     "sectorName": "Sanità",
@@ -5802,7 +6607,7 @@
         "@type": "Brand",
         "name": "GS1 Italy MedCare"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000352.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -5855,7 +6660,7 @@
     "gtin": "08032089000369",
     "name": "Siringhe Monouso 5ml 100pz",
     "brand": "GS1 Italy MedCare",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000369.jpg",
     "description": "Siringhe monouso sterili da 5ml con ago, per uso medico professionale.",
     "sectorId": "healthcare",
     "sectorName": "Sanità",
@@ -5914,7 +6719,7 @@
     "gtin": "08032089000376",
     "name": "Soluzione Fisiologica Sterile 20 Fiale",
     "brand": "GS1 Italy MedCare",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000376.jpg",
     "description": "Soluzione fisiologica sterile 0.9% in fiale monodose da 5ml, per uso medico e igiene nasale.",
     "sectorId": "healthcare",
     "sectorName": "Sanità",
@@ -5973,7 +6778,7 @@
     "gtin": "08032089000383",
     "name": "Termometro a Infrarossi da Fronte Professionale",
     "brand": "GS1 Italy MedCare",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000383.jpg",
     "description": "Termometro a infrarossi per la fronte ad uso professionale, lettura in 1 secondo, per ambulatori e strutture sanitarie.",
     "sectorId": "healthcare",
     "sectorName": "Sanità",
@@ -6037,7 +6842,7 @@
         "@type": "Brand",
         "name": "GS1 Italy MedCare"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000383.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -6090,7 +6895,7 @@
     "gtin": "08032089000390",
     "name": "Bilancia Pesapersone Digitale con Analisi Corporea",
     "brand": "GS1 Italy MedCare",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000390.jpg",
     "description": "Bilancia digitale con analisi di massa grassa, massa muscolare e idratazione, connessione app via Bluetooth.",
     "sectorId": "healthcare",
     "sectorName": "Sanità",
@@ -6156,7 +6961,7 @@
         "@type": "Brand",
         "name": "GS1 Italy MedCare"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000390.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -6222,7 +7027,7 @@
     "gtin": "08032089000406",
     "name": "Felpa con Cappuccio Unisex Cotone Biologico",
     "brand": "GS1 Italy Wear",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000406.jpg",
     "description": "Felpa con cappuccio in cotone biologico certificato, fit unisex, tasca marsupio frontale.",
     "sectorId": "apparel",
     "sectorName": "Abbigliamento",
@@ -6377,6 +7182,20 @@
             }
           ],
           "gs1:textileMaterialPercentage": 80
+        },
+        {
+          "@type": "gs1:TextileMaterialDetails",
+          "gs1:textileMaterialDescription": [
+            {
+              "@value": "Poliestere riciclato (felpato interno)",
+              "@language": "it"
+            },
+            {
+              "@value": "Recycled polyester (inner fleece)",
+              "@language": "en"
+            }
+          ],
+          "gs1:textileMaterialPercentage": 20
         }
       ],
       "gs1:consumerUsageInstructions": [
@@ -6418,7 +7237,7 @@
         },
         "gs1:globalLocationNumber": "8032089000406"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000406.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -6451,14 +7270,21 @@
         "@type": "AggregateRating",
         "ratingValue": 4.6,
         "reviewCount": 121
-      }
+      },
+      "gs1:gpcCategoryCode": "53100000",
+      "gs1:countryOfOrigin": [
+        {
+          "@type": "gs1:Country",
+          "countryCode": "IT"
+        }
+      ]
     }
   },
   {
     "gtin": "08032089000413",
     "name": "Jeans Slim Fit Denim Sostenibile",
     "brand": "GS1 Italy Wear",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000413.jpg",
     "description": "Jeans slim fit in denim realizzato con processi a basso consumo d'acqua, cotone da agricoltura sostenibile.",
     "sectorId": "apparel",
     "sectorName": "Abbigliamento",
@@ -6558,6 +7384,20 @@
             }
           ],
           "gs1:textileMaterialPercentage": 98
+        },
+        {
+          "@type": "gs1:TextileMaterialDetails",
+          "gs1:textileMaterialDescription": [
+            {
+              "@value": "Elastan",
+              "@language": "it"
+            },
+            {
+              "@value": "Elastane",
+              "@language": "en"
+            }
+          ],
+          "gs1:textileMaterialPercentage": 2
         }
       ],
       "gs1:consumerUsageInstructions": [
@@ -6599,7 +7439,7 @@
         },
         "gs1:globalLocationNumber": "8032089000413"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000413.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -6632,14 +7472,21 @@
         "@type": "AggregateRating",
         "ratingValue": 4.5,
         "reviewCount": 203
-      }
+      },
+      "gs1:gpcCategoryCode": "53101500",
+      "gs1:countryOfOrigin": [
+        {
+          "@type": "gs1:Country",
+          "countryCode": "IT"
+        }
+      ]
     }
   },
   {
     "gtin": "08032089000420",
     "name": "Calzini Sportivi Tecnici Confezione da 3",
     "brand": "GS1 Italy Wear",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000420.jpg",
     "description": "Calzini sportivi traspiranti con tecnologia anti-odore, confezione da 3 paia.",
     "sectorId": "apparel",
     "sectorName": "Abbigliamento",
@@ -6705,7 +7552,7 @@
         "@type": "Brand",
         "name": "GS1 Italy Wear"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000420.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -6744,7 +7591,7 @@
     "gtin": "08032089000437",
     "name": "Giacca Impermeabile Softshell",
     "brand": "GS1 Italy Wear",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000437.jpg",
     "description": "Giacca softshell impermeabile e traspirante, ideale per attività outdoor in ogni stagione.",
     "sectorId": "apparel",
     "sectorName": "Abbigliamento",
@@ -6810,7 +7657,7 @@
         "@type": "Brand",
         "name": "GS1 Italy Wear"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000437.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -6849,7 +7696,7 @@
     "gtin": "08032089000444",
     "name": "Cappello da Baseball Regolabile",
     "brand": "GS1 Italy Wear",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000444.jpg",
     "description": "Cappello da baseball in cotone con chiusura regolabile, stile urban casual.",
     "sectorId": "apparel",
     "sectorName": "Abbigliamento",
@@ -6910,7 +7757,7 @@
     "gtin": "08032089000451",
     "name": "Scarpe da Ginnastica Running Leggere",
     "brand": "GS1 Italy Wear",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000451.jpg",
     "description": "Scarpe da running leggere con suola in EVA ammortizzante e tomaia traspirante in mesh.",
     "sectorId": "apparel",
     "sectorName": "Abbigliamento",
@@ -7065,6 +7912,20 @@
             }
           ],
           "gs1:textileMaterialPercentage": 60
+        },
+        {
+          "@type": "gs1:TextileMaterialDetails",
+          "gs1:textileMaterialDescription": [
+            {
+              "@value": "Suola in gomma EVA e tomaia in poliestere riciclato",
+              "@language": "it"
+            },
+            {
+              "@value": "EVA rubber sole and recycled polyester upper",
+              "@language": "en"
+            }
+          ],
+          "gs1:textileMaterialPercentage": 40
         }
       ],
       "gs1:consumerUsageInstructions": [
@@ -7106,7 +7967,7 @@
         },
         "gs1:globalLocationNumber": "8032089000451"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000451.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -7139,14 +8000,21 @@
         "@type": "AggregateRating",
         "ratingValue": 4.7,
         "reviewCount": 289
-      }
+      },
+      "gs1:gpcCategoryCode": "53131900",
+      "gs1:countryOfOrigin": [
+        {
+          "@type": "gs1:Country",
+          "countryCode": "IT"
+        }
+      ]
     }
   },
   {
     "gtin": "08032089000468",
     "name": "Cintura in Pelle Vera Artigianale",
     "brand": "GS1 Italy Wear",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000468.jpg",
     "description": "Cintura artigianale in pelle vera conciata al vegetale, fibbia in metallo anticato.",
     "sectorId": "apparel",
     "sectorName": "Abbigliamento",
@@ -7212,7 +8080,7 @@
         "@type": "Brand",
         "name": "GS1 Italy Wear"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000468.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -7251,7 +8119,7 @@
     "gtin": "08032089000475",
     "name": "Guanti Invernali in Lana Merino",
     "brand": "GS1 Italy Wear",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000475.jpg",
     "description": "Guanti invernali in lana merino, caldi e traspiranti, touchscreen compatibili.",
     "sectorId": "apparel",
     "sectorName": "Abbigliamento",
@@ -7312,7 +8180,7 @@
     "gtin": "08032089000482",
     "name": "Filetti di Pollo Fresco Italiano 500g",
     "brand": "GS1 Italy Fresh",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000482.jpg",
     "description": "Filetti di petto di pollo fresco, allevamento italiano a terra, confezionati in atmosfera protettiva.",
     "sectorId": "fresh-foods",
     "sectorName": "Alimenti freschi",
@@ -7547,7 +8415,7 @@
         },
         "gs1:globalLocationNumber": "8032089000482"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000482.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -7567,14 +8435,41 @@
         "@type": "AggregateRating",
         "ratingValue": 4.5,
         "reviewCount": 143
-      }
+      },
+      "gs1:foodBeverageTobaccoIngredient": [
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 1,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Petto di pollo (100%), allevamento italiano a terra",
+              "@language": "it"
+            },
+            {
+              "@value": "Chicken breast (100%), Italian free-range farming",
+              "@language": "en"
+            }
+          ]
+        }
+      ],
+      "gs1:gpcCategoryCode": "10000410",
+      "gs1:regulatedProductName": [
+        {
+          "@value": "Petto di pollo fresco",
+          "@language": "it"
+        },
+        {
+          "@value": "Fresh chicken breast",
+          "@language": "en"
+        }
+      ]
     }
   },
   {
     "gtin": "08032089000499",
     "name": "Yogurt Bianco Intero da Bere 1L",
     "brand": "GS1 Italy Fresh",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000499.jpg",
     "description": "Yogurt bianco intero da bere, prodotto con latte fresco di malga, senza conservanti.",
     "sectorId": "fresh-foods",
     "sectorName": "Alimenti freschi",
@@ -7753,7 +8648,7 @@
         },
         "gs1:globalLocationNumber": "8032089000499"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000499.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -7773,14 +8668,58 @@
         "@type": "AggregateRating",
         "ratingValue": 4.5,
         "reviewCount": 98
-      }
+      },
+      "gs1:foodBeverageTobaccoIngredient": [
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 1,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Latte fresco intero pastorizzato",
+              "@language": "it"
+            },
+            {
+              "@value": "Fresh pasteurised whole milk",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 2,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Fermenti lattici vivi",
+              "@language": "it"
+            },
+            {
+              "@value": "Live lactic ferments",
+              "@language": "en"
+            }
+          ]
+        }
+      ],
+      "gs1:allergen": [
+        {
+          "@type": "gs1:AllergenDetails",
+          "gs1:allergenType": {
+            "@id": "gs1:AllergenTypeCode-MILK",
+            "rdfs:label": "Latte"
+          },
+          "gs1:allergenLevelOfContainmentCode": {
+            "@id": "gs1:LevelOfContainmentCode-CONTAINS",
+            "rdfs:label": "Contiene"
+          }
+        }
+      ],
+      "gs1:gpcCategoryCode": "10000452"
     }
   },
   {
     "gtin": "08032089000505",
     "name": "Mozzarella di Bufala Campana DOP 250g",
     "brand": "GS1 Italy Fresh",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000505.jpg",
     "description": "Mozzarella di Bufala Campana DOP, prodotta con latte 100% di bufala campana, in conserva liquida.",
     "sectorId": "fresh-foods",
     "sectorName": "Alimenti freschi",
@@ -8060,7 +8999,7 @@
         },
         "gs1:globalLocationNumber": "8032089000505"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000505.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -8093,14 +9032,96 @@
         "@type": "AggregateRating",
         "ratingValue": 4.8,
         "reviewCount": 176
-      }
+      },
+      "gs1:foodBeverageTobaccoIngredient": [
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 1,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Latte di bufala campana (100%)",
+              "@language": "it"
+            },
+            {
+              "@value": "Campania buffalo milk (100%)",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 2,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Fermenti lattici",
+              "@language": "it"
+            },
+            {
+              "@value": "Lactic ferments",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 3,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Caglio",
+              "@language": "it"
+            },
+            {
+              "@value": "Rennet",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 4,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Sale",
+              "@language": "it"
+            },
+            {
+              "@value": "Salt",
+              "@language": "en"
+            }
+          ]
+        }
+      ],
+      "gs1:allergen": [
+        {
+          "@type": "gs1:AllergenDetails",
+          "gs1:allergenType": {
+            "@id": "gs1:AllergenTypeCode-MILK",
+            "rdfs:label": "Latte"
+          },
+          "gs1:allergenLevelOfContainmentCode": {
+            "@id": "gs1:LevelOfContainmentCode-CONTAINS",
+            "rdfs:label": "Contiene"
+          }
+        }
+      ],
+      "gs1:gpcCategoryCode": "10000476",
+      "gs1:regulatedProductName": [
+        {
+          "@value": "Mozzarella di Bufala Campana DOP",
+          "@language": "it"
+        },
+        {
+          "@value": "Mozzarella di Bufala Campana PDO",
+          "@language": "en"
+        }
+      ]
     }
   },
   {
     "gtin": "08032089000512",
     "name": "Uova Fresche da Allevamento a Terra 12pz",
     "brand": "GS1 Italy Fresh",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000512.jpg",
     "description": "Uova fresche di categoria A, da galline allevate a terra, confezione da 12 uova.",
     "sectorId": "fresh-foods",
     "sectorName": "Alimenti freschi",
@@ -8178,7 +9199,7 @@
         "@type": "Brand",
         "name": "GS1 Italy Fresh"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000512.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -8217,7 +9238,7 @@
     "gtin": "08032089000529",
     "name": "Prosciutto Crudo di Parma DOP Affettato 100g",
     "brand": "GS1 Italy Fresh",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000529.jpg",
     "description": "Prosciutto Crudo di Parma DOP stagionato 18 mesi, affettato e confezionato in atmosfera protettiva.",
     "sectorId": "fresh-foods",
     "sectorName": "Alimenti freschi",
@@ -8295,7 +9316,7 @@
         "@type": "Brand",
         "name": "GS1 Italy Fresh"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000529.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -8334,7 +9355,7 @@
     "gtin": "08032089000536",
     "name": "Banane Fairtrade al kg",
     "brand": "GS1 Italy Fresh",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000536.jpg",
     "description": "Banane Fairtrade provenienti da filiera equosolidale certificata, vendute a peso.",
     "sectorId": "fresh-foods",
     "sectorName": "Alimenti freschi",
@@ -8408,7 +9429,7 @@
     "gtin": "08032089000543",
     "name": "Pane Fresco di Semola Rimacinata 500g",
     "brand": "GS1 Italy Fresh",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000543.jpg",
     "description": "Pane fresco di semola rimacinata di grano duro, cotto a legna, sfornato quotidianamente.",
     "sectorId": "fresh-foods",
     "sectorName": "Alimenti freschi",
@@ -8481,7 +9502,7 @@
     "gtin": "08032089000550",
     "name": "Salmone Affumicato Norvegese 200g",
     "brand": "GS1 Italy Fresh",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000550.jpg",
     "description": "Salmone affumicato norvegese, allevato in acque controllate, affettato sottile e confezionato in ATM.",
     "sectorId": "fresh-foods",
     "sectorName": "Alimenti freschi",
@@ -8662,7 +9683,7 @@
         },
         "gs1:globalLocationNumber": "8032089000550"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000550.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -8695,14 +9716,72 @@
         "@type": "AggregateRating",
         "ratingValue": 4.6,
         "reviewCount": 138
-      }
+      },
+      "gs1:foodBeverageTobaccoIngredient": [
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 1,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Salmone (100%)",
+              "@language": "it"
+            },
+            {
+              "@value": "Salmon (100%)",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 2,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Sale",
+              "@language": "it"
+            },
+            {
+              "@value": "Salt",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
+          "gs1:ingredientSequence": 3,
+          "gs1:ingredientStatement": [
+            {
+              "@value": "Aroma di affumicatura",
+              "@language": "it"
+            },
+            {
+              "@value": "Smoke flavouring",
+              "@language": "en"
+            }
+          ]
+        }
+      ],
+      "gs1:allergen": [
+        {
+          "@type": "gs1:AllergenDetails",
+          "gs1:allergenType": {
+            "@id": "gs1:AllergenTypeCode-FISH",
+            "rdfs:label": "Pesce"
+          },
+          "gs1:allergenLevelOfContainmentCode": {
+            "@id": "gs1:LevelOfContainmentCode-CONTAINS",
+            "rdfs:label": "Contiene"
+          }
+        }
+      ],
+      "gs1:gpcCategoryCode": "10000493"
     }
   },
   {
     "gtin": "08032089000567",
     "name": "Vernice Lavabile per Interni Bianca 14L",
     "brand": "GS1 Italy Build",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000567.jpg",
     "description": "Pittura lavabile per interni a base acrilica, alta coprenza, bassa emissione di COV.",
     "sectorId": "costruzioni",
     "sectorName": "Costruzioni",
@@ -8932,7 +10011,7 @@
         },
         "gs1:globalLocationNumber": "8032089000567"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000567.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -8965,14 +10044,41 @@
         "@type": "AggregateRating",
         "ratingValue": 4.5,
         "reviewCount": 88
-      }
+      },
+      "gs1:gpcCategoryCode": "48000000",
+      "gs1:countryOfOrigin": [
+        {
+          "@type": "gs1:Country",
+          "countryCode": "IT"
+        }
+      ],
+      "gs1:regulatedProductName": [
+        {
+          "@value": "Pittura murale lavabile per interni a base acquosa",
+          "@language": "it"
+        },
+        {
+          "@value": "Water-based washable interior wall paint",
+          "@language": "en"
+        }
+      ],
+      "gs1:consumerUsageInstructions": [
+        {
+          "@value": "Applicare su superficie pulita e asciutta con rullo o pennello, due mani incrociate, diluire massimo 5% con acqua alla prima mano.",
+          "@language": "it"
+        },
+        {
+          "@value": "Apply to a clean, dry surface with roller or brush, two coats applied crosswise, dilute the first coat up to 5% with water.",
+          "@language": "en"
+        }
+      ]
     }
   },
   {
     "gtin": "08032089000574",
     "name": "Isolante Termico in Lana di Roccia Pannelli",
     "brand": "GS1 Italy Build",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000574.jpg",
     "description": "Pannelli isolanti in lana di roccia per isolamento termico e acustico, conducibilità termica 0.035 W/mK.",
     "sectorId": "costruzioni",
     "sectorName": "Costruzioni",
@@ -9037,7 +10143,7 @@
         "@type": "Brand",
         "name": "GS1 Italy Build"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000574.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -9076,7 +10182,7 @@
     "gtin": "08032089000581",
     "name": "Trapano Avvitatore a Batteria 18V",
     "brand": "GS1 Italy Build",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000581.jpg",
     "description": "Trapano avvitatore professionale a batteria 18V con 2 batterie al litio, valigetta inclusa.",
     "sectorId": "costruzioni",
     "sectorName": "Costruzioni",
@@ -9250,7 +10356,7 @@
         },
         "gs1:globalLocationNumber": "8032089000581"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000581.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -9283,14 +10389,31 @@
         "@type": "AggregateRating",
         "ratingValue": 4.7,
         "reviewCount": 214
-      }
+      },
+      "gs1:gpcCategoryCode": "27110000",
+      "gs1:countryOfOrigin": [
+        {
+          "@type": "gs1:Country",
+          "countryCode": "IT"
+        }
+      ],
+      "gs1:consumerUsageInstructions": [
+        {
+          "@value": "Caricare completamente la batteria prima del primo utilizzo, indossare protezioni per gli occhi durante l'uso, non esporre a pioggia.",
+          "@language": "it"
+        },
+        {
+          "@value": "Fully charge the battery before first use, wear eye protection during use, do not expose to rain.",
+          "@language": "en"
+        }
+      ]
     }
   },
   {
     "gtin": "08032089000598",
     "name": "Malta Cementizia Premiscelata Sacco 25kg",
     "brand": "GS1 Italy Build",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000598.jpg",
     "description": "Malta cementizia premiscelata per murature, pronta all'uso con sola aggiunta di acqua.",
     "sectorId": "costruzioni",
     "sectorName": "Costruzioni",
@@ -9355,7 +10478,7 @@
         "@type": "Brand",
         "name": "GS1 Italy Build"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000598.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -9394,7 +10517,7 @@
     "gtin": "08032089000604",
     "name": "Guanti da Lavoro Antitaglio Livello 5",
     "brand": "GS1 Italy Build",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000604.jpg",
     "description": "Guanti da lavoro antitaglio livello 5, con rivestimento in nitrile per massima presa.",
     "sectorId": "costruzioni",
     "sectorName": "Costruzioni",
@@ -9453,7 +10576,7 @@
     "gtin": "08032089000611",
     "name": "Silicone Sanitario Trasparente Cartuccia 310ml",
     "brand": "GS1 Italy Build",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000611.jpg",
     "description": "Sigillante siliconico sanitario anti-muffa, trasparente, per sanitari e superfici in bagno e cucina.",
     "sectorId": "costruzioni",
     "sectorName": "Costruzioni",
@@ -9512,7 +10635,7 @@
     "gtin": "08032089000628",
     "name": "Profilo in Alluminio per Cartongesso 3m",
     "brand": "GS1 Italy Build",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000628.jpg",
     "description": "Profilo guida in lamiera di acciaio zincato per strutture in cartongesso, lunghezza 3 metri.",
     "sectorId": "costruzioni",
     "sectorName": "Costruzioni",
@@ -9577,7 +10700,7 @@
         "@type": "Brand",
         "name": "GS1 Italy Build"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000628.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -9616,7 +10739,7 @@
     "gtin": "08032089000635",
     "name": "Casco di Protezione Cantiere EN397",
     "brand": "GS1 Italy Build",
-    "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+    "image": "images/08032089000635.jpg",
     "description": "Casco di protezione per cantiere certificato EN397, regolabile, con bardatura a cricchetto.",
     "sectorId": "costruzioni",
     "sectorName": "Costruzioni",
@@ -9843,7 +10966,7 @@
         },
         "gs1:globalLocationNumber": "8032089000635"
       },
-      "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M35%2046l25-13%2025%2013v28l-25%2013-25-13z%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M35%2046l25%2013%2025-13M60%2059v28%22%20fill%3D%22none%22%20stroke%3D%22%23B1B3B3%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "image": "images/08032089000635.jpg",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -9863,7 +10986,34 @@
         "@type": "AggregateRating",
         "ratingValue": 4.6,
         "reviewCount": 102
-      }
+      },
+      "gs1:gpcCategoryCode": "53040000",
+      "gs1:countryOfOrigin": [
+        {
+          "@type": "gs1:Country",
+          "countryCode": "IT"
+        }
+      ],
+      "gs1:regulatedProductName": [
+        {
+          "@value": "Elmetto di protezione per l'industria, DPI Categoria II",
+          "@language": "it"
+        },
+        {
+          "@value": "Industrial safety helmet, PPE Category II",
+          "@language": "en"
+        }
+      ],
+      "gs1:consumerUsageInstructions": [
+        {
+          "@value": "Regolare la bardatura alla circonferenza della testa prima dell'uso, sostituire dopo un impatto anche se non visibilmente danneggiato.",
+          "@language": "it"
+        },
+        {
+          "@value": "Adjust the harness to head circumference before use, replace after any impact even without visible damage.",
+          "@language": "en"
+        }
+      ]
     }
   }
 ]
