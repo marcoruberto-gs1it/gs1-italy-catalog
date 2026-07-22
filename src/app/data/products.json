@@ -1,7 +1,7 @@
 [
   {
     "gtin": "08032089000017",
-    "name": "Le conserve della nonna Confettura Fragola light",
+    "name": "GS1 Italy Sapori Confettura Fragola light",
     "brand": "GS1 Italy Sapori",
     "image": "https://assets.core.gs1it.org/images/7603330716851311642_md_fast.png",
     "description": "Le nostre confetture Light nascono dalla frutta migliore e da ricette semplici, come fatte in casa. Zero edulcoranti and 50% di zuccheri in meno per esaltare il gusto autentico della frutta.",
@@ -14,7 +14,7 @@
     "links": [
       {
         "linkType": "gs1:recipe",
-        "url": "https://www.leconservedellanonna.it",
+        "url": "https://www.gs1italy-sapori.it",
         "label": "Scopri le Ricette"
       }
     ],
@@ -51,11 +51,11 @@
       "gs1:gtin": "08032089000017",
       "gs1:productName": [
         {
-          "@value": "Le conserve della nonna Confettura Fragola light 235g",
+          "@value": "GS1 Italy Sapori Confettura Fragola light 235g",
           "@language": "it"
         },
         {
-          "@value": "Grandma's Preserves Strawberry Jam Light 235g",
+          "@value": "GS1 Italy Sapori Strawberry Jam Light 235g",
           "@language": "en"
         }
       ],
@@ -168,7 +168,7 @@
           "countryCode": "IT"
         }
       ],
-      "name": "Le conserve della nonna Confettura Fragola light 235g",
+      "name": "GS1 Italy Sapori Confettura Fragola light 235g",
       "description": "Confettura extra di fragole a ridotto contenuto di zuccheri",
       "gtin13": "8032089000017",
       "brand": {
@@ -362,7 +362,7 @@
     "links": [
       {
         "linkType": "gs1:recipe",
-        "url": "https://www.barilla.it",
+        "url": "https://www.gs1italy-sapori.it",
         "label": "Scopri le Ricette"
       }
     ],

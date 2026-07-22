@@ -23,7 +23,7 @@ export interface ProductTranslationEn {
 
 export const PRODUCT_TRANSLATIONS_EN: Record<string, ProductTranslationEn> = {
   '08032089000017': {
-    name: "Grandma's Preserves Strawberry Jam Light",
+    name: 'GS1 Italy Sapori Strawberry Jam Light',
     description:
       'Our Light jams are made from the finest fruit and simple recipes, just like homemade. Zero sweeteners and 50% less sugar to bring out the authentic taste of the fruit.',
     food: {
