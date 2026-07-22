@@ -231,15 +231,6 @@
         "ratingValue": 4.6,
         "reviewCount": 128
       },
-      "nutrition": {
-        "@type": "NutritionInformation",
-        "calories": "91 kcal / 383 kJ",
-        "fatContent": "0 g",
-        "carbohydrateContent": "22 g",
-        "sugarContent": "20 g",
-        "proteinContent": "0.5 g",
-        "sodiumContent": "0 g"
-      },
       "gs1:foodBeverageTobaccoIngredient": [
         {
           "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
@@ -365,7 +356,55 @@
             "rdfs:label": "Può contenere"
           }
         }
-      ]
+      ],
+      "gs1:energyPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "91",
+          "@type": "xsd:float"
+        },
+        "unitCode": "E14"
+      },
+      "gs1:fatPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:carbohydratesPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "22",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sugarsPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "20",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:proteinPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0.5",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sodiumPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      }
     },
     "environmentalImpact": {
       "co2e": "0.8 kg CO₂e / kg prodotto",
@@ -684,15 +723,6 @@
         "ratingValue": 4.3,
         "reviewCount": 76
       },
-      "nutrition": {
-        "@type": "NutritionInformation",
-        "calories": "358 kcal / 1518 kJ",
-        "fatContent": "1.5 g",
-        "carbohydrateContent": "79 g",
-        "sugarContent": "< 0.5 g",
-        "proteinContent": "6.5 g",
-        "sodiumContent": "< 0.01 g"
-      },
       "gs1:foodBeverageTobaccoIngredient": [
         {
           "@type": "gs1:FoodBeverageTobaccoIngredientDetails",
@@ -777,7 +807,55 @@
             "rdfs:label": "Non contiene"
           }
         }
-      ]
+      ],
+      "gs1:energyPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "358",
+          "@type": "xsd:float"
+        },
+        "unitCode": "E14"
+      },
+      "gs1:fatPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "1.5",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:carbohydratesPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "79",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sugarsPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0.5",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:proteinPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "6.5",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sodiumPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0.01",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      }
     },
     "environmentalImpact": {
       "co2e": "1.1 kg CO₂e / kg prodotto",
@@ -2128,14 +2206,53 @@
           "valueAddedTaxIncluded": true
         }
       },
-      "nutrition": {
-        "@type": "NutritionInformation",
-        "calories": "17 kcal",
-        "fatContent": "0.3 g",
-        "carbohydrateContent": "2 g",
-        "sugarContent": "1 g",
-        "proteinContent": "1.5 g",
-        "sodiumContent": "0.05 g"
+      "gs1:energyPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "17",
+          "@type": "xsd:float"
+        },
+        "unitCode": "E14"
+      },
+      "gs1:fatPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0.3",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:carbohydratesPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "2",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sugarsPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "1",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:proteinPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "1.5",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sodiumPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0.05",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
       }
     },
     "environmentalImpact": {
@@ -2943,15 +3060,6 @@
           "gs1:countryCode": "IT"
         }
       ],
-      "nutrition": {
-        "@type": "NutritionInformation",
-        "calories": "536 kcal / 2243 kJ",
-        "fatContent": "34 g",
-        "carbohydrateContent": "50 g",
-        "sugarContent": "1.2 g",
-        "proteinContent": "6 g",
-        "sodiumContent": "0.6 g"
-      },
       "name": "Patatine Croccanti al Rosmarino 150g",
       "description": "Patatine croccanti cotte in olio di girasole alto oleico, aromatizzate con rosmarino italiano.",
       "gtin13": "8032089000147",
@@ -3085,7 +3193,55 @@
           }
         }
       ],
-      "gs1:gpcCategoryCode": "10000355"
+      "gs1:gpcCategoryCode": "10000355",
+      "gs1:energyPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "536",
+          "@type": "xsd:float"
+        },
+        "unitCode": "E14"
+      },
+      "gs1:fatPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "34",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:carbohydratesPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "50",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sugarsPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "1.2",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:proteinPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "6",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sodiumPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0.6",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      }
     }
   },
   {
@@ -3812,15 +3968,6 @@
           "gs1:countryCode": "IT"
         }
       ],
-      "nutrition": {
-        "@type": "NutritionInformation",
-        "calories": "210 kcal / 880 kJ (per 330ml)",
-        "fatContent": "0 g",
-        "carbohydrateContent": "18 g",
-        "sugarContent": "1 g",
-        "proteinContent": "2 g",
-        "sodiumContent": "0.01 g"
-      },
       "name": "Birra Artigianale IPA 33cl",
       "description": "Birra artigianale non filtrata stile IPA, luppolatura intensa e note agrumate, rifermentata in bottiglia.",
       "gtin13": "8032089000192",
@@ -3941,7 +4088,55 @@
           }
         }
       ],
-      "gs1:gpcCategoryCode": "10000163"
+      "gs1:gpcCategoryCode": "10000163",
+      "gs1:energyPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "210",
+          "@type": "xsd:float"
+        },
+        "unitCode": "E14"
+      },
+      "gs1:fatPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:carbohydratesPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "18",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sugarsPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "1",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:proteinPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "2",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sodiumPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0.01",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      }
     }
   },
   {
@@ -4442,15 +4637,6 @@
           "gs1:countryCode": "IT"
         }
       ],
-      "nutrition": {
-        "@type": "NutritionInformation",
-        "calories": "824 kcal / 3389 kJ (per 100ml)",
-        "fatContent": "91.6 g",
-        "carbohydrateContent": "0 g",
-        "sugarContent": "0 g",
-        "proteinContent": "0 g",
-        "sodiumContent": "0 g"
-      },
       "name": "Olio Extravergine di Oliva Professionale 5L",
       "description": "Olio extravergine di oliva 100% italiano, spremuto a freddo, tanica da 5 litri per uso professionale HORECA.",
       "gtin13": "8032089000239",
@@ -4539,7 +4725,55 @@
           "@value": "Extra virgin olive oil",
           "@language": "en"
         }
-      ]
+      ],
+      "gs1:energyPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "824",
+          "@type": "xsd:float"
+        },
+        "unitCode": "E14"
+      },
+      "gs1:fatPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "91.6",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:carbohydratesPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sugarsPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:proteinPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sodiumPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      }
     }
   },
   {
@@ -4744,15 +4978,6 @@
           "gs1:countryCode": "IT"
         }
       ],
-      "nutrition": {
-        "@type": "NutritionInformation",
-        "calories": "25 kcal / 105 kJ",
-        "fatContent": "0.3 g",
-        "carbohydrateContent": "4.5 g",
-        "sugarContent": "4 g",
-        "proteinContent": "1.3 g",
-        "sodiumContent": "0.4 g"
-      },
       "name": "Passata di Pomodoro Bag-in-Box 10kg",
       "description": "Passata di pomodoro 100% italiano in confezione Bag-in-Box da 10kg, ideale per ristorazione e pizzerie.",
       "gtin13": "8032089000246",
@@ -4832,7 +5057,55 @@
           ]
         }
       ],
-      "gs1:gpcCategoryCode": "10000209"
+      "gs1:gpcCategoryCode": "10000209",
+      "gs1:energyPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "25",
+          "@type": "xsd:float"
+        },
+        "unitCode": "E14"
+      },
+      "gs1:fatPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0.3",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:carbohydratesPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "4.5",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sugarsPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "4",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:proteinPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "1.3",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sodiumPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0.4",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      }
     }
   },
   {
@@ -5346,15 +5619,6 @@
           "gs1:countryCode": "IT"
         }
       ],
-      "nutrition": {
-        "@type": "NutritionInformation",
-        "calories": "88 kcal / 369 kJ",
-        "fatContent": "0 g",
-        "carbohydrateContent": "17 g",
-        "sugarContent": "17 g",
-        "proteinContent": "0.5 g",
-        "sodiumContent": "0.02 g"
-      },
       "gs1:certification": [
         {
           "@type": "gs1:CertificationDetails",
@@ -5493,7 +5757,55 @@
           "@value": "Balsamic Vinegar of Modena PGI",
           "@language": "en"
         }
-      ]
+      ],
+      "gs1:energyPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "88",
+          "@type": "xsd:float"
+        },
+        "unitCode": "E14"
+      },
+      "gs1:fatPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:carbohydratesPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "17",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sugarsPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "17",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:proteinPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0.5",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sodiumPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0.02",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      }
     }
   },
   {
@@ -8378,15 +8690,6 @@
           "gs1:countryCode": "IT"
         }
       ],
-      "nutrition": {
-        "@type": "NutritionInformation",
-        "calories": "110 kcal / 461 kJ",
-        "fatContent": "1.5 g",
-        "carbohydrateContent": "0 g",
-        "sugarContent": "0 g",
-        "proteinContent": "23 g",
-        "sodiumContent": "0.08 g"
-      },
       "name": "Filetti di Pollo Fresco Italiano 500g",
       "description": "Filetti di petto di pollo fresco, allevamento italiano a terra, confezionati in atmosfera protettiva.",
       "gtin13": "8032089000482",
@@ -8462,7 +8765,55 @@
           "@value": "Fresh chicken breast",
           "@language": "en"
         }
-      ]
+      ],
+      "gs1:energyPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "110",
+          "@type": "xsd:float"
+        },
+        "unitCode": "E14"
+      },
+      "gs1:fatPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "1.5",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:carbohydratesPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sugarsPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:proteinPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "23",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sodiumPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0.08",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      }
     }
   },
   {
@@ -8611,15 +8962,6 @@
           "gs1:countryCode": "IT"
         }
       ],
-      "nutrition": {
-        "@type": "NutritionInformation",
-        "calories": "62 kcal / 260 kJ",
-        "fatContent": "3.6 g",
-        "carbohydrateContent": "4.7 g",
-        "sugarContent": "4.7 g",
-        "proteinContent": "3.4 g",
-        "sodiumContent": "0.05 g"
-      },
       "name": "Yogurt Bianco Intero da Bere 1L",
       "description": "Yogurt bianco intero da bere, prodotto con latte fresco di malga, senza conservanti.",
       "gtin13": "8032089000499",
@@ -8712,7 +9054,55 @@
           }
         }
       ],
-      "gs1:gpcCategoryCode": "10000452"
+      "gs1:gpcCategoryCode": "10000452",
+      "gs1:energyPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "62",
+          "@type": "xsd:float"
+        },
+        "unitCode": "E14"
+      },
+      "gs1:fatPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "3.6",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:carbohydratesPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "4.7",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sugarsPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "4.7",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:proteinPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "3.4",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sodiumPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0.05",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      }
     }
   },
   {
@@ -8926,15 +9316,6 @@
           "gs1:countryCode": "IT"
         }
       ],
-      "nutrition": {
-        "@type": "NutritionInformation",
-        "calories": "288 kcal / 1204 kJ",
-        "fatContent": "24 g",
-        "carbohydrateContent": "0.4 g",
-        "sugarContent": "0.4 g",
-        "proteinContent": "18 g",
-        "sodiumContent": "0.4 g"
-      },
       "gs1:certification": [
         {
           "@type": "gs1:CertificationDetails",
@@ -9114,7 +9495,55 @@
           "@value": "Mozzarella di Bufala Campana PDO",
           "@language": "en"
         }
-      ]
+      ],
+      "gs1:energyPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "288",
+          "@type": "xsd:float"
+        },
+        "unitCode": "E14"
+      },
+      "gs1:fatPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "24",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:carbohydratesPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0.4",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sugarsPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0.4",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:proteinPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "18",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sodiumPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0.4",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      }
     }
   },
   {
@@ -9646,15 +10075,6 @@
           "gs1:countryCode": "IT"
         }
       ],
-      "nutrition": {
-        "@type": "NutritionInformation",
-        "calories": "184 kcal / 770 kJ",
-        "fatContent": "10.9 g",
-        "carbohydrateContent": "0 g",
-        "sugarContent": "0 g",
-        "proteinContent": "22 g",
-        "sodiumContent": "1.8 g"
-      },
       "name": "Salmone Affumicato Norvegese 200g",
       "description": "Salmone affumicato norvegese, allevato in acque controllate, affettato sottile e confezionato in ATM.",
       "gtin13": "8032089000550",
@@ -9774,7 +10194,55 @@
           }
         }
       ],
-      "gs1:gpcCategoryCode": "10000493"
+      "gs1:gpcCategoryCode": "10000493",
+      "gs1:energyPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "184",
+          "@type": "xsd:float"
+        },
+        "unitCode": "E14"
+      },
+      "gs1:fatPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "10.9",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:carbohydratesPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sugarsPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "0",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:proteinPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "22",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:sodiumPerNutrientBasis": {
+        "@type": "gs1:NutritionMeasurementType",
+        "value": {
+          "@value": "1.8",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      }
     }
   },
   {
