@@ -22,7 +22,7 @@ export const TRANSLATIONS = {
       titleLine1: 'Un solo codice.',
       titleHighlight: 'Una porta sui tuoi dati.',
       subtitle:
-        "GS1 Digital Link trasforma GTIN, GLN e SSCC nella porta d'accesso alle informazioni di prodotto, aggiornabili in ogni momento senza mai ristampare l'etichetta. Dietro quella porta, il GS1 Web Vocabulary — estensione di schema.org — rende gli stessi dati leggibili da motori di ricerca e agenti AI: più visibilità nelle ricerche, meno ambiguità tra sistemi diversi.",
+        "GS1 Digital Link trasforma un GTIN nella porta d'accesso ai suoi dati, pubblicati secondo il GS1 Web Vocabulary e schema.org per essere letti da motori di ricerca e agenti AI. Esplora questo catalogo dimostrativo per vederlo in azione, settore per settore.",
       searchCta: 'Cerca un prodotto',
       exploreCta: 'Esplora i settori',
       sectionHeading: 'Settori',
@@ -326,7 +326,7 @@ export const TRANSLATIONS = {
       titleLine1: 'One code.',
       titleHighlight: 'A gateway to your data.',
       subtitle:
-        'GS1 Digital Link turns GTINs, GLNs and SSCCs into the gateway to product information, updatable at any time without ever reprinting the label. Behind that gateway, GS1 Web Vocabulary — an extension of schema.org — makes the same data readable by search engines and AI agents: greater visibility in search results, less ambiguity between different systems.',
+        'GS1 Digital Link turns a GTIN into the gateway to its data, published according to GS1 Web Vocabulary and schema.org to be read by search engines and AI agents. Explore this demo catalogue to see it in action, sector by sector.',
       searchCta: 'Search a product',
       exploreCta: 'Explore the sectors',
       sectionHeading: 'Sectors',
