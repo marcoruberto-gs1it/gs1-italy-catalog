@@ -10,8 +10,8 @@ interface AiEntry {
   value: string;
 }
 
-const EXAMPLE_SIMPLE = 'https://gs1.italy.example/01/08032089000024';
-const EXAMPLE_INSTANCE = 'https://gs1.italy.example/01/08032089000024/10/LOT231102/21/545519';
+const EXAMPLE_PATH_SIMPLE = '/01/08032089000024';
+const EXAMPLE_PATH_INSTANCE = '/01/08032089000024/10/LOT231102/21/545519';
 
 /**
  * Analizza un GS1 Digital Link (o una stringa AI tra parentesi) usando il vero GS1 Barcode
@@ -31,17 +31,27 @@ export class ValidatorComponent implements OnInit {
   private titleService = inject(Title);
   protected t = inject(I18nService).t;
 
-  protected readonly exampleSimple = EXAMPLE_SIMPLE;
-  protected readonly exampleInstance = EXAMPLE_INSTANCE;
+  /**
+   * Origine del sito corrente (dominio + eventuale sottopercorso), letta da <base href> a
+   * runtime invece che hardcodata: validator.schema.org scarica davvero la pagina che gli si
+   * passa, quindi gli esempi devono puntare a un URL realmente raggiungibile — e restano
+   * corretti anche se in futuro cambia il dominio di pubblicazione (GitHub Pages, dominio
+   * personalizzato, ecc.), perché non dipendono da un valore fisso nel codice.
+   */
+  private origin = signal('');
+
+  protected exampleSimple = computed(() => this.origin() + EXAMPLE_PATH_SIMPLE);
+  protected exampleInstance = computed(() => this.origin() + EXAMPLE_PATH_INSTANCE);
 
   isBrowser = signal(false);
-  input = signal(EXAMPLE_INSTANCE);
+  input = signal('');
   loading = signal(false);
   analyzed = signal(false);
   error = signal<string | null>(null);
   errorDetail = signal<string | null>(null);
   aiEntries = signal<AiEntry[]>([]);
   canonicalUri = signal<string | null>(null);
+  testableUri = signal<string | null>(null);
   ignoredParams = signal<string[]>([]);
   engineVersion = signal<string | null>(null);
   copied = signal(false);
@@ -50,15 +60,20 @@ export class ValidatorComponent implements OnInit {
 
   schemaOrgUrl = computed(() => {
     // Se l'input è già un URL lo testiamo così com'è (è quello che l'utente vuole verificare
-    // davvero); solo se ha incollato una stringa AI tra parentesi usiamo l'URI canonico
-    // ricostruito, essendo l'unica forma "testabile" disponibile in quel caso.
+    // davvero); solo se ha incollato una stringa AI tra parentesi usiamo l'URI ricostruito su
+    // QUESTO dominio (testableUri), l'unico che validator.schema.org può davvero scaricare —
+    // il resolver ufficiale id.gs1.org non conosce i GTIN fittizi di questa demo.
     const raw = this.input().trim();
-    const url = /^https?:\/\//i.test(raw) ? raw : (this.canonicalUri() ?? raw);
+    const url = /^https?:\/\//i.test(raw) ? raw : (this.testableUri() ?? this.canonicalUri() ?? raw);
     return `https://validator.schema.org/#url=${encodeURIComponent(url)}`;
   });
 
   ngOnInit(): void {
     this.isBrowser.set(isPlatformBrowser(this.platformId));
+    if (this.isBrowser()) {
+      this.origin.set(document.baseURI.replace(/\/$/, ''));
+      this.input.set(this.exampleInstance());
+    }
     this.titleService.setTitle(this.t('validator.pageTitle'));
   }
 
@@ -77,6 +92,7 @@ export class ValidatorComponent implements OnInit {
     this.errorDetail.set(null);
     this.aiEntries.set([]);
     this.canonicalUri.set(null);
+    this.testableUri.set(null);
     this.ignoredParams.set([]);
     this.analyzed.set(true);
     if (!value) return;
@@ -97,6 +113,15 @@ export class ValidatorComponent implements OnInit {
         } catch {
           this.canonicalUri.set(null);
         }
+
+        // Deriviamo l'URL testabile sostituendo solo l'host nell'URI canonico già calcolato,
+        // invece di richiamare di nuovo gs.getDLuri() sulla stessa istanza WASM con uno stem
+        // diverso: quella seconda chiamata destabilizza il motore (nessun'eccezione JS
+        // catturabile, ma le chiamate successive smettono di produrre risultati).
+        const canonical = this.canonicalUri();
+        this.testableUri.set(
+          this.origin() && canonical ? canonical.replace(/^https?:\/\/[^/]+/, this.origin()) : null,
+        );
 
         this.ignoredParams.set(gs.dlIgnoredQueryParams);
       } finally {
