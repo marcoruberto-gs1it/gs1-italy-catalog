@@ -22,13 +22,13 @@ export const TRANSLATIONS = {
       titleLine1: 'Un solo codice.',
       titleHighlight: 'Una porta sui tuoi dati.',
       subtitle:
-        "GS1 Digital Link trasforma GTIN, GLN e SSCC nella porta d'accesso alle informazioni di prodotto: lo stesso codice che si legge in cassa apre anche a certificazioni, istruzioni d'uso e tracciabilità di filiera — aggiornabili in ogni momento, senza mai ristampare l'etichetta.",
+        "GS1 Digital Link trasforma GTIN, GLN e SSCC nella porta d'accesso alle informazioni di prodotto, aggiornabili in ogni momento senza mai ristampare l'etichetta. Dietro quella porta, il GS1 Web Vocabulary — estensione di schema.org — rende gli stessi dati leggibili da motori di ricerca e agenti AI: più visibilità nelle ricerche, meno ambiguità tra sistemi diversi.",
       searchCta: 'Cerca un prodotto',
       exploreCta: 'Esplora i settori',
       sectionHeading: 'Settori',
       sectionHeadingHighlight: 'e Soluzioni',
       sectionSubtitle:
-        "Il GS1 Digital Link supporta ogni settore merceologico. Seleziona un'area per esplorare i casi d'uso e la struttura dei dati.",
+        "Il GS1 Digital Link e il GS1 Web Vocabulary coprono ogni settore merceologico. Seleziona un'area per esplorare i casi d'uso e la struttura dei dati.",
       exploreProducts: 'Scopri i prodotti',
     },
     sector: {
@@ -326,13 +326,13 @@ export const TRANSLATIONS = {
       titleLine1: 'One code.',
       titleHighlight: 'A gateway to your data.',
       subtitle:
-        'GS1 Digital Link turns GTINs, GLNs and SSCCs into the gateway to product information: the same code scanned at checkout also opens up certifications, instructions for use and supply chain traceability — updatable at any time, without ever reprinting the label.',
+        'GS1 Digital Link turns GTINs, GLNs and SSCCs into the gateway to product information, updatable at any time without ever reprinting the label. Behind that gateway, GS1 Web Vocabulary — an extension of schema.org — makes the same data readable by search engines and AI agents: greater visibility in search results, less ambiguity between different systems.',
       searchCta: 'Search a product',
       exploreCta: 'Explore the sectors',
       sectionHeading: 'Sectors',
       sectionHeadingHighlight: 'and Solutions',
       sectionSubtitle:
-        'GS1 Digital Link supports every industry sector. Select an area to explore use cases and data structure.',
+        'GS1 Digital Link and GS1 Web Vocabulary support every industry sector. Select an area to explore use cases and data structure.',
       exploreProducts: 'Discover the products',
     },
     sector: {
