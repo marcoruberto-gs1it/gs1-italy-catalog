@@ -3,6 +3,7 @@ import { Component, OnInit, PLATFORM_ID, computed, inject, signal } from '@angul
 import { RouterLink } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { I18nService } from '../../services/i18n.service';
+import { SiteOriginService } from '../../services/site-origin.service';
 
 interface AiEntry {
   ai: string;
@@ -29,19 +30,14 @@ const EXAMPLE_PATH_INSTANCE = '/01/08032089000024/10/LOT231102/21/545519';
 export class ValidatorComponent implements OnInit {
   private platformId = inject(PLATFORM_ID);
   private titleService = inject(Title);
+  private siteOrigin = inject(SiteOriginService);
   protected t = inject(I18nService).t;
 
-  /**
-   * Origine del sito corrente (dominio + eventuale sottopercorso), letta da <base href> a
-   * runtime invece che hardcodata: validator.schema.org scarica davvero la pagina che gli si
-   * passa, quindi gli esempi devono puntare a un URL realmente raggiungibile — e restano
-   * corretti anche se in futuro cambia il dominio di pubblicazione (GitHub Pages, dominio
-   * personalizzato, ecc.), perché non dipendono da un valore fisso nel codice.
-   */
-  private origin = signal('');
-
-  protected exampleSimple = computed(() => this.origin() + EXAMPLE_PATH_SIMPLE);
-  protected exampleInstance = computed(() => this.origin() + EXAMPLE_PATH_INSTANCE);
+  // validator.schema.org scarica davvero la pagina che gli si passa: gli esempi devono quindi
+  // puntare a un URL realmente raggiungibile sul dominio corrente (vedi SiteOriginService),
+  // non a un dominio fittizio o hardcodato.
+  protected readonly exampleSimple = this.siteOrigin.value + EXAMPLE_PATH_SIMPLE;
+  protected readonly exampleInstance = this.siteOrigin.value + EXAMPLE_PATH_INSTANCE;
 
   isBrowser = signal(false);
   input = signal('');
@@ -71,8 +67,7 @@ export class ValidatorComponent implements OnInit {
   ngOnInit(): void {
     this.isBrowser.set(isPlatformBrowser(this.platformId));
     if (this.isBrowser()) {
-      this.origin.set(document.baseURI.replace(/\/$/, ''));
-      this.input.set(this.exampleInstance());
+      this.input.set(this.exampleInstance);
     }
     this.titleService.setTitle(this.t('validator.pageTitle'));
   }
@@ -119,9 +114,7 @@ export class ValidatorComponent implements OnInit {
         // diverso: quella seconda chiamata destabilizza il motore (nessun'eccezione JS
         // catturabile, ma le chiamate successive smettono di produrre risultati).
         const canonical = this.canonicalUri();
-        this.testableUri.set(
-          this.origin() && canonical ? canonical.replace(/^https?:\/\/[^/]+/, this.origin()) : null,
-        );
+        this.testableUri.set(canonical ? canonical.replace(/^https?:\/\/[^/]+/, this.siteOrigin.value) : null);
 
         this.ignoredParams.set(gs.dlIgnoredQueryParams);
       } finally {

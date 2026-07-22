@@ -1,5 +1,5 @@
 import { Component, computed, inject, OnInit, signal, PLATFORM_ID } from '@angular/core';
-import { CommonModule, isPlatformBrowser, DOCUMENT } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { DomSanitizer, Meta, SafeHtml, Title } from '@angular/platform-browser';
 import { QRCodeComponent } from 'angularx-qrcode';
@@ -14,6 +14,7 @@ import { highlightJson } from '../../utils/json-highlight';
 import { downloadBarcodePng, downloadBarcodeSvg } from '../../utils/barcode-download';
 import { LanguageService } from '../../services/language.service';
 import { I18nService } from '../../services/i18n.service';
+import { SiteOriginService } from '../../services/site-origin.service';
 
 type ProductTab = 'details' | 'sustainability' | 'supply-chain' | 'gdsn' | 'structured-data';
 
@@ -48,7 +49,7 @@ export class ProductComponent implements OnInit {
   private titleService = inject(Title);
 
   private platformId = inject(PLATFORM_ID);
-  private document = inject(DOCUMENT);
+  private siteOrigin = inject(SiteOriginService);
 
   isBrowser = signal<boolean>(false);
   gtin = signal<string | null>(null);
@@ -169,10 +170,7 @@ export class ProductComponent implements OnInit {
   // Digital Link dell'unità logistica: /00/{sscc}, illustrativo (non instrada verso una pagina
   // prodotto reale, dato che ogni SSCC identifica una singola spedizione, non un catalogo).
   ssccDigitalLink(sscc: string): string {
-    const baseHref = this.isBrowser()
-      ? this.document.location.origin
-      : 'https://tuodominio_produzione.it';
-    return `${baseHref}/00/${sscc}`;
+    return `${this.siteOrigin.value}/00/${sscc}`;
   }
 
   private readonly traceColors = ['var(--gs1-blue)', 'var(--gs1-teal)', 'var(--gs1-orange)', 'var(--gs1-forest)', 'var(--gs1-honey)'];
@@ -213,12 +211,7 @@ export class ProductComponent implements OnInit {
   gs1DigitalLink = computed<string>(() => {
     const currentGtin = this.gtin();
     if (!currentGtin) return '';
-
-    const baseHref = this.isBrowser()
-      ? this.document.location.origin
-      : 'https://tuodominio_produzione.it';
-
-    return `${baseHref}/01/${currentGtin}`;
+    return `${this.siteOrigin.value}/01/${currentGtin}`;
   });
 
   // Digital Link della pagina effettivamente visitata: riflette lotto/seriale/scadenza se
