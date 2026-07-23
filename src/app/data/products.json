@@ -404,6 +404,23 @@
           "@type": "xsd:float"
         },
         "unitCode": "GRM"
+      },
+      "gs1:netWeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "235",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:targetMarket": {
+        "@type": "gs1:TargetMarketDetails",
+        "gs1:targetMarketCountries": [
+          {
+            "@type": "gs1:Country",
+            "gs1:countryCode": "IT"
+          }
+        ]
       }
     },
     "environmentalImpact": {
@@ -855,6 +872,23 @@
           "@type": "xsd:float"
         },
         "unitCode": "GRM"
+      },
+      "gs1:netWeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "400",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:targetMarket": {
+        "@type": "gs1:TargetMarketDetails",
+        "gs1:targetMarketCountries": [
+          {
+            "@type": "gs1:Country",
+            "gs1:countryCode": "IT"
+          }
+        ]
       }
     },
     "environmentalImpact": {
@@ -1134,7 +1168,48 @@
           "@type": "gs1:Country",
           "gs1:countryCode": "LK"
         }
-      ]
+      ],
+      "gs1:netWeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "0.18",
+          "@type": "xsd:float"
+        },
+        "unitCode": "KGM"
+      },
+      "gs1:inPackageHeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "300",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageWidth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "250",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageDepth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "20",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:targetMarket": {
+        "@type": "gs1:TargetMarketDetails",
+        "gs1:targetMarketCountries": [
+          {
+            "@type": "gs1:Country",
+            "gs1:countryCode": "IT"
+          }
+        ]
+      }
     },
     "environmentalImpact": {
       "co2e": "4.2 kg CO₂e / unità",
@@ -1509,7 +1584,56 @@
           "@value": "Type 00 soft wheat flour",
           "@language": "en"
         }
-      ]
+      ],
+      "gs1:netWeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "25",
+          "@type": "xsd:float"
+        },
+        "unitCode": "KGM"
+      },
+      "gs1:grossWeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "25.3",
+          "@type": "xsd:float"
+        },
+        "unitCode": "KGM"
+      },
+      "gs1:inPackageHeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "600",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageWidth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "400",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageDepth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "100",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:targetMarket": {
+        "@type": "gs1:TargetMarketDetails",
+        "gs1:targetMarketCountries": [
+          {
+            "@type": "gs1:Country",
+            "gs1:countryCode": "IT"
+          }
+        ]
+      }
     },
     "environmentalImpact": {
       "co2e": "0.6 kg CO₂e / kg prodotto",
@@ -1976,7 +2100,24 @@
           ],
           "gs1:textileMaterialPercentage": 35
         }
-      ]
+      ],
+      "gs1:netWeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "0.45",
+          "@type": "xsd:float"
+        },
+        "unitCode": "KGM"
+      },
+      "gs1:targetMarket": {
+        "@type": "gs1:TargetMarketDetails",
+        "gs1:targetMarketCountries": [
+          {
+            "@type": "gs1:Country",
+            "gs1:countryCode": "IT"
+          }
+        ]
+      }
     },
     "environmentalImpact": {
       "co2e": "0.9 kg CO₂e / confezione",
@@ -2578,6 +2719,23 @@
           "@type": "xsd:float"
         },
         "unitCode": "MMT"
+      },
+      "gs1:grossWeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "33",
+          "@type": "xsd:float"
+        },
+        "unitCode": "KGM"
+      },
+      "gs1:targetMarket": {
+        "@type": "gs1:TargetMarketDetails",
+        "gs1:targetMarketCountries": [
+          {
+            "@type": "gs1:Country",
+            "gs1:countryCode": "IT"
+          }
+        ]
       }
     },
     "environmentalImpact": {
@@ -3241,6 +3399,47 @@
           "@type": "xsd:float"
         },
         "unitCode": "GRM"
+      },
+      "gs1:netWeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "150",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:inPackageHeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "250",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageWidth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "180",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageDepth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "60",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:targetMarket": {
+        "@type": "gs1:TargetMarketDetails",
+        "gs1:targetMarketCountries": [
+          {
+            "@type": "gs1:Country",
+            "gs1:countryCode": "IT"
+          }
+        ]
       }
     }
   },
@@ -4136,6 +4335,39 @@
           "@type": "xsd:float"
         },
         "unitCode": "GRM"
+      },
+      "gs1:inPackageHeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "65",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageWidth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "65",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageDepth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "235",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:targetMarket": {
+        "@type": "gs1:TargetMarketDetails",
+        "gs1:targetMarketCountries": [
+          {
+            "@type": "gs1:Country",
+            "gs1:countryCode": "IT"
+          }
+        ]
       }
     }
   },
@@ -4773,6 +5005,39 @@
           "@type": "xsd:float"
         },
         "unitCode": "GRM"
+      },
+      "gs1:inPackageHeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "160",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageWidth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "100",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageDepth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "280",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:targetMarket": {
+        "@type": "gs1:TargetMarketDetails",
+        "gs1:targetMarketCountries": [
+          {
+            "@type": "gs1:Country",
+            "gs1:countryCode": "IT"
+          }
+        ]
       }
     }
   },
@@ -5105,6 +5370,47 @@
           "@type": "xsd:float"
         },
         "unitCode": "GRM"
+      },
+      "gs1:netWeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "10",
+          "@type": "xsd:float"
+        },
+        "unitCode": "KGM"
+      },
+      "gs1:inPackageHeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "300",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageWidth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "200",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageDepth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "200",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:targetMarket": {
+        "@type": "gs1:TargetMarketDetails",
+        "gs1:targetMarketCountries": [
+          {
+            "@type": "gs1:Country",
+            "gs1:countryCode": "IT"
+          }
+        ]
       }
     }
   },
@@ -6207,7 +6513,48 @@
           "@value": "Apply to clean, dry skin, replace at least every 24 hours or if wet/soiled. Do not apply to infected wounds.",
           "@language": "en"
         }
-      ]
+      ],
+      "gs1:grossWeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "55",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:inPackageHeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "120",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageWidth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "80",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageDepth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "20",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:targetMarket": {
+        "@type": "gs1:TargetMarketDetails",
+        "gs1:targetMarketCountries": [
+          {
+            "@type": "gs1:Country",
+            "gs1:countryCode": "IT"
+          }
+        ]
+      }
     }
   },
   {
@@ -6608,7 +6955,56 @@
           "@value": "Fit the cuff 2 cm above the elbow, sit still during measurement, repeat after 1-2 minutes if the reading is uncertain.",
           "@language": "en"
         }
-      ]
+      ],
+      "gs1:netWeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "450",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:grossWeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "650",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:inPackageHeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "140",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageWidth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "100",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageDepth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "60",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:targetMarket": {
+        "@type": "gs1:TargetMarketDetails",
+        "gs1:targetMarketCountries": [
+          {
+            "@type": "gs1:Country",
+            "gs1:countryCode": "IT"
+          }
+        ]
+      }
     }
   },
   {
@@ -7589,7 +7985,56 @@
           "@type": "gs1:Country",
           "gs1:countryCode": "IT"
         }
-      ]
+      ],
+      "gs1:netWeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "450",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:grossWeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "470",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:inPackageHeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "350",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageWidth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "280",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageDepth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "30",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:targetMarket": {
+        "@type": "gs1:TargetMarketDetails",
+        "gs1:targetMarketCountries": [
+          {
+            "@type": "gs1:Country",
+            "gs1:countryCode": "IT"
+          }
+        ]
+      }
     }
   },
   {
@@ -8319,7 +8764,56 @@
           "@type": "gs1:Country",
           "gs1:countryCode": "IT"
         }
-      ]
+      ],
+      "gs1:netWeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "700",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:grossWeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "850",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:inPackageHeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "330",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageWidth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "200",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageDepth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "120",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:targetMarket": {
+        "@type": "gs1:TargetMarketDetails",
+        "gs1:targetMarketCountries": [
+          {
+            "@type": "gs1:Country",
+            "gs1:countryCode": "IT"
+          }
+        ]
+      }
     }
   },
   {
@@ -8813,6 +9307,47 @@
           "@type": "xsd:float"
         },
         "unitCode": "GRM"
+      },
+      "gs1:netWeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "500",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:inPackageHeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "190",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageWidth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "140",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageDepth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "40",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:targetMarket": {
+        "@type": "gs1:TargetMarketDetails",
+        "gs1:targetMarketCountries": [
+          {
+            "@type": "gs1:Country",
+            "gs1:countryCode": "IT"
+          }
+        ]
       }
     }
   },
@@ -9543,6 +10078,47 @@
           "@type": "xsd:float"
         },
         "unitCode": "GRM"
+      },
+      "gs1:netWeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "250",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:inPackageHeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "110",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageWidth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "110",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageDepth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "50",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:targetMarket": {
+        "@type": "gs1:TargetMarketDetails",
+        "gs1:targetMarketCountries": [
+          {
+            "@type": "gs1:Country",
+            "gs1:countryCode": "IT"
+          }
+        ]
       }
     }
   },
@@ -10539,7 +11115,48 @@
           "@value": "Apply to a clean, dry surface with roller or brush, two coats applied crosswise, dilute the first coat up to 5% with water.",
           "@language": "en"
         }
-      ]
+      ],
+      "gs1:grossWeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "19",
+          "@type": "xsd:float"
+        },
+        "unitCode": "KGM"
+      },
+      "gs1:inPackageHeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "280",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageWidth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "280",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageDepth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "320",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:targetMarket": {
+        "@type": "gs1:TargetMarketDetails",
+        "gs1:targetMarketCountries": [
+          {
+            "@type": "gs1:Country",
+            "gs1:countryCode": "IT"
+          }
+        ]
+      }
     }
   },
   {
@@ -11481,7 +12098,48 @@
           "@value": "Adjust the harness to head circumference before use, replace after any impact even without visible damage.",
           "@language": "en"
         }
-      ]
+      ],
+      "gs1:grossWeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "420",
+          "@type": "xsd:float"
+        },
+        "unitCode": "GRM"
+      },
+      "gs1:inPackageHeight": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "290",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageWidth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "230",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:inPackageDepth": {
+        "@type": "gs1:QuantitativeValue",
+        "value": {
+          "@value": "180",
+          "@type": "xsd:float"
+        },
+        "unitCode": "MMT"
+      },
+      "gs1:targetMarket": {
+        "@type": "gs1:TargetMarketDetails",
+        "gs1:targetMarketCountries": [
+          {
+            "@type": "gs1:Country",
+            "gs1:countryCode": "IT"
+          }
+        ]
+      }
     }
   }
 ]
