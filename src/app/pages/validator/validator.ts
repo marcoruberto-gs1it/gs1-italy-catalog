@@ -70,6 +70,7 @@ export class ValidatorComponent implements OnInit, OnDestroy {
 
   private scanVideoRef = viewChild<ElementRef<HTMLVideoElement>>('scanVideo');
   private qrScanner: QrScanner | null = null;
+  private audioContext: AudioContext | null = null;
   scannerOpen = signal(false);
   scannerStarting = signal(false);
   scannerError = signal<string | null>(null);
@@ -183,6 +184,17 @@ export class ValidatorComponent implements OnInit, OnDestroy {
     this.scannerError.set(null);
     this.scannerStarting.set(true);
     this.scannerOpen.set(true);
+    // Creato qui, dentro il click handler dell'utente (un vero "user gesture"), cosicché
+    // l'AudioContext sia già sbloccato quando serve riprodurre il bip al momento della scansione
+    // — a quel punto siamo dentro il callback asincrono del decoder, che i browser non
+    // considerano un gesture valido per sbloccarlo da zero.
+    if (!this.audioContext) {
+      try {
+        this.audioContext = new AudioContext();
+      } catch {
+        /* Web Audio non disponibile — il bip verrà semplicemente omesso */
+      }
+    }
     // Il <video #scanVideo> esiste nel DOM solo dopo che scannerOpen() diventa true (è dietro un
     // @if): afterNextRender attende che Angular abbia davvero applicato questo aggiornamento al
     // DOM prima di leggere il viewChild — una queueMicrotask() non basta, perché il render
@@ -234,15 +246,37 @@ export class ValidatorComponent implements OnInit, OnDestroy {
   }
 
   private onScanResult(rawData: string): void {
+    this.playBeep();
     this.closeScanner();
     this.input.set(normalizeScanForEngine(rawData));
     void this.analyze();
+  }
+
+  // Bip sintetizzato al volo con la Web Audio API invece di un file audio: nessun asset da
+  // scaricare, un singolo tono pulito (tipico "beep" da lettore barcode) coperto per intero da
+  // codice.
+  private playBeep(): void {
+    const ctx = this.audioContext;
+    if (!ctx) return;
+    const oscillator = ctx.createOscillator();
+    const gain = ctx.createGain();
+    oscillator.type = 'sine';
+    oscillator.frequency.value = 1800;
+    gain.gain.setValueAtTime(0, ctx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.25, ctx.currentTime + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.13);
+    oscillator.connect(gain);
+    gain.connect(ctx.destination);
+    oscillator.start();
+    oscillator.stop(ctx.currentTime + 0.14);
   }
 
   ngOnDestroy(): void {
     this.qrScanner?.stop();
     this.qrScanner?.destroy();
     this.qrScanner = null;
+    this.audioContext?.close();
+    this.audioContext = null;
   }
 }
 
