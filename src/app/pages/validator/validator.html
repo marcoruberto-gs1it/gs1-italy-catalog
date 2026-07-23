@@ -33,6 +33,9 @@
       <button type="button" class="gs-btn gs-btn--primary" [disabled]="loading()" (click)="analyze()">
         @if (loading()) { {{ t('validator.analyzing') }} } @else { {{ t('validator.analyze') }} }
       </button>
+      @if (isBrowser()) {
+        <button type="button" class="gs-btn gs-btn--ghost" (click)="openScanner()">{{ t('validator.scanButton') }}</button>
+      }
       <button type="button" class="gs-btn gs-btn--ghost" (click)="loadExample(exampleSimple)">{{ t('validator.exampleSimple') }}</button>
       <button type="button" class="gs-btn gs-btn--ghost" (click)="loadExample(exampleInstance)">{{ t('validator.exampleInstance') }}</button>
     </div>
@@ -42,6 +45,9 @@
     <div class="result-card error-card">
       <h3>{{ t('validator.invalidTitle') }}</h3>
       <p>{{ error() }}</p>
+      @if (compressedDlHint()) {
+        <p class="compressed-hint">{{ t('validator.compressedDlHint') }}</p>
+      }
     </div>
   }
 
@@ -92,6 +98,29 @@
           {{ t('validator.engineCredit', { version: version }) }} <a href="https://github.com/gs1/gs1-syntax-engine" target="_blank" rel="noopener">gs1/gs1-syntax-engine</a>
         </p>
       }
+    </div>
+  }
+
+  @if (scannerOpen()) {
+    <div class="scanner-backdrop" (click)="onScannerBackdropClick($event)">
+      <div class="scanner-dialog" role="dialog" aria-modal="true" [attr.aria-label]="t('validator.scanDialogTitle')">
+        <div class="scanner-header">
+          <h3>{{ t('validator.scanDialogTitle') }}</h3>
+          <button type="button" class="scanner-close" (click)="closeScanner()" [attr.aria-label]="t('validator.scanClose')">✕</button>
+        </div>
+
+        <div class="scanner-video-wrap">
+          <video #scanVideo playsinline muted></video>
+        </div>
+
+        @if (scannerStarting()) {
+          <p class="scanner-status">{{ t('validator.scanStarting') }}</p>
+        } @else if (scannerError()) {
+          <p class="scanner-status scanner-status--error">{{ scannerError() }}</p>
+        } @else {
+          <p class="scanner-status">{{ t('validator.scanHint') }}</p>
+        }
+      </div>
     </div>
   }
 </div>

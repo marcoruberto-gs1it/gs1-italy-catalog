@@ -204,6 +204,16 @@ export const TRANSLATIONS = {
       engineCredit: 'Motore: GS1 Barcode Syntax Engine {version} —',
       pageTitle: 'Validatore GS1 Digital Link | Digital Link Catalog',
       unknownError: 'Errore di analisi sconosciuto.',
+      scanButton: '📷 Scansiona QR code',
+      scanDialogTitle: 'Inquadra un QR code GS1',
+      scanHint: 'Inquadra un QR code GS1 (Digital Link o stringa AI) con la fotocamera.',
+      scanClose: 'Chiudi',
+      scanStarting: 'Avvio fotocamera…',
+      scanNoCamera: 'Nessuna fotocamera disponibile su questo dispositivo.',
+      scanNoVideo: 'Impossibile inizializzare il lettore video.',
+      scanGenericError: 'Impossibile accedere alla fotocamera. Verifica i permessi del browser.',
+      compressedDlHint:
+        'Questo sembra un GS1 Digital Link in formato "compresso": il GS1 Barcode Syntax Engine usato da questo validatore non supporta la decompressione (limitazione della libreria ufficiale gs1-syntax-engine, non specifica di questa demo). Prova con la versione non compressa dell\'URL.',
     },
     chat: {
       breadcrumb: 'Assistente AI',
@@ -507,6 +517,16 @@ export const TRANSLATIONS = {
       engineCredit: 'Engine: GS1 Barcode Syntax Engine {version} —',
       pageTitle: 'GS1 Digital Link Validator | Digital Link Catalog',
       unknownError: 'Unknown analysis error.',
+      scanButton: '📷 Scan QR code',
+      scanDialogTitle: 'Point at a GS1 QR code',
+      scanHint: 'Point your camera at a GS1 QR code (Digital Link or AI string).',
+      scanClose: 'Close',
+      scanStarting: 'Starting camera…',
+      scanNoCamera: 'No camera available on this device.',
+      scanNoVideo: 'Could not initialise the video reader.',
+      scanGenericError: 'Could not access the camera. Check your browser permissions.',
+      compressedDlHint:
+        "This looks like a \"compressed\" GS1 Digital Link: the GS1 Barcode Syntax Engine used by this validator doesn't support decompression (a limitation of the official gs1-syntax-engine library itself, not specific to this demo). Try the uncompressed version of the URL.",
     },
     chat: {
       breadcrumb: 'AI Assistant',

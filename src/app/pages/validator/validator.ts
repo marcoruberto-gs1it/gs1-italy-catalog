@@ -1,7 +1,8 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, OnInit, PLATFORM_ID, computed, inject, signal } from '@angular/core';
+import { Component, ElementRef, Injector, OnDestroy, OnInit, PLATFORM_ID, afterNextRender, computed, inject, signal, viewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import type QrScanner from 'qr-scanner';
 import { I18nService } from '../../services/i18n.service';
 import { SiteOriginService } from '../../services/site-origin.service';
 
@@ -13,6 +14,20 @@ interface AiEntry {
 
 const EXAMPLE_PATH_SIMPLE = '/01/08032089000024';
 const EXAMPLE_PATH_INSTANCE = '/01/08032089000024/10/LOT231102/21/545519';
+
+// Separatore di campo FNC1 come restituito da un vero lettore barcode (ASCII 29, "Group
+// Separator") quando un QR/Data Matrix GS1 codifica una stringa AI non bracketizzata invece di
+// un Digital Link. Il motore si aspetta questo stesso ruolo espresso col carattere "^" (vedi
+// GS1encoder#dataStr) — una fotocamera generica non fornisce l'identificativo di simbologia AIM
+// che richiederebbe l'API scanData, quindi normalizziamo a mano invece.
+const GS_SEPARATOR = '\u001d';
+
+function normalizeScanForEngine(raw: string): string {
+  const trimmed = raw.trim();
+  if (/^https?:\/\//i.test(trimmed)) return trimmed;
+  const withCarets = trimmed.split(GS_SEPARATOR).join('^');
+  return withCarets.startsWith('^') ? withCarets : `^${withCarets}`;
+}
 
 /**
  * Analizza un GS1 Digital Link (o una stringa AI tra parentesi) usando il vero GS1 Barcode
@@ -27,10 +42,11 @@ const EXAMPLE_PATH_INSTANCE = '/01/08032089000024/10/LOT231102/21/545519';
   templateUrl: './validator.html',
   styleUrl: './validator.css',
 })
-export class ValidatorComponent implements OnInit {
+export class ValidatorComponent implements OnInit, OnDestroy {
   private platformId = inject(PLATFORM_ID);
   private titleService = inject(Title);
   private siteOrigin = inject(SiteOriginService);
+  private injector = inject(Injector);
   protected t = inject(I18nService).t;
 
   // validator.schema.org scarica davvero la pagina che gli si passa: gli esempi devono quindi
@@ -52,6 +68,12 @@ export class ValidatorComponent implements OnInit {
   engineVersion = signal<string | null>(null);
   copied = signal(false);
 
+  private scanVideoRef = viewChild<ElementRef<HTMLVideoElement>>('scanVideo');
+  private qrScanner: QrScanner | null = null;
+  scannerOpen = signal(false);
+  scannerStarting = signal(false);
+  scannerError = signal<string | null>(null);
+
   hasResult = computed(() => this.aiEntries().length > 0);
 
   schemaOrgUrl = computed(() => {
@@ -62,6 +84,18 @@ export class ValidatorComponent implements OnInit {
     const raw = this.input().trim();
     const url = /^https?:\/\//i.test(raw) ? raw : (this.testableUri() ?? this.canonicalUri() ?? raw);
     return `https://validator.schema.org/#url=${encodeURIComponent(url)}`;
+  });
+
+  // Euristica per il formato "compresso" dei GS1 Digital Link: il gs1-syntax-engine (motore
+  // usato da questo validatore) non lo supporta — richiede una libreria di (de)compressione
+  // separata che GS1 non pubblica all'interno di questo progetto ufficiale. Se l'input è un URL
+  // il cui primo segmento di path non è puramente numerico (quindi non un AI riconoscibile come
+  // "/01/...", "/00/...", ecc.) è probabile che sia proprio un DL compresso: lo segnaliamo invece
+  // di lasciare che l'utente veda solo l'errore grezzo del motore.
+  compressedDlHint = computed(() => {
+    if (!this.error()) return false;
+    const match = this.input().trim().match(/^https?:\/\/[^/]+\/([^/?#]+)/i);
+    return !!match && !/^\d+$/.test(match[1]);
   });
 
   ngOnInit(): void {
@@ -142,6 +176,73 @@ export class ValidatorComponent implements OnInit {
     } catch {
       /* clipboard unavailable — ignore */
     }
+  }
+
+  openScanner(): void {
+    if (!this.isBrowser()) return;
+    this.scannerError.set(null);
+    this.scannerStarting.set(true);
+    this.scannerOpen.set(true);
+    // Il <video #scanVideo> esiste nel DOM solo dopo che scannerOpen() diventa true (è dietro un
+    // @if): afterNextRender attende che Angular abbia davvero applicato questo aggiornamento al
+    // DOM prima di leggere il viewChild — una queueMicrotask() non basta, perché il render
+    // effettivo può avvenire dopo il prossimo giro di microtask.
+    afterNextRender(() => void this.startCamera(), { injector: this.injector });
+  }
+
+  closeScanner(): void {
+    this.qrScanner?.stop();
+    this.qrScanner?.destroy();
+    this.qrScanner = null;
+    this.scannerOpen.set(false);
+    this.scannerStarting.set(false);
+  }
+
+  onScannerBackdropClick(event: MouseEvent): void {
+    if (event.target === event.currentTarget) this.closeScanner();
+  }
+
+  private async startCamera(): Promise<void> {
+    const video = this.scanVideoRef()?.nativeElement;
+    if (!video) {
+      this.scannerStarting.set(false);
+      this.scannerError.set(this.t('validator.scanNoVideo'));
+      return;
+    }
+
+    try {
+      const { default: QrScannerCtor } = await import('qr-scanner');
+      const hasCamera = await QrScannerCtor.hasCamera();
+      if (!hasCamera) {
+        this.scannerStarting.set(false);
+        this.scannerError.set(this.t('validator.scanNoCamera'));
+        return;
+      }
+
+      this.qrScanner = new QrScannerCtor(video, (result) => this.onScanResult(result.data), {
+        preferredCamera: 'environment',
+        highlightScanRegion: true,
+        highlightCodeOutline: true,
+        maxScansPerSecond: 5,
+      });
+      await this.qrScanner.start();
+      this.scannerStarting.set(false);
+    } catch (err) {
+      this.scannerStarting.set(false);
+      this.scannerError.set(err instanceof Error ? err.message : this.t('validator.scanGenericError'));
+    }
+  }
+
+  private onScanResult(rawData: string): void {
+    this.closeScanner();
+    this.input.set(normalizeScanForEngine(rawData));
+    void this.analyze();
+  }
+
+  ngOnDestroy(): void {
+    this.qrScanner?.stop();
+    this.qrScanner?.destroy();
+    this.qrScanner = null;
   }
 }
 
