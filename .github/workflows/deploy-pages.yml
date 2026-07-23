@@ -32,8 +32,13 @@ jobs:
       # Solo il bundle client/prerenderizzato serve per GitHub Pages (hosting statico): il
       # bundle server SSR (Express) viene comunque generato dalla build ma non pubblicato.
       # --base-href è necessario perché il sito vive sotto un sottopercorso
-      # (https://<utente>.github.io/<repo>/) e non alla radice del dominio.
+      # (https://<utente>.github.io/<repo>/) e non alla radice del dominio. SITE_URL (stesso
+      # sottopercorso, ma con dominio completo) è letto da generate-seo-files.js — nessun
+      # dominio hardcoded nel codice, quindi un cambio di dominio/repo richiede di aggiornare
+      # solo questo workflow.
       - run: npm run build -- --base-href /${{ github.event.repository.name }}/
+        env:
+          SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
 
       # GitHub Pages serve i file staticamente: per le rotte client-rendered (lotto/seriale,
       # potenzialmente infinite, non prerenderizzabili — vedi app.routes.server.ts) qualunque
