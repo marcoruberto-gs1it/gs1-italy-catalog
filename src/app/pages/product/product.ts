@@ -13,7 +13,6 @@ import { IconComponent, IconName } from '../../components/icon/icon';
 import { onImageError } from '../../utils/image-fallback';
 import { highlightJson } from '../../utils/json-highlight';
 import { downloadBarcodePng, downloadBarcodeSvg } from '../../utils/barcode-download';
-import { LanguageService } from '../../services/language.service';
 import { I18nService } from '../../services/i18n.service';
 import { SiteOriginService } from '../../services/site-origin.service';
 
@@ -42,7 +41,6 @@ export class ProductComponent implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
   private productService = inject(ProductService);
   protected uiState = inject(UiStateService);
-  protected languageService = inject(LanguageService);
   protected t = inject(I18nService).t;
 
   private sanitizer = inject(DomSanitizer);
@@ -241,33 +239,16 @@ export class ProductComponent implements OnInit, OnDestroy {
   // vedi il commento su applyJsonLd per il perché.
   jsonLdJson = computed<string | null>(() => {
     const prod = this.product();
-    if (!prod) return null;
+    // I prodotti demo senza rawGs1Data rappresentano volutamente il caso "non ancora AI Ready"
+    // (vedi isAiReady() e il checklist item "jsonLdPresent" in product.html): non devono
+    // pubblicare alcun dato strutturato, nemmeno un fallback sintetico — altrimenti ogni
+    // prodotto risulterebbe comunque "letto" da un validator schema.org, contraddicendo sia la
+    // UI che il senso stesso della demo (mostrare la differenza tra chi pubblica GS1 Web
+    // Vocabulary/schema.org e chi no).
+    if (!prod || !prod.rawGs1Data) return null;
 
-    const lang = this.languageService.lang();
-
-    // Se l'oggetto rawGs1Data esiste già strutturato nel DB lo usiamo (clonato, per non mutare
-    // l'originale condiviso), altrimenti lo creiamo da zero
-    let jsonLdData: any = prod.rawGs1Data ? JSON.parse(JSON.stringify(prod.rawGs1Data)) : {
-      "@context": {
-        "gs1": "https://ref.gs1.org/voc/",
-        "xsd": "http://www.w3.org/2001/XMLSchema#",
-        "@vocab": "https://ref.gs1.org/voc/"
-      },
-      "@type": "gs1:Offer",
-      "itemOffered": {
-        "@type": "gs1:FoodBeverageTobaccoProduct",
-        "gtin": this.gtin(),
-        "productName": [
-          { "@value": prod.name, "@language": lang }
-        ],
-        "brand": {
-          "@type": "gs1:Brand",
-          "brandName": [
-            { "@value": prod.brand, "@language": lang }
-          ]
-        }
-      }
-    };
+    // Clonato per non mutare l'originale condiviso da tutte le istanze del componente.
+    let jsonLdData: any = JSON.parse(JSON.stringify(prod.rawGs1Data));
 
     // I campi schema.org semplici (non language-tagged array come le proprietà gs1:) seguono
     // la lingua attiva della UI — a differenza degli array `{ "@value", "@language" }` di
