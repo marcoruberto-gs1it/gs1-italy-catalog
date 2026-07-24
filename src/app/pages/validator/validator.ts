@@ -5,6 +5,7 @@ import { Title } from '@angular/platform-browser';
 import type QrScanner from 'qr-scanner';
 import { I18nService } from '../../services/i18n.service';
 import { SiteOriginService } from '../../services/site-origin.service';
+import { Product, ProductService } from '../../services/product.service';
 
 interface AiEntry {
   ai: string;
@@ -12,8 +13,18 @@ interface AiEntry {
   value: string;
 }
 
-const EXAMPLE_PATH_SIMPLE = '/01/08032089000024';
-const EXAMPLE_PATH_INSTANCE = '/01/08032089000024/10/LOT231102/21/545519';
+// Continuità con l'esempio storico di questa pagina, ma verificato dinamicamente contro il
+// catalogo reale (vedi pickExampleProduct) invece che imposto come stringa fissa: un Digital
+// Link inventato o un lotto/seriale non allineato al traceabilityExample del prodotto
+// risulterebbe in un 404 aprendolo davvero (es. dal pulsante "Valida su validator.schema.org",
+// che scarica per davvero la pagina) — le rotte /01/:gtin/10/:lot/21/:serial sono prerenderizzate
+// solo per le combinazioni curate in traceabilityExample (vedi app.routes.server.ts).
+const PREFERRED_EXAMPLE_GTIN = '08032089000024';
+
+function pickExampleProduct(products: Product[]): Product | undefined {
+  const eligible = products.filter((p) => p.rawGs1Data && p.traceabilityExample);
+  return eligible.find((p) => p.gtin === PREFERRED_EXAMPLE_GTIN) ?? eligible[0];
+}
 
 // Separatore di campo FNC1 come restituito da un vero lettore barcode (ASCII 29, "Group
 // Separator") quando un QR/Data Matrix GS1 codifica una stringa AI non bracketizzata invece di
@@ -46,14 +57,19 @@ export class ValidatorComponent implements OnInit, OnDestroy {
   private platformId = inject(PLATFORM_ID);
   private titleService = inject(Title);
   private siteOrigin = inject(SiteOriginService);
+  private productService = inject(ProductService);
   private injector = inject(Injector);
   protected t = inject(I18nService).t;
 
   // validator.schema.org scarica davvero la pagina che gli si passa: gli esempi devono quindi
-  // puntare a un URL realmente raggiungibile sul dominio corrente (vedi SiteOriginService),
-  // non a un dominio fittizio o hardcodato.
-  protected readonly exampleSimple = this.siteOrigin.value + EXAMPLE_PATH_SIMPLE;
-  protected readonly exampleInstance = this.siteOrigin.value + EXAMPLE_PATH_INSTANCE;
+  // puntare a un URL realmente raggiungibile sul dominio corrente (vedi SiteOriginService) e a
+  // un prodotto/lotto/seriale realmente esistenti nel catalogo (vedi pickExampleProduct), non a
+  // un dominio o identificativi fittizi.
+  private exampleProduct = pickExampleProduct(this.productService.getAllProducts());
+  protected readonly exampleSimple = `${this.siteOrigin.value}/01/${this.exampleProduct?.gtin ?? PREFERRED_EXAMPLE_GTIN}`;
+  protected readonly exampleInstance = this.exampleProduct?.traceabilityExample
+    ? `${this.exampleSimple}/10/${this.exampleProduct.traceabilityExample.lot}/21/${this.exampleProduct.traceabilityExample.serial}`
+    : this.exampleSimple;
 
   isBrowser = signal(false);
   input = signal('');
