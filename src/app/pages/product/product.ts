@@ -4,7 +4,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { DomSanitizer, Meta, SafeHtml, Title } from '@angular/platform-browser';
 import { QRCodeComponent } from 'angularx-qrcode';
-import { ProductService, TraceEvent, EdiMessage, EDI_DEMO_BUYER, isAiReady, isVerified, productImages, getVocabularies, buildEpcisEvent, buildEdiFlow, discountPercent, formatEuro } from '../../services/product.service';
+import { ProductService, TraceEvent, EdiMessage, EDI_DEMO_BUYER, isAiReady, isVerified, productImages, getVocabularies, buildEpcisEvent, buildEdiFlow, buildGdsnWebVocabJson, discountPercent, formatEuro } from '../../services/product.service';
 import { UiStateService } from '../../services/ui-state.service';
 import { StarRatingComponent } from '../../components/star-rating/star-rating';
 import { DigitalLinkVisualizerComponent } from '../../components/digital-link-visualizer/digital-link-visualizer';
@@ -178,7 +178,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   gdsnJson = computed<SafeHtml>(() => {
     const gdsn = this.product()?.gdsn;
     if (!gdsn) return this.sanitizer.bypassSecurityTrustHtml('');
-    const json = JSON.stringify({ 'gdsn:tradeItemHierarchy': gdsn }, null, 2);
+    const json = JSON.stringify(buildGdsnWebVocabJson(gdsn), null, 2);
     return this.sanitizer.bypassSecurityTrustHtml(highlightJson(json));
   });
 

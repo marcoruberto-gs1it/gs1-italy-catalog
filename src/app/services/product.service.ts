@@ -489,6 +489,99 @@ export function buildEdiFlow(product: Product): EdiMessage[] {
   return messages;
 }
 
+// --- GDSN in GS1 Web Vocabulary ---
+
+// Mappatura verso i codici unità di misura UN/CEFACT già usati altrove in questo dataset (vedi
+// gs1:netContent/unitCode nei rawGs1Data dei singoli prodotti), per restare coerenti con lo
+// stesso sistema di codifica.
+const UNIT_CODES: Record<string, string> = { g: 'GRM', kg: 'KGM', mm: 'MMT', ml: 'MLT', l: 'LTR', pz: 'C62' };
+
+function quantitativeValue(raw: string | undefined): { '@type': string; value: { '@value': string; '@type': string }; unitCode: string } | undefined {
+  if (!raw) return undefined;
+  const match = raw.trim().match(/^([\d.]+)\s*([a-zA-Z]+)$/);
+  if (!match) return undefined;
+  const unitCode = UNIT_CODES[match[2].toLowerCase()];
+  if (!unitCode) return undefined;
+  return { '@type': 'gs1:QuantitativeValue', value: { '@value': match[1], '@type': 'xsd:float' }, unitCode };
+}
+
+function parseDimensions(raw: string | undefined): { height?: object; width?: object; depth?: object } {
+  if (!raw) return {};
+  const match = raw.trim().match(/^([\d.]+)\s*x\s*([\d.]+)\s*x\s*([\d.]+)\s*([a-zA-Z]+)$/i);
+  if (!match) return {};
+  const unitCode = UNIT_CODES[match[4].toLowerCase()];
+  if (!unitCode) return {};
+  const asQv = (v: string) => ({ '@type': 'gs1:QuantitativeValue', value: { '@value': v, '@type': 'xsd:float' }, unitCode });
+  // Convenzione già in uso nel dataset per "dimensions" (vedi product.specs.dimensions,
+  // "LxPxA"/"WxDxH"): larghezza x profondità x altezza.
+  return { width: asQv(match[1]), depth: asQv(match[2]), height: asQv(match[3]) };
+}
+
+/**
+ * Pubblica la gerarchia di imballo GDSN di un prodotto nel formato GS1 Web Vocabulary:
+ * gs1: per ogni attributo che ha un termine ufficiale corrispondente (gtin, packagingType,
+ * netWeight/netContent, grossWeight, inPackageHeight/Width/Depth, targetMarket) — verificato
+ * per ciascuno di essi contro https://ref.gs1.org/voc/ (v1.16). La struttura stessa di una
+ * gerarchia di imballo multilivello (unità base/consumer/orderable/despatch/invoice, quantità
+ * contenuta nel livello superiore) è però un concetto specifico di sincronizzazione GDSN che il
+ * Web Vocabulary — pensato per la pubblicazione di singole pagine prodotto, non per l'intero
+ * scambio B2B GDSN — non copre affatto: nessun termine gs1:isTradeItem*, gs1:quantityContained
+ * o equivalente esiste nel vocabolario ufficiale. Per questi attributi si propone qui
+ * un'estensione italiana con prefisso gs1it: (namespace fittizio ma coerente, sotto il dominio
+ * reale di GS1 Italy), chiaramente distinta dai termini gs1: ufficiali.
+ */
+export function buildGdsnWebVocabJson(gdsn: GdsnInfo): object {
+  const targetMarket = {
+    '@type': 'gs1:TargetMarketDetails',
+    'gs1:targetMarketCountries': [{ '@type': 'gs1:Country', 'gs1:countryCode': gdsn.targetMarket }],
+  };
+
+  const hierarchy = gdsn.hierarchy.map((item) => {
+    // Per 3 prodotti la "netWeight" della gerarchia esprime in realtà un volume o un conteggio
+    // (330 ml di birra, 5 L di olio, 40 pz di cerotti): stessa distinzione già applicata al
+    // livello prodotto in rawGs1Data, gs1:netContent invece di gs1:netWeight.
+    const isVolumeOrCount = /\b(ml|l|pz)$/i.test((item.netWeight ?? '').trim());
+    const netWeightValue = quantitativeValue(item.netWeight);
+    const dims = parseDimensions(item.dimensions);
+
+    const node: Record<string, unknown> = {
+      '@type': 'gs1:Product',
+      'gs1it:packagingLevel': item.level,
+      gtin: item.gtin,
+      'gs1:packagingType': item.packagingTypeCode,
+      'gs1it:packagingTypeLabel': item.packagingTypeLabel,
+    };
+    if (netWeightValue) node[isVolumeOrCount ? 'gs1:netContent' : 'gs1:netWeight'] = netWeightValue;
+    const grossWeightValue = quantitativeValue(item.grossWeight);
+    if (grossWeightValue) node['gs1:grossWeight'] = grossWeightValue;
+    if (dims.height) node['gs1:inPackageHeight'] = dims.height;
+    if (dims.width) node['gs1:inPackageWidth'] = dims.width;
+    if (dims.depth) node['gs1:inPackageDepth'] = dims.depth;
+    if (item.quantityContained) node['gs1it:quantityContained'] = item.quantityContained;
+    if (item.containedLevel) node['gs1it:containedLevel'] = item.containedLevel;
+    node['gs1it:isBaseUnit'] = item.isBaseUnit;
+    node['gs1it:isConsumerUnit'] = item.isConsumerUnit;
+    node['gs1it:isOrderableUnit'] = item.isOrderableUnit;
+    node['gs1it:isDespatchUnit'] = item.isDespatchUnit;
+    node['gs1it:isInvoiceUnit'] = item.isInvoiceUnit;
+    return node;
+  });
+
+  return {
+    '@context': {
+      gs1: 'https://ref.gs1.org/voc/',
+      gs1it: 'https://gs1it.org/voc/',
+      xsd: 'http://www.w3.org/2001/XMLSchema#',
+      '@vocab': 'https://ref.gs1.org/voc/',
+    },
+    '@type': 'gs1it:TradeItemHierarchy',
+    'gs1:targetMarket': targetMarket,
+    'gs1it:dataPool': gdsn.dataPool,
+    'gs1it:lastModified': gdsn.lastModified,
+    'gs1it:tradeItemHierarchy': hierarchy,
+  };
+}
+
 @Injectable({
   providedIn: 'root'
 })

@@ -891,6 +891,10 @@
   max-width: 100%;
 }
 
+.webvocab-note {
+  margin-top: 10px;
+}
+
 /* --- Esempio Lotto/Seriale (sezione nascosta) --- */
 .lot-serial-example {
   margin-top: 16px;

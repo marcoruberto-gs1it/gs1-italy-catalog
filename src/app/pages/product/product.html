@@ -432,6 +432,44 @@
                     </div>
                   }
                 }
+
+                @if (gdsnLogisticsUnits().length > 0) {
+                  <h4>{{ t('product.supplyChain.logisticsUnitsHeading') }}</h4>
+                  <p class="data-text" [innerHTML]="t('product.supplyChain.logisticsUnitsIntro')"></p>
+                  <button type="button" class="trace-toggle" (click)="toggleSsccExample()">
+                    {{ showSsccExample() ? t('product.supplyChain.hideSsccExample') : t('product.supplyChain.showSsccExample') }}
+                  </button>
+
+                  @if (showSsccExample()) {
+                    <div class="lot-serial-example sscc-list">
+                      @for (item of gdsnLogisticsUnits(); track item.gtin) {
+                        <div class="sscc-item">
+                          <div class="example-qr">
+                            @if (isBrowser()) {
+                              <span class="example-qr-code">
+                                <qrcode
+                                  [qrdata]="ssccDigitalLink(item.sscc!)"
+                                  [width]="76"
+                                  [errorCorrectionLevel]="'Q'"
+                                  [elementType]="'svg'"
+                                  [margin]="0">
+                                </qrcode>
+                              </span>
+                            }
+                            <p class="example-qr-hint">
+                              {{ item.level }} · SSCC {{ item.sscc }}<br>
+                              {{ t('product.supplyChain.ssccHint') }}
+                            </p>
+                          </div>
+                          <app-digital-link-visualizer
+                            [link]="ssccDigitalLink(item.sscc!)"
+                            [sscc]="item.sscc!">
+                          </app-digital-link-visualizer>
+                        </div>
+                      }
+                    </div>
+                  }
+                }
               </div>
             }
 
@@ -485,49 +523,12 @@
                   }
                 </ol>
 
-                @if (gdsnLogisticsUnits().length > 0) {
-                  <h4>{{ t('product.gdsn.logisticsUnitsHeading') }}</h4>
-                  <p class="data-text" [innerHTML]="t('product.gdsn.logisticsUnitsIntro')"></p>
-                  <button type="button" class="trace-toggle" (click)="toggleSsccExample()">
-                    {{ showSsccExample() ? t('product.gdsn.hideSsccExample') : t('product.gdsn.showSsccExample') }}
-                  </button>
-
-                  @if (showSsccExample()) {
-                    <div class="lot-serial-example sscc-list">
-                      @for (item of gdsnLogisticsUnits(); track item.gtin) {
-                        <div class="sscc-item">
-                          <div class="example-qr">
-                            @if (isBrowser()) {
-                              <span class="example-qr-code">
-                                <qrcode
-                                  [qrdata]="ssccDigitalLink(item.sscc!)"
-                                  [width]="76"
-                                  [errorCorrectionLevel]="'Q'"
-                                  [elementType]="'svg'"
-                                  [margin]="0">
-                                </qrcode>
-                              </span>
-                            }
-                            <p class="example-qr-hint">
-                              {{ item.level }} · SSCC {{ item.sscc }}<br>
-                              {{ t('product.gdsn.ssccHint') }}
-                            </p>
-                          </div>
-                          <app-digital-link-visualizer
-                            [link]="ssccDigitalLink(item.sscc!)"
-                            [sscc]="item.sscc!">
-                          </app-digital-link-visualizer>
-                        </div>
-                      }
-                    </div>
-                  }
-                }
-
                 <button type="button" class="trace-toggle" (click)="toggleGdsnExample()">
                   {{ showGdsnExample() ? t('product.gdsn.hideJson') : t('product.gdsn.showJson') }}
                 </button>
                 @if (showGdsnExample()) {
                   <pre class="gs-code-block trace-json"><code [innerHTML]="gdsnJson()"></code></pre>
+                  <p class="data-text webvocab-note" [innerHTML]="t('product.gdsn.webVocabNote')"></p>
                 }
               </div>
             }

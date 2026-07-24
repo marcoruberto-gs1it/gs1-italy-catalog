@@ -139,6 +139,12 @@ export const TRANSLATIONS = {
         chainSubheading: '(eventi EPCIS legati a questa istanza)',
         showEpcisEvent: 'Mostra evento EPCIS',
         hideEpcisEvent: 'Nascondi evento EPCIS',
+        logisticsUnitsHeading: 'Identificazione delle unità logistiche',
+        logisticsUnitsIntro:
+          'Il GTIN di ogni livello della gerarchia GDSN identifica la <em>classe</em> di imballo. Quando l\'unità logistica lascia il magazzino viene invece identificata singolarmente con uno <strong>SSCC</strong> (Serial Shipping Container Code, AI 00) — lo stesso principio "classe vs istanza" visto sopra per lotto e seriale, applicato qui alla logistica anziché al prodotto.',
+        showSsccExample: 'Mostra identificazione SSCC',
+        hideSsccExample: 'Nascondi identificazione SSCC',
+        ssccHint: 'QR code GS1 standard con il Digital Link di questa specifica unità logistica.',
       },
       gdsn: {
         intro:
@@ -154,14 +160,10 @@ export const TRANSLATIONS = {
         netWeight: 'Peso Netto',
         grossWeight: 'Peso Lordo',
         dimensions: 'Dimensioni',
-        logisticsUnitsHeading: 'Identificazione delle unità logistiche',
-        logisticsUnitsIntro:
-          'Il GTIN di ogni livello identifica la <em>classe</em> di imballo. Quando l\'unità logistica lascia il magazzino viene invece identificata singolarmente con uno <strong>SSCC</strong> (Serial Shipping Container Code, AI 00) — lo stesso principio "classe vs istanza" visto per lotto e seriale, applicato qui alla logistica anziché al prodotto.',
-        showSsccExample: 'Mostra identificazione SSCC',
-        hideSsccExample: 'Nascondi identificazione SSCC',
-        ssccHint: 'QR code GS1 standard con il Digital Link di questa specifica unità logistica.',
-        showJson: 'Mostra esempio GDSN (JSON)',
-        hideJson: 'Nascondi esempio GDSN',
+        showJson: 'Mostra JSON (GS1 Web Vocabulary)',
+        hideJson: 'Nascondi JSON',
+        webVocabNote:
+          'Attributi <code>gs1:</code>: termine ufficiale del GS1 Web Vocabulary, verificato su ref.gs1.org/voc. Attributi <code>gs1it:</code>: la gerarchia di imballo multilivello (unità base/consumer/orderable/despatch/invoice, quantità contenuta) è un concetto specifico della sincronizzazione GDSN che il Web Vocabulary — pensato per singole pagine prodotto, non per lo scambio B2B GDSN — non copre: qui proposto come estensione italiana.',
       },
       edi: {
         intro:
@@ -514,6 +516,12 @@ export const TRANSLATIONS = {
         chainSubheading: '(EPCIS events tied to this instance)',
         showEpcisEvent: 'Show EPCIS event',
         hideEpcisEvent: 'Hide EPCIS event',
+        logisticsUnitsHeading: 'Logistics Unit Identification',
+        logisticsUnitsIntro:
+          'The GTIN of each level in the GDSN hierarchy identifies the packaging <em>class</em>. When the logistics unit leaves the warehouse, it is instead individually identified with an <strong>SSCC</strong> (Serial Shipping Container Code, AI 00) — the same "class vs instance" principle seen above for batch and serial, applied here to logistics rather than to the product.',
+        showSsccExample: 'Show SSCC identification',
+        hideSsccExample: 'Hide SSCC identification',
+        ssccHint: 'Standard GS1 QR code with the Digital Link for this specific logistics unit.',
       },
       gdsn: {
         intro:
@@ -529,14 +537,10 @@ export const TRANSLATIONS = {
         netWeight: 'Net Weight',
         grossWeight: 'Gross Weight',
         dimensions: 'Dimensions',
-        logisticsUnitsHeading: 'Logistics Unit Identification',
-        logisticsUnitsIntro:
-          'The GTIN of each level identifies the packaging <em>class</em>. When the logistics unit leaves the warehouse, it is instead individually identified with an <strong>SSCC</strong> (Serial Shipping Container Code, AI 00) — the same "class vs instance" principle seen for batch and serial, applied here to logistics rather than to the product.',
-        showSsccExample: 'Show SSCC identification',
-        hideSsccExample: 'Hide SSCC identification',
-        ssccHint: 'Standard GS1 QR code with the Digital Link for this specific logistics unit.',
-        showJson: 'Show GDSN example (JSON)',
-        hideJson: 'Hide GDSN example',
+        showJson: 'Show JSON (GS1 Web Vocabulary)',
+        hideJson: 'Hide JSON',
+        webVocabNote:
+          'Attributes prefixed <code>gs1:</code>: an official GS1 Web Vocabulary term, verified against ref.gs1.org/voc. Attributes prefixed <code>gs1it:</code>: the multi-level packaging hierarchy (base/consumer/orderable/despatch/invoice unit, quantity contained) is a GDSN-synchronisation-specific concept that the Web Vocabulary — designed for individual product pages, not B2B GDSN exchange — doesn\'t cover: proposed here as an Italian extension.',
       },
       edi: {
         intro:
