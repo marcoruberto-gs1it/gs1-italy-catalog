@@ -118,6 +118,9 @@
             @if (hasGdsnTab()) {
               <button type="button" [class.active]="activeTab() === 'gdsn'" (click)="setTab('gdsn')">{{ t('product.tabs.gdsn') }}</button>
             }
+            @if (hasEdiTab()) {
+              <button type="button" [class.active]="activeTab() === 'edi'" (click)="setTab('edi')">{{ t('product.tabs.edi') }}</button>
+            }
             <button type="button" [class.active]="activeTab() === 'structured-data'" (click)="setTab('structured-data')">{{ t('product.tabs.structuredData') }}</button>
           </div>
 
@@ -523,6 +526,75 @@
                 @if (showGdsnExample()) {
                   <pre class="gs-code-block trace-json"><code [innerHTML]="gdsnJson()"></code></pre>
                 }
+              </div>
+            }
+
+            <!-- GS1 EDI -->
+            @if (activeTab() === 'edi' && prod.economicOperator; as seller) {
+              <div class="panel-section edi-panel">
+                <p class="data-text" [innerHTML]="t('product.edi.intro')"></p>
+
+                <div class="identity-chips">
+                  <span class="id-chip"><span class="id-chip-label">{{ t('product.edi.seller') }}</span>{{ seller.companyName }} · GLN {{ seller.gln }}</span>
+                  <span class="id-chip"><span class="id-chip-label">{{ t('product.edi.buyer') }}</span>{{ ediBuyer.companyName }} · GLN {{ ediBuyer.gln }}</span>
+                </div>
+
+                <h5 class="trace-subheading">{{ t('product.edi.flowHeading') }} <span class="muted">{{ t('product.edi.flowSubheading') }}</span></h5>
+
+                <ol class="trace-timeline">
+                  @for (msg of ediFlow(); track msg.code; let i = $index) {
+                    <li class="trace-event">
+                      <span class="icon-badge round sm trace-icon" [style.--icon-badge-color]="traceDotColor(i)">
+                        <app-icon [name]="ediStepIcon(msg.code)" [size]="15"></app-icon>
+                      </span>
+                      <div class="trace-body">
+                        <div class="trace-head">
+                          <span class="trace-step">{{ msg.code }} — {{ t('product.edi.messages.' + msg.nameKey) }}</span>
+                          <span class="trace-date">{{ msg.date | date: 'dd/MM/yyyy' }}</span>
+                        </div>
+                        <span class="trace-company">
+                          {{ msg.from === 'buyer' ? ediBuyer.companyName : seller.companyName }}
+                          <span class="edi-arrow">→</span>
+                          {{ msg.from === 'buyer' ? seller.companyName : ediBuyer.companyName }}
+                        </span>
+                        <button type="button" class="trace-toggle" (click)="toggleEdiMessage(i)">
+                          {{ expandedEdiMessage() === i ? t('product.edi.hideSegments') : t('product.edi.showSegments') }}
+                        </button>
+                        @if (expandedEdiMessage() === i) {
+                          <ul class="edi-segment-list">
+                            @for (seg of msg.segments; track seg.code) {
+                              <li class="edi-segment-row">
+                                <code class="edi-segment-code">{{ seg.code }}</code>
+                                <span class="edi-segment-note">{{ t('product.edi.notes.' + seg.noteKey, seg.noteParams) }}</span>
+                              </li>
+                            }
+                          </ul>
+                        }
+                      </div>
+                    </li>
+                  }
+                </ol>
+
+                <h5 class="trace-subheading">{{ t('product.edi.crosslinksHeading') }}</h5>
+                <div class="certification-card edi-crosslink">
+                  <h6 class="cert-agency edi-crosslink-title"><app-icon name="hash" [size]="15"></app-icon>{{ t('product.edi.crosslinkGtinLabel') }}</h6>
+                  <p class="cert-standard">{{ t('product.edi.crosslinkGtinValue', { gtin: gtin() ?? '' }) }}</p>
+                </div>
+                <div class="certification-card edi-crosslink">
+                  <h6 class="cert-agency edi-crosslink-title"><app-icon name="building" [size]="15"></app-icon>{{ t('product.edi.crosslinkGlnLabel') }}</h6>
+                  <p class="cert-standard">{{ t('product.edi.crosslinkGlnValue') }}</p>
+                </div>
+                @if (gdsnLogisticsUnits().length > 0) {
+                  <div class="certification-card edi-crosslink">
+                    <h6 class="cert-agency edi-crosslink-title"><app-icon name="truck" [size]="15"></app-icon>{{ t('product.edi.crosslinkSsccLabel') }}</h6>
+                    <p class="cert-standard">{{ t('product.edi.crosslinkSsccValue') }}</p>
+                  </div>
+                }
+
+                <h5 class="trace-subheading">{{ t('product.edi.xmlHeading') }} <span class="muted">{{ t('product.edi.xmlSubheading') }}</span></h5>
+                <pre class="gs-code-block trace-json edi-xml-block"><code>{{ ediXmlExample() }}</code></pre>
+
+                <p class="engine-credit">{{ t('product.edi.disclaimer') }}</p>
               </div>
             }
 

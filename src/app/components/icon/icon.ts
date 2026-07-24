@@ -24,7 +24,10 @@ export type IconName =
   | 'hash'
   | 'globe'
   | 'calendar'
-  | 'braces';
+  | 'braces'
+  | 'file-text'
+  | 'send'
+  | 'inbox';
 
 @Component({
   selector: 'app-icon',

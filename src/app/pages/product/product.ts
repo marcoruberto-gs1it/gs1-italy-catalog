@@ -4,7 +4,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { DomSanitizer, Meta, SafeHtml, Title } from '@angular/platform-browser';
 import { QRCodeComponent } from 'angularx-qrcode';
-import { Product, ProductService, TraceEvent, isAiReady, isVerified, productImages, getVocabularies, buildEpcisEvent, discountPercent, formatEuro } from '../../services/product.service';
+import { Product, ProductService, TraceEvent, EdiMessage, EDI_DEMO_BUYER, isAiReady, isVerified, productImages, getVocabularies, buildEpcisEvent, buildEdiFlow, discountPercent, formatEuro } from '../../services/product.service';
 import { UiStateService } from '../../services/ui-state.service';
 import { StarRatingComponent } from '../../components/star-rating/star-rating';
 import { DigitalLinkVisualizerComponent } from '../../components/digital-link-visualizer/digital-link-visualizer';
@@ -16,7 +16,7 @@ import { downloadBarcodePng, downloadBarcodeSvg } from '../../utils/barcode-down
 import { I18nService } from '../../services/i18n.service';
 import { SiteOriginService } from '../../services/site-origin.service';
 
-type ProductTab = 'details' | 'sustainability' | 'supply-chain' | 'gdsn' | 'structured-data';
+type ProductTab = 'details' | 'sustainability' | 'supply-chain' | 'gdsn' | 'edi' | 'structured-data';
 
 // Chiavi = valori reali del code list CBV BizStep (https://ref.gs1.org/cbv/), usati anche
 // come stringa "bizStep" negli eventi EPCIS di esempio (vedi buildEpcisEvent).
@@ -28,6 +28,15 @@ const BIZ_STEP_ICONS: Record<string, IconName> = {
   retail_selling: 'flag',
   decommissioning: 'refresh',
   repairing: 'wrench',
+};
+
+// Un'icona per ciascuno dei cinque messaggi del ciclo Order-to-Cash GS1 EDI (vedi buildEdiFlow).
+const EDI_STEP_ICONS: Record<EdiMessage['code'], IconName> = {
+  ORDERS: 'send',
+  ORDRSP: 'check-circle',
+  DESADV: 'truck',
+  RECADV: 'inbox',
+  INVOIC: 'file-text',
 };
 
 @Component({
@@ -182,6 +191,66 @@ export class ProductComponent implements OnInit, OnDestroy {
     return `${this.siteOrigin.value}/00/${sscc}`;
   }
 
+  // Tab GS1 EDI: stesso set di prodotti della tab GDSN (18/63), quelli con una gerarchia di
+  // imballo completa — è lì che il collegamento DESADV → SSCC → Digital Link (vedi ediFlow e
+  // ssccDigitalLink) ha davvero senso da mostrare, oltre a richiedere comunque un
+  // economicOperator (il "venditore" del ciclo Order-to-Cash).
+  hasEdiTab = computed(() => this.hasGdsnTab() && !!this.product()?.economicOperator);
+
+  ediFlow = computed<EdiMessage[]>(() => {
+    const prod = this.product();
+    return prod ? buildEdiFlow(prod) : [];
+  });
+
+  expandedEdiMessage = signal<number | null>(null);
+
+  toggleEdiMessage(index: number): void {
+    this.expandedEdiMessage.update((current) => (current === index ? null : index));
+  }
+
+  ediStepIcon(code: EdiMessage['code']): IconName {
+    return EDI_STEP_ICONS[code];
+  }
+
+  protected ediBuyer = EDI_DEMO_BUYER;
+
+  // Un unico esempio in sintassi GS1 XML (l'alternativa "moderna" a EANCOM per lo stesso
+  // messaggio ORDERS) per mostrare che i due sono sintassi diverse per lo stesso contenuto —
+  // struttura verificata sulla presentazione ufficiale GS1 "GS1 eCom Standard (EDI) and its
+  // Benefits". Testo semplice (non JSON): niente highlightJson, che è specifico per JSON.
+  ediXmlExample = computed<string>(() => {
+    const prod = this.product();
+    const seller = prod?.economicOperator;
+    if (!prod || !seller) return '';
+    const flow = this.ediFlow();
+    const orders = flow.find((m) => m.code === 'ORDERS');
+    const orderNum = `PO-${prod.gtin.slice(-6)}`;
+    const created = orders ? orders.date : new Date().toISOString();
+    return `<order:order creationDateTime="${created}" documentStatus="ORIGINAL">
+  <orderIdentification>
+    <uniqueCreatorIdentification>${orderNum}</uniqueCreatorIdentification>
+    <contentOwner>
+      <gln>${this.ediBuyer.gln}</gln>
+    </contentOwner>
+  </orderIdentification>
+  <orderPartyInformation>
+    <seller>
+      <gln>${seller.gln}</gln>
+    </seller>
+    <buyer>
+      <gln>${this.ediBuyer.gln}</gln>
+    </buyer>
+  </orderPartyInformation>
+  <orderLineItem>
+    <lineItemNumber>1</lineItemNumber>
+    <tradeItemIdentification>
+      <gtin>${prod.gtin}</gtin>
+    </tradeItemIdentification>
+    <orderedQuantity unitOfMeasure="EA">48</orderedQuantity>
+  </orderLineItem>
+</order:order>`;
+  });
+
   private readonly traceColors = ['var(--gs1-blue)', 'var(--gs1-teal)', 'var(--gs1-orange)', 'var(--gs1-forest)', 'var(--gs1-honey)'];
 
   traceDotColor(index: number): string {
@@ -212,7 +281,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     const prod = this.product();
     const instance = prod?.traceabilityExample;
     if (!prod || !instance) return this.sanitizer.bypassSecurityTrustHtml('');
-    const json = JSON.stringify(buildEpcisEvent(prod, event, index, instance), null, 2);
+    const json = JSON.stringify(buildEpcisEvent(prod, event, index, instance, this.siteOrigin.value), null, 2);
     return this.sanitizer.bypassSecurityTrustHtml(highlightJson(json));
   }
 

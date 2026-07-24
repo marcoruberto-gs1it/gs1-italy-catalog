@@ -296,18 +296,193 @@ export function formatEuro(amount: number): string {
  * numero seriale, AI 10/21), mai al solo GTIN: un evento di tracciabilità descrive un lotto o
  * un articolo serializzato, non l'intera classe di prodotto. Vedi https://ref.gs1.org/epcis/.
  */
-export function buildEpcisEvent(product: Product, event: TraceEvent, index: number, instance: TraceabilityExample): object {
+export function buildEpcisEvent(product: Product, event: TraceEvent, index: number, instance: TraceabilityExample, origin: string): object {
   return {
     '@context': 'https://ref.gs1.org/epcis/epcis-context.jsonld',
     eventID: `urn:uuid:demo-${product.gtin}-${index}`,
     type: 'ObjectEvent',
     action: 'OBSERVE',
     bizStep: event.bizStep,
-    epcList: [`https://gs1.italy.example/01/${product.gtin}/10/${instance.lot}/21/${instance.serial}`],
+    epcList: [`${origin}/01/${product.gtin}/10/${instance.lot}/21/${instance.serial}`],
     eventTime: event.date,
     eventTimeZoneOffset: '+00:00',
     readPoint: { id: `https://id.gs1.org/414/${event.gln}` },
   };
+}
+
+// --- GS1 EDI (eCom): flusso Order-to-Cash illustrativo ---
+
+/**
+ * Controparte "buyer" fissa e condivisa per tutti i prodotti: un GS1 EDI ha sempre due parti
+ * (chi ordina, chi vende), ma questo catalogo modella solo il lato "venditore" di ogni prodotto
+ * (economicOperator). Un GLN fittizio ma sintatticamente valido (stesso prefisso aziendale
+ * 8032089 di tutto il dataset, cifra di controllo mod-10 corretta), mai riutilizzato da nessun
+ * altro GLN reale nei dati.
+ */
+export const EDI_DEMO_BUYER = { companyName: 'GS1 Italy Retail Demo S.p.A.', gln: '8032089999991' };
+
+export interface EdiSegment {
+  /** Segmento EANCOM/UN-EDIFACT reale (nome e sintassi), non un'invenzione. */
+  code: string;
+  /** Chiave i18n sotto product.edi.notes per l'annotazione in linguaggio naturale. */
+  noteKey: string;
+  noteParams?: Record<string, string | number>;
+}
+
+export interface EdiMessage {
+  code: 'ORDERS' | 'ORDRSP' | 'DESADV' | 'RECADV' | 'INVOIC';
+  nameKey: string;
+  from: 'buyer' | 'seller';
+  date: string; // ISO 8601
+  segments: EdiSegment[];
+}
+
+/**
+ * Costruisce l'intero ciclo Order-to-Cash (Ordine → Conferma d'ordine → Avviso di spedizione →
+ * Avviso di ricevimento → Fattura) in sintassi GS1 EANCOM, per il prodotto dato.
+ *
+ * I segmenti (BGM, DTM, NAD, RFF, CUX, LIN, QTY, GIN, PRI, MOA, TAX, UNH/UNT) e la sequenza dei
+ * cinque messaggi sono quelli reali dello standard GS1 EANCOM/eCom — vedi la presentazione
+ * ufficiale GS1 "GS1 eCom Standard (EDI) and its Benefits" (gs1mexico.org). Le date sono
+ * ancorate al giorno successivo all'ultimo evento di tracciabilità del prodotto (invece di
+ * Date.now(), che romperebbe la staticità del prerendering), così l'intero ciclo O2C risulta
+ * temporalmente coerente con la tab Supply Chain dello stesso prodotto.
+ */
+export function buildEdiFlow(product: Product): EdiMessage[] {
+  const seller = product.economicOperator;
+  if (!seller) return [];
+
+  const buyer = EDI_DEMO_BUYER;
+  const gtin = product.gtin;
+  const orderNum = `PO-${gtin.slice(-6)}`;
+  const qty = 48; // stesso valore dell'esempio ufficiale GS1 EANCOM (QTY+21:48)
+  const unitPrice = product.price?.amount ?? 0;
+  const currency = product.price?.currency ?? 'EUR';
+  const vatRate = product.price?.vatRate ?? 22;
+  const sscc = product.gdsn?.hierarchy.find((h) => h.isDespatchUnit && h.sscc)?.sscc;
+
+  const anchor = product.traceability?.length
+    ? new Date(product.traceability[product.traceability.length - 1].date)
+    : new Date('2024-06-21T00:00:00.000Z');
+  const day = (offset: number) => {
+    const d = new Date(anchor);
+    d.setUTCDate(d.getUTCDate() + offset);
+    return d;
+  };
+  const ymd = (d: Date) => d.toISOString().slice(0, 10).replace(/-/g, '');
+  const iso = (d: Date) => d.toISOString();
+
+  const orderDate = day(1);
+  const orderRespDate = day(2);
+  const despatchDate = day(4);
+  const receiptDate = day(5);
+  const invoiceDate = day(6);
+
+  const total = (qty * unitPrice).toFixed(2);
+  const vatAmount = (qty * unitPrice * (vatRate / 100)).toFixed(2);
+
+  const nadBy: EdiSegment = { code: `NAD+BY+${buyer.gln}::9'`, noteKey: 'nadBy', noteParams: { gln: buyer.gln, name: buyer.companyName } };
+  const nadSu: EdiSegment = { code: `NAD+SU+${seller.gln}::9'`, noteKey: 'nadSu', noteParams: { gln: seller.gln, name: seller.companyName } };
+  const rffOrder: EdiSegment = { code: `RFF+ON:${orderNum}'`, noteKey: 'rffOrder', noteParams: { order: orderNum } };
+  const lin: EdiSegment = { code: `LIN+1++${gtin}:SRV'`, noteKey: 'lin', noteParams: { gtin } };
+
+  const messages: EdiMessage[] = [
+    {
+      code: 'ORDERS',
+      nameKey: 'orders',
+      from: 'buyer',
+      date: iso(orderDate),
+      segments: [
+        { code: `UNH+1+ORDERS:D:96A:UN:EAN008'`, noteKey: 'unh', noteParams: { msg: 'ORDERS' } },
+        { code: `BGM+220+${orderNum}+9'`, noteKey: 'bgmOrder', noteParams: { order: orderNum } },
+        { code: `DTM+137:${ymd(orderDate)}:102'`, noteKey: 'dtm', noteParams: { date: orderDate.toISOString().slice(0, 10) } },
+        nadBy,
+        nadSu,
+        { code: `CUX+2:${currency}:9'`, noteKey: 'cux', noteParams: { currency } },
+        lin,
+        { code: `QTY+21:${qty}'`, noteKey: 'qtyOrdered', noteParams: { qty } },
+        { code: `PRI+AAA:${unitPrice.toFixed(2)}'`, noteKey: 'pri', noteParams: { price: unitPrice.toFixed(2), currency } },
+        { code: `UNT+9+1'`, noteKey: 'unt', noteParams: { msg: 'ORDERS' } },
+      ],
+    },
+    {
+      code: 'ORDRSP',
+      nameKey: 'ordrsp',
+      from: 'seller',
+      date: iso(orderRespDate),
+      segments: [
+        { code: `UNH+2+ORDRSP:D:96A:UN:EAN008'`, noteKey: 'unh', noteParams: { msg: 'ORDRSP' } },
+        { code: `BGM+231+${orderNum}+29'`, noteKey: 'bgmOrdrsp', noteParams: { order: orderNum } },
+        { code: `DTM+137:${ymd(orderRespDate)}:102'`, noteKey: 'dtm', noteParams: { date: orderRespDate.toISOString().slice(0, 10) } },
+        rffOrder,
+        nadSu,
+        nadBy,
+        lin,
+        { code: `QTY+113:${qty}'`, noteKey: 'qtyConfirmed', noteParams: { qty } },
+        { code: `DTM+2:${ymd(despatchDate)}:102'`, noteKey: 'dtmDelivery', noteParams: { date: despatchDate.toISOString().slice(0, 10) } },
+        { code: `UNT+9+2'`, noteKey: 'unt', noteParams: { msg: 'ORDRSP' } },
+      ],
+    },
+    {
+      code: 'DESADV',
+      nameKey: 'desadv',
+      from: 'seller',
+      date: iso(despatchDate),
+      segments: [
+        { code: `UNH+3+DESADV:D:96A:UN:EAN009'`, noteKey: 'unh', noteParams: { msg: 'DESADV' } },
+        { code: `BGM+351+ASN-${gtin.slice(-6)}+9'`, noteKey: 'bgmDesadv', noteParams: { asn: `ASN-${gtin.slice(-6)}` } },
+        { code: `DTM+137:${ymd(despatchDate)}:102'`, noteKey: 'dtm', noteParams: { date: despatchDate.toISOString().slice(0, 10) } },
+        rffOrder,
+        nadSu,
+        nadBy,
+        ...(sscc ? [{ code: `GIN+BJ+${sscc}'`, noteKey: 'ginSscc', noteParams: { sscc } }] : []),
+        lin,
+        { code: `QTY+12:${qty}'`, noteKey: 'qtyDespatched', noteParams: { qty } },
+        { code: `UNT+${sscc ? 10 : 9}+3'`, noteKey: 'unt', noteParams: { msg: 'DESADV' } },
+      ],
+    },
+    {
+      code: 'RECADV',
+      nameKey: 'recadv',
+      from: 'buyer',
+      date: iso(receiptDate),
+      segments: [
+        { code: `UNH+4+RECADV:D:01B:UN:EAN010'`, noteKey: 'unh', noteParams: { msg: 'RECADV' } },
+        { code: `BGM+632+GR-${gtin.slice(-6)}+9'`, noteKey: 'bgmRecadv', noteParams: { gr: `GR-${gtin.slice(-6)}` } },
+        { code: `DTM+137:${ymd(receiptDate)}:102'`, noteKey: 'dtm', noteParams: { date: receiptDate.toISOString().slice(0, 10) } },
+        rffOrder,
+        nadBy,
+        nadSu,
+        lin,
+        { code: `QTY+52:${qty}'`, noteKey: 'qtyReceived', noteParams: { qty } },
+        { code: `UNT+8+4'`, noteKey: 'unt', noteParams: { msg: 'RECADV' } },
+      ],
+    },
+    {
+      code: 'INVOIC',
+      nameKey: 'invoic',
+      from: 'seller',
+      date: iso(invoiceDate),
+      segments: [
+        { code: `UNH+5+INVOIC:D:96A:UN:EAN009'`, noteKey: 'unh', noteParams: { msg: 'INVOIC' } },
+        { code: `BGM+380+INV-${gtin.slice(-6)}+9'`, noteKey: 'bgmInvoic', noteParams: { inv: `INV-${gtin.slice(-6)}` } },
+        { code: `DTM+137:${ymd(invoiceDate)}:102'`, noteKey: 'dtm', noteParams: { date: invoiceDate.toISOString().slice(0, 10) } },
+        rffOrder,
+        nadSu,
+        nadBy,
+        { code: `CUX+2:${currency}:9'`, noteKey: 'cux', noteParams: { currency } },
+        lin,
+        { code: `QTY+47:${qty}'`, noteKey: 'qtyInvoiced', noteParams: { qty } },
+        { code: `PRI+AAA:${unitPrice.toFixed(2)}'`, noteKey: 'pri', noteParams: { price: unitPrice.toFixed(2), currency } },
+        { code: `MOA+79:${total}'`, noteKey: 'moaTotal', noteParams: { amount: total, currency } },
+        { code: `TAX+7+VAT+++:::${vatRate}'`, noteKey: 'taxVat', noteParams: { vatRate } },
+        { code: `MOA+124:${vatAmount}'`, noteKey: 'moaVat', noteParams: { amount: vatAmount, currency } },
+        { code: `UNT+13+5'`, noteKey: 'unt', noteParams: { msg: 'INVOIC' } },
+      ],
+    },
+  ];
+
+  return messages;
 }
 
 @Injectable({
