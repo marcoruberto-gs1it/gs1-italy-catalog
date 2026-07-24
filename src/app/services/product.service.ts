@@ -296,14 +296,18 @@ export function formatEuro(amount: number): string {
  * numero seriale, AI 10/21), mai al solo GTIN: un evento di tracciabilità descrive un lotto o
  * un articolo serializzato, non l'intera classe di prodotto. Vedi https://ref.gs1.org/epcis/.
  */
-export function buildEpcisEvent(product: Product, event: TraceEvent, index: number, instance: TraceabilityExample, origin: string): object {
+export function buildEpcisEvent(product: Product, event: TraceEvent, index: number, instance: TraceabilityExample): object {
   return {
     '@context': 'https://ref.gs1.org/epcis/epcis-context.jsonld',
     eventID: `urn:uuid:demo-${product.gtin}-${index}`,
     type: 'ObjectEvent',
     action: 'OBSERVE',
     bizStep: event.bizStep,
-    epcList: [`${origin}/01/${product.gtin}/10/${instance.lot}/21/${instance.serial}`],
+    // Forma canonica (stem https://id.gs1.org/, resolver GS1 ufficiale), non il dominio di
+    // hosting di questa demo: l'EPC identifica l'istanza fisica del prodotto in sé, non "questa
+    // pagina di questo sito" — stessa distinzione già fatta per readPoint (AI 414) qui sotto, e
+    // per il "Digital Link canonico" nel validatore.
+    epcList: [`https://id.gs1.org/01/${product.gtin}/10/${instance.lot}/21/${instance.serial}`],
     eventTime: event.date,
     eventTimeZoneOffset: '+00:00',
     readPoint: { id: `https://id.gs1.org/414/${event.gln}` },

@@ -4,7 +4,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { DomSanitizer, Meta, SafeHtml, Title } from '@angular/platform-browser';
 import { QRCodeComponent } from 'angularx-qrcode';
-import { Product, ProductService, TraceEvent, EdiMessage, EDI_DEMO_BUYER, isAiReady, isVerified, productImages, getVocabularies, buildEpcisEvent, buildEdiFlow, discountPercent, formatEuro } from '../../services/product.service';
+import { ProductService, TraceEvent, EdiMessage, EDI_DEMO_BUYER, isAiReady, isVerified, productImages, getVocabularies, buildEpcisEvent, buildEdiFlow, discountPercent, formatEuro } from '../../services/product.service';
 import { UiStateService } from '../../services/ui-state.service';
 import { StarRatingComponent } from '../../components/star-rating/star-rating';
 import { DigitalLinkVisualizerComponent } from '../../components/digital-link-visualizer/digital-link-visualizer';
@@ -281,7 +281,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     const prod = this.product();
     const instance = prod?.traceabilityExample;
     if (!prod || !instance) return this.sanitizer.bypassSecurityTrustHtml('');
-    const json = JSON.stringify(buildEpcisEvent(prod, event, index, instance, this.siteOrigin.value), null, 2);
+    const json = JSON.stringify(buildEpcisEvent(prod, event, index, instance), null, 2);
     return this.sanitizer.bypassSecurityTrustHtml(highlightJson(json));
   }
 
