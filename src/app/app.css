@@ -54,13 +54,10 @@
 
 .demo-badge {
   color: var(--gs1-orange);
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border: 1px solid var(--gs1-orange);
-  border-radius: var(--radius-full);
-  padding: 3px 10px;
+  letter-spacing: 0.06em;
 }
 
 .header-nav {
