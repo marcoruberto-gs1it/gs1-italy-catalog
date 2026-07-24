@@ -14,6 +14,7 @@ export const TRANSLATIONS = {
       languageLabel: 'Lingua',
       switchToItalian: 'Passa all\'italiano',
       switchToEnglish: 'Passa all\'inglese',
+      demoBadge: 'Demo',
     },
     footer: {
       taxCode: 'Codice fiscale',
@@ -328,6 +329,7 @@ export const TRANSLATIONS = {
       languageLabel: 'Language',
       switchToItalian: 'Switch to Italian',
       switchToEnglish: 'Switch to English',
+      demoBadge: 'Demo',
     },
     footer: {
       taxCode: 'Tax code',

@@ -21,6 +21,7 @@ describe('App', () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.app-title')?.textContent).toContain('Digital Link');
+    expect(compiled.querySelector('.logo img')).toBeTruthy();
+    expect(compiled.querySelector('.demo-badge')?.textContent?.trim()).toBeTruthy();
   });
 });
