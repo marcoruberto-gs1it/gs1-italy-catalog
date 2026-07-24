@@ -68,10 +68,10 @@ export const TRANSLATIONS = {
       tabs: {
         details: 'Dettagli',
         sustainability: 'Sostenibilità',
-        supplyChain: 'Supply Chain',
+        supplyChain: 'EPCIS',
         gdsn: 'GDSN',
         structuredData: 'GS1 Digital Link',
-        edi: 'GS1 EDI',
+        edi: 'EDI',
       },
       specs: {
         heading: 'Specifiche',
@@ -441,10 +441,10 @@ export const TRANSLATIONS = {
       tabs: {
         details: 'Details',
         sustainability: 'Sustainability',
-        supplyChain: 'Supply Chain',
+        supplyChain: 'EPCIS',
         gdsn: 'GDSN',
         structuredData: 'GS1 Digital Link',
-        edi: 'GS1 EDI',
+        edi: 'EDI',
       },
       specs: {
         heading: 'Specifications',
