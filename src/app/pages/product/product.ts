@@ -130,7 +130,10 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   activeImage = computed(() => this.images()[this.activeImageIndex()] ?? '');
 
-  // Tab availability, derivata dai dati realmente presenti sul prodotto
+  // La tab Dettagli è sempre visibile ed è il default della pagina (come su qualunque
+  // e-commerce): questo flag serve solo a decidere se mostrare le specifiche vere e proprie o
+  // un messaggio di fallback, per il singolo prodotto (attualmente solo le mascherine
+  // chirurgiche) senza logistics/food/apparel.
   hasDetailsTab = computed(() => {
     const prod = this.product();
     return !!(prod?.logistics || prod?.food || prod?.apparel);
@@ -425,10 +428,6 @@ export class ProductComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     // Risoluzione della piattaforma prima dell'esecuzione dei computed
     this.isBrowser.set(isPlatformBrowser(this.platformId));
-
-    if (!this.hasDetailsTab()) {
-      this.activeTab.set('structured-data');
-    }
   }
 
   setTab(tab: ProductTab): void {

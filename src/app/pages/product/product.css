@@ -553,8 +553,40 @@
   border-bottom-color: var(--gs1-orange);
 }
 
-:root[data-theme='dark'] .tabs-nav button.active {
+:host-context([data-theme='dark']) .tabs-nav button.active {
   color: var(--accent-strong);
+}
+
+/* Separatore fra le tab "generiche" da e-commerce (Dettagli, Sostenibilità) e quelle che sono
+   veri e propri standard GS1 (EPCIS, GDSN, EDI, GS1 Digital Link) — queste ultime marcate anche
+   da un colore e uno sfondo dedicati, per essere riconoscibili come gruppo a colpo d'occhio. */
+.tabs-divider {
+  width: 1px;
+  align-self: stretch;
+  margin: 8px 4px;
+  background: var(--border-default);
+  flex-shrink: 0;
+}
+
+.tabs-nav button.tab-gs1 {
+  color: var(--gs1-blue);
+  background: var(--accent-soft);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+/* :host-context(), non :root[data-theme='dark']: con l'incapsulamento CSS emulato di Angular,
+   quest'ultimo si ritrova un attributo [_ngcontent-xxx] iniettato prima di ":root" (che punta a
+   <html>, mai renderizzato da questo componente) — la regola risulterebbe sintatticamente
+   valida ma non farebbe mai match, lasciando silenziosamente il colore del tema chiaro anche in
+   dark mode (bug riscontrato già presente, con questo stesso pattern rotto, anche altrove nel
+   progetto — es. .tabs-nav button.active qui sotto, .header-nav a.active in app.css). */
+:host-context([data-theme='dark']) .tabs-nav button.tab-gs1 {
+  color: var(--accent-strong);
+}
+
+.tabs-nav button.tab-gs1.active {
+  background: var(--accent-soft);
+  border-bottom-color: var(--gs1-orange);
 }
 
 .tab-panel {

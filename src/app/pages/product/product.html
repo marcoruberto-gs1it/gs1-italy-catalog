@@ -106,22 +106,21 @@
         <!-- Tabs -->
         <div class="product-tabs">
           <div class="tabs-nav">
-            @if (hasDetailsTab()) {
-              <button type="button" [class.active]="activeTab() === 'details'" (click)="setTab('details')">{{ t('product.tabs.details') }}</button>
-            }
+            <button type="button" [class.active]="activeTab() === 'details'" (click)="setTab('details')">{{ t('product.tabs.details') }}</button>
             @if (hasSustainabilityTab()) {
               <button type="button" [class.active]="activeTab() === 'sustainability'" (click)="setTab('sustainability')">{{ t('product.tabs.sustainability') }}</button>
             }
+            <span class="tabs-divider" [attr.aria-label]="t('product.tabs.gs1GroupLabel')" role="separator"></span>
             @if (hasSupplyChainData()) {
-              <button type="button" [class.active]="activeTab() === 'supply-chain'" (click)="setTab('supply-chain')">{{ t('product.tabs.supplyChain') }}</button>
+              <button type="button" class="tab-gs1" [class.active]="activeTab() === 'supply-chain'" (click)="setTab('supply-chain')">{{ t('product.tabs.supplyChain') }}</button>
             }
             @if (hasGdsnTab()) {
-              <button type="button" [class.active]="activeTab() === 'gdsn'" (click)="setTab('gdsn')">{{ t('product.tabs.gdsn') }}</button>
+              <button type="button" class="tab-gs1" [class.active]="activeTab() === 'gdsn'" (click)="setTab('gdsn')">{{ t('product.tabs.gdsn') }}</button>
             }
             @if (hasEdiTab()) {
-              <button type="button" [class.active]="activeTab() === 'edi'" (click)="setTab('edi')">{{ t('product.tabs.edi') }}</button>
+              <button type="button" class="tab-gs1" [class.active]="activeTab() === 'edi'" (click)="setTab('edi')">{{ t('product.tabs.edi') }}</button>
             }
-            <button type="button" [class.active]="activeTab() === 'structured-data'" (click)="setTab('structured-data')">{{ t('product.tabs.structuredData') }}</button>
+            <button type="button" class="tab-gs1" [class.active]="activeTab() === 'structured-data'" (click)="setTab('structured-data')">{{ t('product.tabs.structuredData') }}</button>
           </div>
 
           <div class="tab-panel">
@@ -190,6 +189,10 @@
                       }
                     </tbody>
                   </table>
+                }
+
+                @if (!hasDetailsTab()) {
+                  <p class="data-text">{{ t('product.specs.noAdditionalSpecs') }}</p>
                 }
               </div>
             }

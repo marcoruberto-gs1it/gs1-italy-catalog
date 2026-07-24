@@ -72,6 +72,7 @@ export const TRANSLATIONS = {
         gdsn: 'GDSN',
         structuredData: 'GS1 Digital Link',
         edi: 'EDI',
+        gs1GroupLabel: 'Standard GS1',
       },
       specs: {
         heading: 'Specifiche',
@@ -82,6 +83,7 @@ export const TRANSLATIONS = {
         color: 'Colore',
         size: 'Taglia',
         care: 'Cura del capo',
+        noAdditionalSpecs: 'Nessuna specifica aggiuntiva per questo prodotto.',
       },
       ingredients: 'Ingredienti',
       allergens: 'Allergeni',
@@ -445,6 +447,7 @@ export const TRANSLATIONS = {
         gdsn: 'GDSN',
         structuredData: 'GS1 Digital Link',
         edi: 'EDI',
+        gs1GroupLabel: 'GS1 Standards',
       },
       specs: {
         heading: 'Specifications',
@@ -455,6 +458,7 @@ export const TRANSLATIONS = {
         color: 'Colour',
         size: 'Size',
         care: 'Garment care',
+        noAdditionalSpecs: 'No additional specifications for this product.',
       },
       ingredients: 'Ingredients',
       allergens: 'Allergens',
