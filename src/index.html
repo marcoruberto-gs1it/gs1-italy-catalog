@@ -6,20 +6,18 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <!-- Esplicito piuttosto che affidarsi al default: rende inequivocabile l'intento di
-       indicizzazione per qualunque crawler, invece di lasciarlo implicito. -->
   <meta name="robots" content="index, follow">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script>
-    (function () {
+    (() => {
       try {
-        var saved = localStorage.getItem('gs1-theme');
-        var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        const saved = localStorage.getItem('gs1-theme');
+        const theme = saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
         document.documentElement.setAttribute('data-theme', theme);
-      } catch (e) {}
+      } catch {}
     })();
   </script>
 </head>
